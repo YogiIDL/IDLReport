@@ -1,5 +1,3 @@
-{{-- Testing New Theme --}}
-<!DOCTYPE html>
 <html lang="en">
 
 <head>
