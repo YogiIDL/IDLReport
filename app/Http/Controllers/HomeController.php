@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
+// TODO: Just add some comment and commit for push from personal computer
+
 class HomeController extends Controller
 {
     /**
