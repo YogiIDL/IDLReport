@@ -20,6 +20,14 @@
 
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <style>
+        .bg-login-image{
+            background:url({{ url('/img/cek-resi-update.jpg')}}) !important;
+            background-size: 600px 800px !important;
+            background-position:center !important;
+            background-size:cover !important;
+        }
+    </style>
 
 </head>
 
@@ -36,6 +44,10 @@
                     <div class="card-body p-0">
                         <!-- Nested Row within Card Body -->
                         <div class="row">
+                            {{-- C:\xampp_php7\htdocs\IDLReport\public\img\cek-resi-update.jpg
+                            public\img\cek-resi-update.jpg --}}
+                            {{-- background:url(https://source.unsplash.com/K4mSJ7kc0As/600x800);background-position:center;background-size:cover --}}
+                            {{-- <div class="col-lg-6 d-none d-lg-block bg-login-image" style="background:url({{ url('/img/cek-resi-update.jpg')}}) !important; background-size: 80% auto !important; background-position:center !important; background-size:cover !important; "></i> --}}
                             <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
                             <div class="col-lg-6">
                                 <div class="p-5">
