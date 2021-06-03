@@ -26,6 +26,7 @@ class HomeController extends Controller
      */
     public function index()
     {
+        // dump(session());
         return view('home');
     }
 

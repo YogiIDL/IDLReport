@@ -22,7 +22,8 @@
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
     <style>
         .bg-login-image{
-            background:url({{ url('/img/cek-resi-update.jpg')}}) !important;
+            /* background:url({{ url('/img/cek-resi-update.jpg')}}) !important; */
+            background: url('img/cek-resi-update.jpg') !important;
             background-size: 600px 800px !important;
             background-position:center !important;
             background-size:cover !important;
@@ -79,10 +80,10 @@
                                                 </span>
                                             @enderror
                                         </div>
+                                        <hr>
                                         <button type="submit" class="btn btn-primary btn-user btn-block">
                                             Login
                                         </button>
-                                        <hr>
                                     </form>
                                     <hr>
                                     <div class="text-center">
