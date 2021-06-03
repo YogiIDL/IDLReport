@@ -17,6 +17,7 @@ class UserSeeder extends Seeder
             'email' => 'yogi@mail.com',
             'level' => 'admin',
             'location' => 'all',
+            'level_access' => 'idl_all',
             'password' => Hash::make('12341234'),
         ]);
         DB::table('users')->insert([
@@ -24,6 +25,7 @@ class UserSeeder extends Seeder
             'email' => 'adianta@mail.com',
             'level' => 'asmenup',
             'location' => 'teluk naga',
+            'level_access' => 'idl_1',
             'password' => Hash::make('12341234'),
         ]);
         DB::table('users')->insert([
@@ -31,6 +33,7 @@ class UserSeeder extends Seeder
             'email' => 'tarigan@mail.com',
             'level' => 'staf',
             'location' => 'sunter',
+            'level_access' => 'idl_2',
             'password' => Hash::make('12341234'),
         ]);
     }
