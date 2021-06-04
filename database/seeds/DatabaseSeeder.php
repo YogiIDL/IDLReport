@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             AreaSeeder::class,
             LocationSeeder::class,
+            LevelAccessSeeder::class,
     ]);
     }
 }

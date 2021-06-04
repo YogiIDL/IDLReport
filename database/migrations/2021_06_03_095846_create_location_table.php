@@ -21,7 +21,7 @@ class CreateLocationTable extends Migration
             $table->string('location_name');
             $table->timestamps();
 
-            $table->foreign('area_id')->references('id')->on('area')->onDelete('cascade');
+            $table->foreign('area_id')->references('id')->on('area')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 
