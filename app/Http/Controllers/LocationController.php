@@ -13,4 +13,14 @@ class LocationController extends Controller
 
         return view('Location.listLocation')->with('locations', $locations);
     }
+
+    public function addLocation(){
+        return view('Location.addLocation');
+    }
+
+    public function saveLocation(Request $request){
+        DB::insert('insert into location (location_name, area_id) values(?, ?)', [$request->location_name, $request->area_id]);
+
+        return redirect('/listLocation');
+    }
 }
