@@ -1,5 +1,10 @@
 @php
-    dump(Auth::user());
+    // dump(Auth::user());
+    // dump(Auth());
+
+    // if(isset($users)){
+    //     dump($users);
+    // }
 @endphp
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
@@ -201,7 +206,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">User Utilities</h6>
                         <a class="collapse-item" href="/addUser">Add New User</a>
-                        <a class="collapse-item" href="login.html">List All User</a>
+                        <a class="collapse-item" href="/listUser">List All User</a>
                         <a class="collapse-item" href="register.html">Manage User</a>
                         {{-- <div class="collapse-divider"></div>
                         <h6 class="collapse-header">Other Pages:</h6>
