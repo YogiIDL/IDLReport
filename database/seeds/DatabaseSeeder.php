@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             LevelAccessSeeder::class,
             UserLocationSeeder::class,
             UserLevelAccessSeeder::class,
+            TaskSeeder::class,
     ]);
     }
 }
