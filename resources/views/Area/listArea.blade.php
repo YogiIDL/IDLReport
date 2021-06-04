@@ -13,7 +13,6 @@
                 </thead>
                 <tbody>
                     @foreach ($areas as $area )
-                    
                     <tr>
                         <td>{{$area->id}}</td>
                         <td>{{$area->area_name}}</td>

@@ -22,7 +22,8 @@ class UserController extends Controller
             'password' => Hash::make($request['password']),
         ]);
 
-        return view('home');
+        // return view('User.listUser');
+        return redirect('/listUser');
     }
 
     public function listUser(){

@@ -36,6 +36,8 @@ Route::get('/listUser', 'UserController@listUser');
 
 // Area Route
 Route::get('/listArea', 'AreaController@listArea');
+Route::get('/addArea', 'AreaController@addArea');
+Route::post('/addArea', 'AreaController@saveArea');
 
 // Task Route
 

@@ -185,7 +185,7 @@
                         <div class="collapse-divider"></div>
                         <h6 class="collapse-header">Area Management</h6>
                         <a class="collapse-item" href="/listArea">List area</a>
-                        <a class="collapse-item" href="blank.html">Blank Page</a>j
+                        <a class="collapse-item" href="/addArea">Add Area</a>
                     </div>
                 </div>
             </li>
