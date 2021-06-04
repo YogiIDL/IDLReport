@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
             TaskSeeder::class,
             UserTaskSeeder::class,
             TypeSeeder::class,
+            LocationTypeSeeder::class,
     ]);
     }
 }
