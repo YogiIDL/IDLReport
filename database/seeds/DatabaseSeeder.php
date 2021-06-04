@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
             UserLevelAccessSeeder::class,
             TaskSeeder::class,
             UserTaskSeeder::class,
+            TypeSeeder::class,
     ]);
     }
 }
