@@ -45,6 +45,9 @@ Route::post('/addArea', 'AreaController@saveArea');
 // Task Route
 
 // Level Access Route
+Route::get('/listLevelAccess', 'LevelAccessController@listLevelAccess');
+Route::get('/addLevelAccess', 'LevelAccessController@addLevelAccess');
+Route::post('/addLevelAccess', 'LevelAccessController@saveLevelAccess');
 
 // User Level Access Route
 

@@ -178,10 +178,9 @@
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Level Management</h6>
-                        <a class="collapse-item" href="utilities-color.html">New Access</a>
-                        <a class="collapse-item" href="utilities-border.html">Manage</a>
-                        <a class="collapse-item" href="utilities-animation.html">Animations</a>
+                        <h6 class="collapse-header">Level Access Management</h6>
+                        <a class="collapse-item" href="/listLevelAccess">List Level Access</a>
+                        <a class="collapse-item" href="/addLevelAccess">Add New Level Access</a>
 
                         <div class="collapse-divider"></div>
                         <h6 class="collapse-header">Area Management</h6>
