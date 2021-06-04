@@ -23,6 +23,9 @@ Route::get('/rest', 'HomeController@rest');
 
 Auth::routes();
 
+// User Route
+Route::get('/addUser', 'UserController@addUser');
+
 Route::get('/test', function () {
     return view('test');
 });
