@@ -182,6 +182,10 @@
                         <a class="collapse-item" href="utilities-color.html">New Access</a>
                         <a class="collapse-item" href="utilities-border.html">Manage</a>
                         <a class="collapse-item" href="utilities-animation.html">Animations</a>
+                        <div class="collapse-divider"></div>
+                        <h6 class="collapse-header">Area Management</h6>
+                        <a class="collapse-item" href="/listArea">List area</a>
+                        <a class="collapse-item" href="blank.html">Blank Page</a>j
                     </div>
                 </div>
             </li>

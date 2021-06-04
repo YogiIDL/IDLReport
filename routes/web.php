@@ -28,6 +28,26 @@ Route::get('/addUser', 'UserController@addUser');
 Route::post('/addUser', 'UserController@saveUser');
 Route::get('/listUser', 'UserController@listUser');
 
+// Location Route
+
+// Type Route
+
+// Location Type Route
+
+// Area Route
+Route::get('/listArea', 'AreaController@listArea');
+
+// Task Route
+
+// Level Access Route
+
+// User Level Access Route
+
+// User Location Route
+
+// User Task Route
+
+
 Route::get('/test', function () {
     return view('test');
 });
