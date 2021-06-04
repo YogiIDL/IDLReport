@@ -29,6 +29,9 @@ Route::post('/addUser', 'UserController@saveUser');
 Route::get('/listUser', 'UserController@listUser');
 
 // Location Route
+Route::get('/listLocation', 'LocationController@listLocation');
+Route::get('/addLocation', 'LocationController@addLocation');
+Route::post('/addLocation', 'LocationController@saveLocation');
 
 // Type Route
 
