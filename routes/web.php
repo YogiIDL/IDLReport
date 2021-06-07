@@ -47,6 +47,15 @@ Route::get('/addArea', 'AreaController@addArea');
 Route::post('/addArea', 'AreaController@saveArea');
 
 // Task Route
+Route::get('/Dispatch', function () {
+    return view('Task.Dispatch');
+});
+Route::get('/Traffic', function () {
+    return view('Task.Traffic');
+});
+Route::get('/GroundHandling', function () {
+    return view('Task.GroundHandling');
+});
 
 // Level Access Route
 Route::get('/listLevelAccess', 'LevelAccessController@listLevelAccess');
@@ -59,6 +68,8 @@ Route::post('/addLevelAccess', 'LevelAccessController@saveLevelAccess');
 
 // User Task Route
 
+
+// With Middleware Group Routte
 
 Route::get('/test', function () {
     return view('test');
