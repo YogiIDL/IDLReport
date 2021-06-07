@@ -13,51 +13,59 @@ class MasterSeeder extends Seeder
     {
         DB::table('master')->insert([
             'user_id' => '1',
+            'level_id' => '1',
             'location_id' => '1',
             'task_id' => '1',
-            'level_access_id' => '1',
+            'activity_id' => '1',
         ]);
         DB::table('master')->insert([
             'user_id' => '1',
+            'level_id' => '1',
             'location_id' => '1',
             'task_id' => '1',
-            'level_access_id' => '2',
+            'activity_id' => '2',
         ]);
         DB::table('master')->insert([
             'user_id' => '1',
+            'level_id' => '1',
             'location_id' => '1',
             'task_id' => '3',
-            'level_access_id' => '1',
+            'activity_id' => '1',
         ]);
         DB::table('master')->insert([
             'user_id' => '1',
+            'level_id' => '1',
             'location_id' => '1',
             'task_id' => '3',
-            'level_access_id' => '4',
+            'activity_id' => '4',
         ]);
         DB::table('master')->insert([
             'user_id' => '1',
+            'level_id' => '1',
             'location_id' => '2',
             'task_id' => '2',
-            'level_access_id' => '1',
+            'activity_id' => '1',
         ]);
         DB::table('master')->insert([
             'user_id' => '1',
+            'level_id' => '1',
             'location_id' => '2',
             'task_id' => '3',
-            'level_access_id' => '1',
+            'activity_id' => '1',
         ]);
         DB::table('master')->insert([
             'user_id' => '2',
+            'level_id' => '2',
             'location_id' => '1',
             'task_id' => '1',
-            'level_access_id' => '2',
+            'activity_id' => '2',
         ]);
         DB::table('master')->insert([
             'user_id' => '2',
+            'level_id' => '2',
             'location_id' => '2',
             'task_id' => '3',
-            'level_access_id' => '1',
+            'activity_id' => '1',
         ]);
     }
 }

@@ -12,16 +12,16 @@ class LevelAccessSeeder extends Seeder
     public function run()
     {
         DB::table('level_access')->insert([
-            'name' => 'Create/Read',
+            'level_access_name' => 'Create/Read',
         ]);
         DB::table('level_access')->insert([
-            'name' => 'Update',
+            'level_access_name' => 'Update',
         ]);
         DB::table('level_access')->insert([
-            'name' => 'Delete',
+            'level_access_name' => 'Delete',
         ]);
         DB::table('level_access')->insert([
-            'name' => 'Download',
+            'level_access_name' => 'Download',
         ]);
     }
 }

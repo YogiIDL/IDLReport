@@ -15,7 +15,7 @@
                     @foreach ($levelAccesses as $levelAccess )
                     <tr>
                         <td>{{$levelAccess->id}}</td>
-                        <td>{{$levelAccess->name}}</td>
+                        <td>{{$levelAccess->level_access_name}}</td>
                     </tr>        
                     @endforeach
                 </tbody>
