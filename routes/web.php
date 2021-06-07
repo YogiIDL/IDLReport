@@ -45,6 +45,9 @@ Route::post('/addLocation', 'LocationController@saveLocation');
 Route::get('/listArea', 'AreaController@listArea');
 Route::get('/addArea', 'AreaController@addArea');
 Route::post('/addArea', 'AreaController@saveArea');
+Route::get('/editArea/{id}', 'AreaController@editArea');
+// Route::post('/editArea/{id}', 'AreaController@saveEditArea');
+Route::post('/editArea', 'AreaController@saveEditArea');
 
 // Task Route
 Route::get('/Dispatch', function () {

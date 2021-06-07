@@ -9,6 +9,7 @@
                     <tr>
                         <th>#</th>
                         <th>Area Name</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -16,6 +17,11 @@
                     <tr>
                         <td>{{$area->id}}</td>
                         <td>{{$area->area_name}}</td>
+                        <td>
+                            <div class="btn btn-secondary">
+                                <a href="/editArea/{{$area->id}}">Edit</a>
+                            </div>
+                        </td>
                     </tr>        
                     @endforeach
                 </tbody>
