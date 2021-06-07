@@ -18,8 +18,8 @@ class CreateUserLocationTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('location_id');
             $table->timestamps();
-            $table->foreign('location_id')->references('id')->on('location')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
+            // $table->foreign('location_id')->references('id')->on('location')->onUpdate('cascade')->onDelete('cascade');
+            // $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

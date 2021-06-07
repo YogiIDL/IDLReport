@@ -19,8 +19,8 @@ class CreateLocationTypeTable extends Migration
             $table->unsignedBigInteger('type_id');
             $table->timestamps();
 
-            $table->foreign('location_id')->references('id')->on('location')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreign('type_id')->references('id')->on('type')->onUpdate('cascade')->onDelete('cascade');
+            // $table->foreign('location_id')->references('id')->on('location')->onUpdate('cascade')->onDelete('cascade');
+            // $table->foreign('type_id')->references('id')->on('type')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 
