@@ -27,6 +27,7 @@ Auth::routes();
 Route::get('/addUser', 'UserController@addUser');
 Route::post('/addUser', 'UserController@saveUser');
 Route::get('/listUser', 'UserController@listUser');
+Route::get('/listManageUser', 'UserController@listManageUser');
 Route::get('/manageUser', 'UserController@manageUser');
 Route::post('/saveManageUser', 'UserController@saveManageUser');
 

@@ -39,6 +39,12 @@ class UserController extends Controller
         return view('User.listUser')->with('users', $users);
     }
 
+    public function listManageUser(){
+        $manageUsers = DB::select('select * from master');
+
+        return view('User.listManageUser')->with('manageUsers', $manageUsers);
+    }
+
     public function manageUser(){
         return view('User.manageUser');
     }
