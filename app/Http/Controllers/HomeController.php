@@ -6,17 +6,23 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
 // TODO: Just add some comment and commit for push from personal computer
+// * Note : User attribute will be queried when user redirected from login controller to home(dashboard)
+// * at HomeController __construct function
+// * so all the user atribute is available when passing the middleware that applied to route
+// * All user will be given open route to home (dashboard) without another middleware except Auth middleware
 
 class HomeController extends Controller
 {
     /**
-     * Create a new controller instance.
+     * Create a new controller instance
      *
      * @return void
      */
     public function __construct()
     {
         $this->middleware('auth');
+
+        // Check attribute user master table -> Auth::(User)->attribute;
     }
 
     /**
