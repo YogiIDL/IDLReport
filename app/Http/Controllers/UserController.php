@@ -40,6 +40,16 @@ class UserController extends Controller
     }
 
     public function manageUser(){
-        return '123123';
+        return view('User.manageUser');
+    }
+
+    public function saveManageUser(Request $request){
+        // return view('User.manageUser');
+        // return 'save manage user';
+        DB::insert('insert into master (user_id, location_id, task_id, level_access_id) values(?, ?, ?, ?)', [
+            $request->user_id, $request->location_id,  $request->task_id, $request->level_access_id
+        ]);
+
+        return redirect('/listUser');
     }
 }
