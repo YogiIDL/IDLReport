@@ -15,13 +15,14 @@ class LevelAccessController extends Controller
         return view('LevelAccess.listLevelAccess')->with('levelAccesses', $levelAccesses);
     }
 
-    public function addLocation(){
-        return view('Location.addLocation');
+    public function addLevelAccess(){
+        return view('LevelAccess.addLevelAccess');
     }
 
-    public function saveLocation(Request $request){
-        DB::insert('insert into location (location_name, area_id) values(?, ?)', [$request->location_name, $request->area_id]);
+    public function saveLevelAccess(Request $request){
+        // DB::insert('insert into location (location_name, area_id) values(?, ?)', [$request->location_name, $request->area_id]);
+        DB::insert('insert into level_access (name) values(?)', [$request->name]);
 
-        return redirect('/listLocation');
+        return redirect('/listLevelAccess');
     }
 }
