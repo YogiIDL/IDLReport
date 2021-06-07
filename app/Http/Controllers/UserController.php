@@ -38,4 +38,8 @@ class UserController extends Controller
         // return view('home')->with('users',$users);
         return view('User.listUser')->with('users', $users);
     }
+
+    public function manageUser(){
+        return '123123';
+    }
 }

@@ -216,7 +216,7 @@
                         <h6 class="collapse-header">User Utilities</h6>
                         <a class="collapse-item" href="/addUser">Add New User</a>
                         <a class="collapse-item" href="/listUser">List All User</a>
-                        <a class="collapse-item" href="register.html">Manage User</a>
+                        <a class="collapse-item" href="/manageUser">Manage User</a>
                         {{-- <div class="collapse-divider"></div>
                         <h6 class="collapse-header">Other Pages:</h6>
                         <a class="collapse-item" href="404.html">404 Page</a>

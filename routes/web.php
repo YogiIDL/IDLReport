@@ -27,6 +27,8 @@ Auth::routes();
 Route::get('/addUser', 'UserController@addUser');
 Route::post('/addUser', 'UserController@saveUser');
 Route::get('/listUser', 'UserController@listUser');
+Route::get('/manageUser', 'UserController@manageUser');
+
 
 // Location Route
 Route::get('/listLocation', 'LocationController@listLocation');
