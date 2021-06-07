@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use App\User;
 
 // TODO: Just add some comment and commit for push from personal computer
 // * Note : User attribute will be queried when user redirected from login controller to home(dashboard)
@@ -32,6 +35,41 @@ class HomeController extends Controller
      */
     public function index()
     {
+        // dump(Auth::user()->attributes);
+        // var_dump(Auth::user());
+        $user = Auth::user();
+        // dump($user);
+
+        $attr = DB::select('select * from master where user_id = ?', [$user->id]);
+        // dump($attr);
+
+        // $location = array("oke", "abc", "wqe", "wqe", "qwe", "qwe");
+        // $location[0] = "askjdnkjasnd";
+        $location = array();
+        foreach($attr as $item => $i){
+            // dump($item);
+            // dump($item->location_id);
+            // $location == $item->location_id;
+            // var_dump( $item->location_id);
+            dump($i);
+            // dump($item);
+            // $location[$item] ==$i;
+            // dump($location[$item]);
+            $location[$item] == $i;
+
+        }
+        dump($location);
+
+
+        // foreach($attr as $item =>$i){
+        //     $user_location[$i] = DB::select('select * from location where id = ?', [$i]);
+        // }
+
+
+        // dump($user_location[]);
+        
+        // dump(User::());
+        
         // dump(session());
         return view('home');
     }
