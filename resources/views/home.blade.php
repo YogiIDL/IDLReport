@@ -1,6 +1,16 @@
 @extends('layouts.app')
 
 @section('content')
+<div>
+    <select name="" id="">
+        {{-- @foreach ($user->locationname as $location)
+            <option value="">{{$location}}</option>
+        @endforeach --}}
+        @foreach (Auth::user()->locationname as $location)
+            <option value="">{{$location}}</option>
+        @endforeach
+    </select>
+</div>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">

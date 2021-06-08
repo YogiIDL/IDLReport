@@ -40,15 +40,29 @@ class HomeController extends Controller
         $user = Auth::user();
 
         $user->locationlist = array();
+        $user->locationname = array();
+        $user->tasklist = array();
+        $user->activitylist = array();
 
-        $master = DB::select('select * from master where user_id = ?', [$user->id]);
+        $master = DB::select('select * from master
+                            join location on master.location_id = location.id
+                            join area on location.area_id = area.id
+                            join task on master.task_id = task.id
+                            join activity on master.activity_id = activity.id
+                            where user_id = ? ', [$user->id], );
+
+        // dump($master);
 
         $user->master = $master;
         foreach($master as $i => $item){
             $user->locationlist = array_unique(array_merge($user->locationlist, [$item->location_id]));
+            $user->locationname = array_unique(array_merge($user->locationname, [$item->location_name]));
+
+            $user->tasklist = array_unique(array_merge($user->tasklist, [$item->task_id]));
+            $user->activitylist = array_unique(array_merge($user->activitylist, [$item->activity_id]));
         }
 
-        dump($user);
+        // dump($user);
         // die();
 
         // dump($master);

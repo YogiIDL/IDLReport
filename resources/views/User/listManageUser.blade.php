@@ -11,7 +11,7 @@
                         <th>User Id</th>
                         <th>Location Id</th>
                         <th>Task Id</th>
-                        <th>Level Access Id</th>
+                        <th>Activity Id</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -25,7 +25,7 @@
                         <td>{{$manageUser->user_id}}</td>
                         <td>{{$manageUser->location_id}}</td>
                         <td>{{$manageUser->task_id}}</td>
-                        <td>{{$manageUser->level_access_id}}</td>
+                        <td>{{$manageUser->activity_id}}</td>
                     </tr>        
                     @endforeach
                 </tbody>
