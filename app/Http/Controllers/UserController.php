@@ -37,7 +37,7 @@ class UserController extends Controller
         // dump($users);
 
         $users = DB::select('select * from users');
-        dump($users);
+        // dump($users);
 
         // return $users;
         // return view('home')->with('users',$users);
@@ -105,7 +105,7 @@ class UserController extends Controller
         //     $user->activitylist = array_unique(array_merge($user->activitylist, [$item->activity_id]));
         // }
 
-        // dump($user);
+        dump($user);
 
         return view('User.manageUser');
     }
@@ -113,8 +113,11 @@ class UserController extends Controller
     public function saveManageUser(Request $request){
         // return view('User.manageUser');
         // return 'save manage user';
-        DB::insert('insert into master (user_id, location_id, task_id, level_access_id) values(?, ?, ?, ?)', [
-            $request->user_id, $request->location_id,  $request->task_id, $request->level_access_id
+        $asd=1;
+        dump($request);
+        // die();
+        DB::insert('insert into master (user_id, level_id, location_id, task_id, activity_id) values(?, ?, ?, ?,?)', [
+            $request->user_id,$asd, $request->location_id,  $request->task_id, $request->level_access_id
         ]);
 
         return redirect('/listUser');

@@ -13,11 +13,11 @@
                 <div class="form-group col-md-4">
                     <label for="user_id">User id</label>
                     <input type="text" class="form-control" name="user_id" id="user_id" placeholder="User ID...">
-                    <select name="" id="">
+                    {{-- <select name="" id="">
                         @foreach (Auth::user()->usernamelist as $user)
                             <option value="">{{$user}}</option>
                         @endforeach
-                    </select>
+                    </select> --}}
                 </div>
                 <div class="form-group col-md-4"></div>
             </div>
@@ -27,11 +27,11 @@
                 <div class="form-group col-md-4">
                     <label for="location_id">Location Id</label>
                     <input type="text" class="form-control" name="location_id" id="location_id" placeholder="Location Id...">
-                    <select name="" id="">
+                    {{-- <select name="" id="">
                         @foreach (Auth::user()->locationlist as $location)
                             <option value="">{{$location}}</option>
                         @endforeach
-                    </select>
+                    </select> --}}
                 </div>
                 <div class="form-group col-md-4"></div>
             </div>
@@ -41,11 +41,11 @@
                 <div class="form-group col-md-4">
                     <label for="task_id">Task Id</label>
                     <input type="text" class="form-control" name="task_id" id="task_id" placeholder="Task Id...">
-                    <select name="" id="">
+                    {{-- <select name="" id="">
                         @foreach (Auth::user()->tasklist as $task)
                             <option value="">{{$task}}</option>
                         @endforeach
-                    </select>
+                    </select> --}}
                 </div>
                 <div class="form-group col-md-4"></div>
             </div>
@@ -55,11 +55,11 @@
                 <div class="form-group col-md-4">
                     <label for="level_access_id">Level Access Id</label>
                     <input type="text" class="form-control" name="level_access_id" id="level_access_id" placeholder="Level Access Id...">
-                    <select name="" id="">
+                    {{-- <select name="" id="">
                         @foreach (Auth::user()->activitylist as $activity)
                             <option value="">{{$activity}}</option>
                         @endforeach
-                    </select>
+                    </select> --}}
                 </div>
                 <div class="form-group col-md-4"></div>
             </div>
