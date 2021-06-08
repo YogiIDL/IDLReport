@@ -105,7 +105,7 @@ class UserController extends Controller
         //     $user->activitylist = array_unique(array_merge($user->activitylist, [$item->activity_id]));
         // }
 
-        dump($user);
+        // dump($user);
 
         return view('User.manageUser');
     }
