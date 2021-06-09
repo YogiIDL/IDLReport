@@ -1,10 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h5 class="m-0 font-weigth-bold text-primary">List Area</h5>
+    </div>
+    <div class="card-body">
         <div class="table-responsive">
-            <table class="table table-striped table-hover">
+            <table class="table table-bordered table-hover" width="100%" cellspacing="0">
                 <thead>
                     <tr>
                         <th>#</th>
@@ -18,9 +21,15 @@
                         <td>{{$area->id}}</td>
                         <td>{{$area->area_name}}</td>
                         <td>
-                            <div class="btn btn-secondary">
+                            {{-- <div class="btn btn-primary">
                                 <a href="/editArea/{{$area->id}}">Edit</a>
-                            </div>
+                                <span class="text">
+                                    Edit
+                                </span>
+                            </div> --}}
+                            <a href="/editArea/{{$area->id}}" class="btn btn-primary">
+                                <span class="text">Edit</span>
+                            </a>
                         </td>
                     </tr>        
                     @endforeach
@@ -29,4 +38,5 @@
         </div>
     </div>
 </div>
+
 @endsection
