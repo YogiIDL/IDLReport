@@ -175,24 +175,26 @@
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
                         aria-expanded="true" aria-controls="collapseUtilities">
                         <i class="fas fa-fw fa-key"></i>
-                        <span>Access</span>
+                        <span>Master Data</span>
                     </a>
                     <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
                         data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
-                            <h6 class="collapse-header">Level Access Management</h6>
-                            <a class="collapse-item" href="/listLevelAccess">List Level Access</a>
-                            <a class="collapse-item" href="/addLevelAccess">Add New Level Access</a>
-
+                            <h6 class="collapse-header">Location Master</h6>
+                            <a class="collapse-item" href="/listLocation">
+                                <h6>Location</h6>
+                            </a>
                             <div class="collapse-divider"></div>
-                            <h6 class="collapse-header">Area Management</h6>
-                            <a class="collapse-item" href="/listArea">List Area</a>
-                            <a class="collapse-item" href="/addArea">Add Area</a>
-
+                            <h6 class="collapse-header">Area Master</h6>
+                            <a class="collapse-item" href="/listArea">
+                                <h6>Area</h6>
+                            </a>
                             <div class="collapse-divider"></div>
-                            <h6 class="collapse-header">Location Management</h6>
-                            <a class="collapse-item" href="/listLocation">List Location</a>
-                            <a class="collapse-item" href="/addLocation">Add Location</a>
+                            <h6 class="collapse-header">Level Access Master</h6>
+                            <a class="collapse-item" href="/listLevelAccess">
+                                <h6>Level Access</h6>
+                            </a>
+                            <div class="collapse-divider"></div>
                         </div>
                     </div>
                 </li>
@@ -218,11 +220,17 @@
                     </a>
                     <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
-                            <h6 class="collapse-header">User Utilities</h6>
-                            <a class="collapse-item" href="/addUser">Add New User</a>
-                            <a class="collapse-item" href="/listUser">List All User</a>
-                            <a class="collapse-item" href="/listManageUser">List Manage User</a>
-                            <a class="collapse-item" href="/manageUser">Manage User</a>
+                            <h6 class="collapse-header">User Master</h6>
+                            {{-- <a class="collapse-item" href="/addUser">Add New User</a> --}}
+                            <a class="collapse-item" href="/listUser">
+                                <h6>User</h6>
+                            </a>
+                            <div class="collapse-divider"></div>
+                            <h6 class="collapse-header">Manage Master</h6>
+                            <a class="collapse-item" href="/listManageUser">
+                                <h6>Manage User</h6>
+                            </a>
+                            {{-- <a class="collapse-item" href="/manageUser">Manage User</a> --}}
                             {{-- <div class="collapse-divider"></div>
                             <h6 class="collapse-header">Other Pages:</h6>
                             <a class="collapse-item" href="404.html">404 Page</a>
@@ -563,6 +571,9 @@
     <script src="{{ url('js/demo/chart-area-demo.js') }}"></script>
     {{-- <script src="js/demo/chart-pie-demo.js"></script> --}}
     <script src="{{ url('js/demo/chart-pie-demo.js') }}"></script>
+
+    {{-- Custom JavaScript --}}
+    <script src="{{ url('js/custom/app.js')}}"></script>
 
 </body>
 
