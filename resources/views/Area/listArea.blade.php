@@ -1,6 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <a href="/addArea" class="btn btn-success btn-sm btn-icon-split">
+        <span class="icon text-white-50">
+            <i class="fas fa-plus"></i>
+        </span>
+        <span class="text">Add New Area</span>
+    </a>
+</div>
 <div class="card shadow mb-4">
     <div class="card-header py-3">
         <h5 class="m-0 font-weigth-bold text-primary">List Area</h5>
@@ -21,12 +29,6 @@
                         <td>{{$area->id}}</td>
                         <td>{{$area->area_name}}</td>
                         <td>
-                            {{-- <div class="btn btn-primary">
-                                <a href="/editArea/{{$area->id}}">Edit</a>
-                                <span class="text">
-                                    Edit
-                                </span>
-                            </div> --}}
                             <a href="/editArea/{{$area->id}}" class="btn btn-primary">
                                 <span class="text">Edit</span>
                             </a>
