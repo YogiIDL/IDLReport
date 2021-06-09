@@ -55,6 +55,7 @@ class UserController extends Controller
 
         $user->userlist = array();
         $user->usernamelist = array();
+        $user->levellist = array();
         $user->locationlist = array();
         $user->locationname = array();
         $user->tasklist = array();
@@ -72,9 +73,16 @@ class UserController extends Controller
                                 join location on master.location_id = location.id
                                 ');
         $users = DB::select('select * from users');
+        $level = DB::select('select* from level');
         $location = DB::select('select * from location');
         $task = DB::select('select * from task');
         $activity = DB::select('select * from activity');
+
+        $user->usermaster = $users;
+        $user->levelmaster = $level;
+        $user->locationmaster = $location;
+        $user->taskmaster = $task;
+        $user->activitymaster = $activity;
 
         // dump($users);
         // dump($location);
@@ -83,6 +91,9 @@ class UserController extends Controller
 
         foreach($users as $i => $item){
             $user->usernamelist = array_merge($user->usernamelist, [$item->name]);
+        }
+        foreach($level as $i => $item){
+            $user->levellist = array_merge($user->levellist, [$item->level_name]);
         }
         foreach($location as $i => $item){
             $user->locationlist = array_merge($user->locationlist, [$item->location_name]);
@@ -105,9 +116,9 @@ class UserController extends Controller
         //     $user->activitylist = array_unique(array_merge($user->activitylist, [$item->activity_id]));
         // }
 
-        // dump($user);
+        dump($user);
 
-        return view('User.manageUser');
+        return view('User.manageUser')->with('user', $user);
     }
 
     public function saveManageUser(Request $request){
