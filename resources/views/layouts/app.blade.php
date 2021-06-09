@@ -118,11 +118,11 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/home">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+                <div class="sidebar-brand-text mx-3">Report BTP</div>
             </a>
 
             <!-- Divider -->
@@ -130,7 +130,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="/home">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -164,67 +164,75 @@
             <hr class="sidebar-divider">
 
             <!-- Heading -->
-            <div class="sidebar-heading">
-               Level Page 
-            </div>
 
-            <!-- Nav Item - Utilities Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-                    aria-expanded="true" aria-controls="collapseUtilities">
-                    <i class="fas fa-fw fa-key"></i>
-                    <span>Access</span>
-                </a>
-                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
-                    data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Level Access Management</h6>
-                        <a class="collapse-item" href="/listLevelAccess">List Level Access</a>
-                        <a class="collapse-item" href="/addLevelAccess">Add New Level Access</a>
-
-                        <div class="collapse-divider"></div>
-                        <h6 class="collapse-header">Area Management</h6>
-                        <a class="collapse-item" href="/listArea">List Area</a>
-                        <a class="collapse-item" href="/addArea">Add Area</a>
-
-                        <div class="collapse-divider"></div>
-                        <h6 class="collapse-header">Location Management</h6>
-                        <a class="collapse-item" href="/listLocation">List Location</a>
-                        <a class="collapse-item" href="/addLocation">Add Location</a>
-                    </div>
+            @if (Auth::user()->level == "admin" || Auth::user()->level == "asmenup")
+                <div class="sidebar-heading">
+                Level Page 
                 </div>
-            </li>
 
-            <!-- Divider -->
-            <hr class="sidebar-divider">
+                <!-- Nav Item - Utilities Collapse Menu -->
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
+                        aria-expanded="true" aria-controls="collapseUtilities">
+                        <i class="fas fa-fw fa-key"></i>
+                        <span>Access</span>
+                    </a>
+                    <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
+                        data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <h6 class="collapse-header">Level Access Management</h6>
+                            <a class="collapse-item" href="/listLevelAccess">List Level Access</a>
+                            <a class="collapse-item" href="/addLevelAccess">Add New Level Access</a>
+
+                            <div class="collapse-divider"></div>
+                            <h6 class="collapse-header">Area Management</h6>
+                            <a class="collapse-item" href="/listArea">List Area</a>
+                            <a class="collapse-item" href="/addArea">Add Area</a>
+
+                            <div class="collapse-divider"></div>
+                            <h6 class="collapse-header">Location Management</h6>
+                            <a class="collapse-item" href="/listLocation">List Location</a>
+                            <a class="collapse-item" href="/addLocation">Add Location</a>
+                        </div>
+                    </div>
+                </li>
+
+                <!-- Divider -->
+                <hr class="sidebar-divider">
+
+                {{-- <div class="sidebar-heading">
+                    Admin and asmenup
+                </div> --}}
+
+                <div class="sidebar-heading">
+                    Admin Page
+                </div>
+
+                <!-- Nav Item - Pages Collapse Menu -->
+                {{-- User Management Sidebar --}}
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
+                        aria-expanded="true" aria-controls="collapsePages">
+                        <i class="fas fa-fw fa-users-cog"></i>
+                        <span>User Management</span>
+                    </a>
+                    <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <h6 class="collapse-header">User Utilities</h6>
+                            <a class="collapse-item" href="/addUser">Add New User</a>
+                            <a class="collapse-item" href="/listUser">List All User</a>
+                            <a class="collapse-item" href="/listManageUser">List Manage User</a>
+                            <a class="collapse-item" href="/manageUser">Manage User</a>
+                            {{-- <div class="collapse-divider"></div>
+                            <h6 class="collapse-header">Other Pages:</h6>
+                            <a class="collapse-item" href="404.html">404 Page</a>
+                            <a class="collapse-item" href="blank.html">Blank Page</a> --}}
+                        </div>
+                    </div>
+                </li>
+            @endif
 
             <!-- Heading -->
-            <div class="sidebar-heading">
-                Admin Page
-            </div>
-
-            <!-- Nav Item - Pages Collapse Menu -->
-            {{-- User Management Sidebar --}}
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
-                    aria-expanded="true" aria-controls="collapsePages">
-                    <i class="fas fa-fw fa-users-cog"></i>
-                    <span>User Management</span>
-                </a>
-                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">User Utilities</h6>
-                        <a class="collapse-item" href="/addUser">Add New User</a>
-                        <a class="collapse-item" href="/listUser">List All User</a>
-                        <a class="collapse-item" href="/listManageUser">List Manage User</a>
-                        <a class="collapse-item" href="/manageUser">Manage User</a>
-                        {{-- <div class="collapse-divider"></div>
-                        <h6 class="collapse-header">Other Pages:</h6>
-                        <a class="collapse-item" href="404.html">404 Page</a>
-                        <a class="collapse-item" href="blank.html">Blank Page</a> --}}
-                    </div>
-                </div>
-            </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
@@ -259,7 +267,7 @@
                     </button>
 
                     <!-- Topbar Search -->
-                    <form
+                    {{-- <form
                         class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                         <div class="input-group">
                             <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
@@ -270,7 +278,16 @@
                                 </button>
                             </div>
                         </div>
-                    </form>
+                    </form> --}}
+
+                    {{-- Topbar Location --}}
+                    {{-- <form action="" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                        <select name="" id="" class="form-control bg-light border-0 small">
+                            @foreach ({{Auth::user()->locationname}} as $location)
+                                <option value="">{{$location}}</option>
+                            @endforeach
+                        </select>
+                    </form> --}}
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
@@ -299,7 +316,6 @@
                             </div>
                         </li>
 
-                        <!-- Nav Item - Alerts -->
                         <li class="nav-item dropdown no-arrow mx-1">
                             <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

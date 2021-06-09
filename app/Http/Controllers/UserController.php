@@ -17,7 +17,7 @@ class UserController extends Controller
 
     public function addUser(){
         $level = DB::select('select * from level');
-        dump($level);
+        // dump($level);
         return view('User.addUser')->with('level', $level);
     }
 

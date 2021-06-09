@@ -24,8 +24,19 @@ class HomeController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        // $user = Auth::user();
 
         // Check attribute user master table -> Auth::(User)->attribute;
+        // $user->locationname = array();
+        // $master = DB::select('select * from master 
+        //                     join location on master.location_id = location.id 
+        //                     join area on location.area_id = area.id 
+        //                     join task on master.task_id = task.id 
+        //                     join activity on master.activity_id = activity.id where user_id = ? ', [$user->id] );
+        // $user->master = $master;
+        // foreach($master as $i => $item){
+        //     $user->locationname = array_unique(array_merge($user->locationname, [$item->location_name]));
+        // }
     }
 
     /**
@@ -43,6 +54,7 @@ class HomeController extends Controller
         $user->locationname = array();
         $user->tasklist = array();
         $user->activitylist = array();
+
 
         $master = DB::select('select * from master 
                             join location on master.location_id = location.id 
@@ -161,6 +173,8 @@ class HomeController extends Controller
         // dump($user_location[]);
         
         // dump(User::());
+
+        dump($user);
         
         // dump(session());
         return view('home');
