@@ -1,17 +1,24 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h5 class="m-0 font-weigth-bold text-primary">List User</h5>
+    </div>
+    <div class="card-body">
         <div class="table-responsive">
-            <table class="table table-striped table-hover">
+            <table class="table table-bordered table-hover" width="100%" cellspacing="0">
                 <thead>
                     <tr>
                         <th>#</th>
                         <th>User Id</th>
-                        <th>Location Id</th>
-                        <th>Task Id</th>
-                        <th>Activity Id</th>
+                        <th>Username</th>
+                        {{-- <th>Location Id</th> --}}
+                        <th>Location Name</th>
+                        {{-- <th>Task Id</th> --}}
+                        <th>Task Name</th>
+                        {{-- <th>Activity Id</th> --}}
+                        <th>Activity Name</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -23,9 +30,13 @@
                     <tr>
                         <td>{{$manageUser->id}}</td>
                         <td>{{$manageUser->user_id}}</td>
-                        <td>{{$manageUser->location_id}}</td>
-                        <td>{{$manageUser->task_id}}</td>
-                        <td>{{$manageUser->activity_id}}</td>
+                        <td>{{$manageUser->name}}</td>
+                        {{-- <td>{{$manageUser->location_id}}</td> --}}
+                        <td>{{$manageUser->location_name}}</td>
+                        {{-- <td>{{$manageUser->task_id}}</td> --}}
+                        <td>{{$manageUser->task_name}}</td>
+                        {{-- <td>{{$manageUser->activity_id}}</td> --}}
+                        <td>{{$manageUser->activity_name}}</td>
                     </tr>        
                     @endforeach
                 </tbody>
@@ -33,4 +44,5 @@
         </div>
     </div>
 </div>
+
 @endsection

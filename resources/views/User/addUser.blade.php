@@ -6,7 +6,7 @@
     <div class="col-lg-6">
         <div class="card shadow mb-12">
             <div class="card-header py-3">
-                <h5 class="m-0 font-weight-bold text-primary">Manage User</h5>
+                <h5 class="m-0 font-weight-bold text-primary">Add new User</h5>
             </div>
             <div class="card-body">
                 <form action="{{url('addUser')}}" method="POST">

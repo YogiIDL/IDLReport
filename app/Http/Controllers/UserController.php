@@ -45,7 +45,13 @@ class UserController extends Controller
     }
 
     public function listManageUser(){
-        $manageUsers = DB::select('select * from master');
+        $manageUsers = DB::select('select * from master
+                                    join users on master.user_id = users.id
+                                    join location on master.location_id = location.id
+                                    join task on master.task_id = task.id
+                                    join activity on master.activity_id = activity.id');
+
+        // dump($manageUsers);
 
         return view('User.listManageUser')->with('manageUsers', $manageUsers);
     }
@@ -116,7 +122,7 @@ class UserController extends Controller
         //     $user->activitylist = array_unique(array_merge($user->activitylist, [$item->activity_id]));
         // }
 
-        dump($user);
+        // dump($user);
 
         return view('User.manageUser')->with('user', $user);
     }
