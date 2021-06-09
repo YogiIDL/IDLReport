@@ -28,6 +28,15 @@
                         </div>
                         {{-- <div class="form-group col-md-4"></div> --}}
                     </div>
+                    
+                    {{-- Testing Level option in user input base on level --}}
+                    {{-- @php
+                        dump(Auth::user()->level);
+                        dump($level);
+                        foreach ($level as $item) {
+                            dump($item->id);
+                        }
+                    @endphp --}}
 
                     <div class="form-group col-md-12">
                         <label for="level">Level</label>
@@ -35,7 +44,15 @@
                         <select name="level" id="" class="form-control">
                             <option value="" disabled selected hidden>Pilih Level...</option>
                             @foreach ($level as $item)
-                                <option value="{{$item->level_name}}">{{$item->level_name}}</option>
+                                @if (Auth::user()->level == "admin")
+                                    <option value="{{$item->level_name}}">{{$item->level_name}}</option>
+                                    {{-- <option value="">1</option> --}}
+                                @elseif (Auth::user()->level == "asmenup")
+                                    @if ($item->id != "1" && $item->id != "2") 
+                                        <option value="{{$item->level_name}}">{{$item->level_name}}</option>
+                                    @endif
+                                    {{-- <option value="">{{$item->id}}</option> --}}
+                                @endif
                             @endforeach
                             {{-- @foreach ($user->usermaster as $i=>$item)
                                 <option value="{{$item->id}}">{{$item->name}}</option>

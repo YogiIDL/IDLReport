@@ -10,13 +10,39 @@
     </a>
 </div>
 
+{{-- Search User in Table (will be fixed later) --}}
+{{-- <script>
+    function searchUser(){
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById('searchUser');
+        filter = input.value.toUpperCase();
+        table = document.getElementById('userTable');
+        tr = table.getElementsByTagName('tr');
+
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[0];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+</script> --}}
+{{-- <div class="card shadow mb-4">
+    <input type="text" id="searchUser" onkeyup="searchUser()" placeholder="Search Username..." title="Type Name">
+</div> --}}
+
 <div class="card shadow mb-4">
     <div class="card-header py-3">
         <h5 class="m-0 font-weigth-bold text-primary">List User</h5>
     </div>
     <div class="card-body">
         <div class="table-responsive">
-            <table class="table table-bordered table-hover" width="100%" cellspacing="0">
+            <table id="userTable" class="table table-bordered table-hover" width="100%" cellspacing="0">
                 <thead>
                     <tr>
                         <th>#</th>
