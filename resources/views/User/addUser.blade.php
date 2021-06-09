@@ -33,7 +33,7 @@
                         <label for="level">Level</label>
                         {{-- <input type="text" class="form-control" name="user_id" id="user_id" placeholder="User ID..."> --}}
                         <select name="level" id="" class="form-control">
-                            <option value="staff" selected>Pilih Level...</option>
+                            <option value="" disabled selected hidden>Pilih Level...</option>
                             @foreach ($level as $item)
                                 <option value="{{$item->level_name}}">{{$item->level_name}}</option>
                             @endforeach

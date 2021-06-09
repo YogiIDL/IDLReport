@@ -18,6 +18,7 @@
                             <label for="user_id">Username</label>
                             {{-- <input type="text" class="form-control" name="user_id" id="user_id" placeholder="User ID..."> --}}
                             <select name="user_id" id="" class="form-control">
+                            <option value="" disabled selected hidden>Pilih User...</option>
                                 @foreach ($user->usermaster as $i=>$item)
                                     <option value="{{$item->id}}">{{$item->name}}</option>
                                 @endforeach
@@ -32,6 +33,7 @@
                             <label for="location_id">Location</label>
                             {{-- <input type="text" class="form-control" name="location_id" id="location_id" placeholder="Location Id..."> --}}
                             <select name="location_id" id="" class="form-control">
+                            <option value="" disabled selected hidden>Pilih Lokasi...</option>
                                 @foreach ($user->locationmaster as $i=>$item)
                                     <option value="{{$item->id}}">{{$item->location_name}}</option>
                                 @endforeach
@@ -47,6 +49,7 @@
                             {{-- <input type="text" class="form-control" name="task_id" id="task_id" placeholder="Task Id..."> --}}
                             <select name="task_id" id="" class="form-control">
                                 @foreach ($user->taskmaster as $i=>$item)
+                                <option value="" disabled selected hidden>Pilih Task...</option>
                                     <option value="{{$item->id}}">{{$item->task_name}}</option>
                                 @endforeach
                             </select>
@@ -60,6 +63,7 @@
                             <label for="level_access_id">Level Access</label>
                             {{-- <input type="text" class="form-control" name="level_access_id" id="level_access_id" placeholder="Level Access Id..."> --}}
                             <select name="level_access_id" id="" class="form-control">
+                                <option value="" disabled selected hidden>Pilih Level Access...</option>
                                 @foreach ($user->activitymaster as $i=>$item)
                                     <option value="{{$item->id}}">{{$item->activity_name}}</option>
                                 @endforeach
