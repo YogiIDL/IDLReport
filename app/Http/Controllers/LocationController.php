@@ -10,7 +10,7 @@ class LocationController extends Controller
     public function listLocation(){
         $locations = DB::select('select * from location
                                 join area on location.area_id = area.id');
-        dump($locations);
+        // dump($locations);
         
         // query ke table area untuk dapat area name
 
@@ -22,7 +22,7 @@ class LocationController extends Controller
     public function addLocation(){
         $area = DB::select('select * from area ');
 
-        dump($area);
+        // dump($area);
 
         return view('Location.addLocation')->with('area', $area);
     }
