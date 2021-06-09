@@ -8,8 +8,9 @@ use Illuminate\Support\Facades\DB;
 class LocationController extends Controller
 {
     public function listLocation(){
-        $locations = DB::select('select * from location');
-        // dump($locations->name);
+        $locations = DB::select('select * from location
+                                join area on location.area_id = area.id');
+        dump($locations);
         
         // query ke table area untuk dapat area name
 
@@ -19,7 +20,11 @@ class LocationController extends Controller
     }
 
     public function addLocation(){
-        return view('Location.addLocation');
+        $area = DB::select('select * from area ');
+
+        dump($area);
+
+        return view('Location.addLocation')->with('area', $area);
     }
 
     public function saveLocation(Request $request){
