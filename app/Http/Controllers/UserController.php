@@ -16,7 +16,9 @@ class UserController extends Controller
     }
 
     public function addUser(){
-        return view('User.addUser');
+        $level = DB::select('select * from level');
+        dump($level);
+        return view('User.addUser')->with('level', $level);
     }
 
     public function saveUser(Request $request){
@@ -24,6 +26,7 @@ class UserController extends Controller
         User::create([
             'name' => $request['username'],
             'email' => $request['email'],
+            'level' => $request['level'],
             'password' => Hash::make($request['password']),
         ]);
 

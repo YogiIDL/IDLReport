@@ -29,6 +29,20 @@
                         {{-- <div class="form-group col-md-4"></div> --}}
                     </div>
 
+                    <div class="form-group col-md-12">
+                        <label for="level">Level</label>
+                        {{-- <input type="text" class="form-control" name="user_id" id="user_id" placeholder="User ID..."> --}}
+                        <select name="level" id="" class="form-control">
+                            <option value="staff" selected>Pilih Level...</option>
+                            @foreach ($level as $item)
+                                <option value="{{$item->level_name}}">{{$item->level_name}}</option>
+                            @endforeach
+                            {{-- @foreach ($user->usermaster as $i=>$item)
+                                <option value="{{$item->id}}">{{$item->name}}</option>
+                            @endforeach --}}
+                        </select>
+                    </div>
+
                     <div class="form row">
                         {{-- <div class="form-group col-md-4"></div> --}}
                         <div class="form-group col-md-12">
