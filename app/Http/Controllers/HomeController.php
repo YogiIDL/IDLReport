@@ -174,7 +174,7 @@ class HomeController extends Controller
         
         // dump(User::());
 
-        dump($user);
+        // dump($user);
         
         // dump(session());
         return view('home');
