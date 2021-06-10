@@ -13,9 +13,23 @@ class UserController extends Controller
     //
 
     public function __construct(){
+
+        // $user = Auth::user();
+        // dump(Auth::user());
+        // $user->test = "testing";
+        // dump($user);
+
+        // $this->userAuth();
+    }
+
+    function userAuth(){
+        $userauth = Auth::user();
+        dump($userauth);
     }
 
     public function addUser(){
+        $this->userAuth();
+
         $level = DB::select('select * from level');
         // dump($level);
         $location = DB::select('select * from location 
@@ -28,6 +42,8 @@ class UserController extends Controller
     }
 
     public function saveUser(Request $request){
+        $this->userAuth();
+
         // return view('User.addUser');
 
         User::create([
@@ -51,7 +67,12 @@ class UserController extends Controller
         return redirect('/listUser');
     }
 
+
     public function listUser(){
+        $this->userAuth();
+
+        // $this->userAuth();
+
         // $users = DB::select('select * from users');
         $users = DB::select('select * from users
                             join level on users.level = level.id');
@@ -61,6 +82,8 @@ class UserController extends Controller
     }
 
     public function listManageUser(){
+        $this->userAuth();
+
         $manageUsers = DB::select('select * from master
                                     join users on master.user_id = users.id
                                     join location on master.location_id = location.id
@@ -74,6 +97,8 @@ class UserController extends Controller
     }
 
     public function manageUser(){
+        $this->userAuth();
+
         $user = Auth::user();
 
         $user->userlist = array();
@@ -145,6 +170,8 @@ class UserController extends Controller
     }
 
     public function saveManageUser(Request $request){
+        $this->userAuth();
+
         // return view('User.manageUser');
         // return 'save manage user';
         // $asd=1;
