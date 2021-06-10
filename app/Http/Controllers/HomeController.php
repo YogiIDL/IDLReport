@@ -46,6 +46,8 @@ class HomeController extends Controller
      */
     public function index()
     {
+        // dump(Auth::user()->level);
+        // var_dump(Auth::user()->level);
         // dump(Auth::user()->attributes);
         // var_dump(Auth::user());
         $user = Auth::user();

@@ -55,7 +55,7 @@ class UserController extends Controller
         // $users = DB::select('select * from users');
         $users = DB::select('select * from users
                             join level on users.level = level.id');
-        dump($users);
+        // dump($users);
 
         return view('User.listUser')->with('users', $users);
     }
@@ -147,7 +147,7 @@ class UserController extends Controller
     public function saveManageUser(Request $request){
         // return view('User.manageUser');
         // return 'save manage user';
-        $asd=1;
+        // $asd=1;
         // dump($request->user_id);
         DB::insert('insert into master (user_id, level_id, location_id, task_id, activity_id) values(?, ?, ?, ?,?)', [
             $request->user_id,$asd, $request->location_id,  $request->task_id, $request->level_access_id

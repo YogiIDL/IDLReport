@@ -23,31 +23,50 @@ Route::get('/rest', 'HomeController@rest');
 
 Auth::routes();
 
-// User Route
-Route::get('/addUser', 'UserController@addUser');
-Route::post('/addUser', 'UserController@saveUser');
-Route::get('/listUser', 'UserController@listUser');
-Route::get('/listManageUser', 'UserController@listManageUser');
-Route::get('/manageUser', 'UserController@manageUser');
-Route::post('/saveManageUser', 'UserController@saveManageUser');
+// Route::middleware(['checkleveluser'])->group(function () {
+//     Route::get('/test', function () {
+//         return view('test');
+//     });
+// });
+
+Route::middleware(['auth', 'checkleveluser'])->group(function () {
+    Route::get('/test', function () {
+        return view('test');
+    });
+
+    // User Route
+    Route::get('/addUser', 'UserController@addUser');
+    Route::post('/addUser', 'UserController@saveUser');
+    Route::get('/listUser', 'UserController@listUser');
+    Route::get('/listManageUser', 'UserController@listManageUser');
+    Route::get('/manageUser', 'UserController@manageUser');
+    Route::post('/saveManageUser', 'UserController@saveManageUser');
+
+    // Location Route
+    Route::get('/listLocation', 'LocationController@listLocation');
+    Route::get('/addLocation', 'LocationController@addLocation');
+    Route::post('/addLocation', 'LocationController@saveLocation');
+
+    // Area Route
+    Route::get('/listArea', 'AreaController@listArea');
+    Route::get('/addArea', 'AreaController@addArea');
+    Route::post('/addArea', 'AreaController@saveArea');
+    Route::get('/editArea/{id}', 'AreaController@editArea');
+    // Route::post('/editArea/{id}', 'AreaController@saveEditArea');
+    Route::post('/editArea', 'AreaController@saveEditArea');
+
+    // Level Access Route
+    Route::get('/listLevelAccess', 'LevelAccessController@listLevelAccess');
+    Route::get('/addLevelAccess', 'LevelAccessController@addLevelAccess');
+    Route::post('/addLevelAccess', 'LevelAccessController@saveLevelAccess');
+});
 
 
-// Location Route
-Route::get('/listLocation', 'LocationController@listLocation');
-Route::get('/addLocation', 'LocationController@addLocation');
-Route::post('/addLocation', 'LocationController@saveLocation');
+
 
 // Type Route
 
 // Location Type Route
-
-// Area Route
-Route::get('/listArea', 'AreaController@listArea');
-Route::get('/addArea', 'AreaController@addArea');
-Route::post('/addArea', 'AreaController@saveArea');
-Route::get('/editArea/{id}', 'AreaController@editArea');
-// Route::post('/editArea/{id}', 'AreaController@saveEditArea');
-Route::post('/editArea', 'AreaController@saveEditArea');
 
 // Task Route
 Route::get('/Dispatch', function () {
@@ -60,10 +79,6 @@ Route::get('/GroundHandling', function () {
     return view('Task.GroundHandling');
 });
 
-// Level Access Route
-Route::get('/listLevelAccess', 'LevelAccessController@listLevelAccess');
-Route::get('/addLevelAccess', 'LevelAccessController@addLevelAccess');
-Route::post('/addLevelAccess', 'LevelAccessController@saveLevelAccess');
 
 // User Level Access Route
 
@@ -74,6 +89,3 @@ Route::post('/addLevelAccess', 'LevelAccessController@saveLevelAccess');
 
 // With Middleware Group Routte
 
-Route::get('/test', function () {
-    return view('test');
-});
