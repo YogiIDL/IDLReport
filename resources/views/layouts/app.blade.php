@@ -247,11 +247,11 @@
             <hr class="sidebar-divider d-none d-md-block">
             
             {{-- Toggle sidebar when Page Load --}}
-            <script>
+            {{-- <script>
                 window.onload = function(){
                     document.getElementById("sidebarToggle").click();
                 }
-            </script>
+            </script> --}}
 
             <!-- Sidebar Toggler (Sidebar) -->
             <div class="text-center d-none d-md-inline">
