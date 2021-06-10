@@ -18,7 +18,12 @@ class UserController extends Controller
     public function addUser(){
         $level = DB::select('select * from level');
         // dump($level);
-        return view('User.addUser')->with('level', $level);
+        $location = DB::select('select * from location 
+                                join area on location.area_id = area.id');
+
+        // dump($location);
+        
+        return view('User.addUser')->with('level', $level)->with('location', $location);
     }
 
     public function saveUser(Request $request){

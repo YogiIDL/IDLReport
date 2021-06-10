@@ -64,10 +64,50 @@
                         {{-- <div class="form-group col-md-4"></div> --}}
                         <div class="form-group col-md-12">
                             <label for="password">Password</label>
-                            <input type="password" class="form-control" name="password" id="password" placeholder="User Password...">
+                            <input type="password" class="form-control" name="location" id="password" placeholder="User Password...">
+                            {{-- <input type="password" class="form-control" name="password" id="password" placeholder="User Password..."> --}}
                         </div>
                         {{-- <div class="form-group col-md-4"></div> --}}
                     </div>
+
+                    <div class="form row col-md-12">
+                        {{-- <div class="form-group col-md-4"></div> --}}
+                        <div class="form-group col-md-12">
+                            <label for="location">Location</label>
+                            <select name="location" id="" class="form-control">
+                                <option value="" disabled selected hidden>Pilih Location...</option>
+                                @foreach ($location as $item)
+                                    <option value="{{$item->id}}">{{$item->location_name}} - {{$item->area_name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        {{-- <div class="form-group col-md-4"></div> --}}
+                    </div>
+
+                    <div class="form row">
+                        {{-- <div class="form-group col-md-4"></div> --}}
+                        <div class="form-group col-md-12">
+                            <label for="task">Task</label>
+                            <div class=" row">
+                                <div class="col-sm-4">
+                                    <input type="checkbox" name="task[]" value="1">
+                                    <label for="dispatch"> Dispatch</label>
+                                </div>
+                                <div class="col-sm-4">
+                                    <input type="checkbox" name="task[]" value="2">
+                                    <label for="traffic"> Traffic</label>
+                                </div>
+                                <div class="col-sm-4">
+                                    <input type="checkbox" name="task[]" value="3">
+                                    <label for="groundHandling">Ground Handling</label>
+                                </div>
+                            </div>
+                            {{-- <input type="password" class="form-control" name="password" id="password" placeholder="User Password..."> --}}
+                        </div>
+                        {{-- <div class="form-group col-md-4"></div> --}}
+                    </div>
+
+
 
                     <div class="form row">
                         <div class="form-group col-md-2"></div>
