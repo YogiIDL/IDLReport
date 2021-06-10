@@ -67,5 +67,19 @@ class MasterSeeder extends Seeder
             'task_id' => '3',
             'activity_id' => '1',
         ]);
+        DB::table('master')->insert([
+            'user_id' => '4',
+            'level_id' => '1',
+            'location_id' => '1',
+            'task_id' => '1',
+            'activity_id' => '1',
+        ]);
+        DB::table('master')->insert([
+            'user_id' => '5',
+            'level_id' => '1',
+            'location_id' => '1',
+            'task_id' => '1',
+            'activity_id' => '1',
+        ]);
     }
 }

@@ -38,7 +38,7 @@ class UserSeeder extends Seeder
         ]);
         DB::table('users')->insert([
             'name' => 'Henry',
-            'email' => 'Henry@mail.com',
+            'email' => 'henry@mail.com',
             'level' => '1',
             'location' => 'all',
             'level_access' => 'idl_all',
@@ -46,7 +46,7 @@ class UserSeeder extends Seeder
         ]);
         DB::table('users')->insert([
             'name' => 'Gilang',
-            'email' => 'Gilang@mail.com',
+            'email' => 'gilang@mail.com',
             'level' => '1',
             'location' => 'all',
             'level_access' => 'idl_all',
