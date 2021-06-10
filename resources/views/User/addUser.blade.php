@@ -124,7 +124,8 @@
                         </div>
                         <div class="form-group col-md-4">
                             <div class="col-sm-6">
-                                <button class="btn btn-lg btn-secondary">Cancel</button>
+                                {{-- <button class="btn btn-lg btn-secondary">Cancel</button> --}}
+                                <a href="/listUser" class="btn btn-lg btn-secondary">Cancel</a>
                             </div>
                         </div>
                         <div class="form-group col-md-2"></div>

@@ -49,7 +49,7 @@
                         <th>Username</th>
                         <th>User email</th>
                         <th>Level</th>
-                        <th>Location</th>
+                        {{-- <th>Location</th> --}}
                     </tr>
                 </thead>
                 <tbody>
@@ -62,8 +62,8 @@
                         <td>{{$user->id}}</td>
                         <td>{{$user->name}}</td>
                         <td>{{$user->email}}</td>
-                        <td>{{$user->level}}</td>
-                        <td>{{$user->location}}</td>
+                        <td>{{$user->level_name}}</td>
+                        {{-- <td>{{$user->location}}</td> --}}
                     </tr>        
                     @endforeach
                 </tbody>

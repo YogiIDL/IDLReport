@@ -3,7 +3,7 @@
     // dump(Auth());
 
     // if(isset($users)){
-    //     dump($users);
+    //     dump($users);_name
     // }
 @endphp
 <!doctype html>
@@ -160,12 +160,13 @@
                 </div>
             </li>
 
-            <!-- Divider -->
-            <hr class="sidebar-divider">
 
-            <!-- Heading -->
 
-            @if (Auth::user()->level == "admin" || Auth::user()->level == "asmenup")
+            @if (Auth::user()->level == "1" || Auth::user()->level == "2")
+                <!-- Divider -->
+                <hr class="sidebar-divider">
+
+                <!-- Heading -->
                 <div class="sidebar-heading">
                 Level Page 
                 </div>

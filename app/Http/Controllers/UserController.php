@@ -52,15 +52,11 @@ class UserController extends Controller
     }
 
     public function listUser(){
-        // return view('User.addUser');
-        // $users = User::all();
-        // dump($users);
+        // $users = DB::select('select * from users');
+        $users = DB::select('select * from users
+                            join level on users.level = level.id');
+        dump($users);
 
-        $users = DB::select('select * from users');
-        // dump($users);
-
-        // return $users;
-        // return view('home')->with('users',$users);
         return view('User.listUser')->with('users', $users);
     }
 
