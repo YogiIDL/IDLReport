@@ -45,11 +45,11 @@
                             <option value="" disabled selected hidden>Pilih Level...</option>
                             @foreach ($level as $item)
                                 @if (Auth::user()->level == "admin")
-                                    <option value="{{$item->level_name}}">{{$item->level_name}}</option>
+                                    <option value="{{$item->id}}">{{$item->level_name}}</option>
                                     {{-- <option value="">1</option> --}}
                                 @elseif (Auth::user()->level == "asmenup")
                                     @if ($item->id != "1" && $item->id != "2") 
-                                        <option value="{{$item->level_name}}">{{$item->level_name}}</option>
+                                        <option value="{{$item->id}}">{{$item->level_name}}</option>
                                     @endif
                                     {{-- <option value="">{{$item->id}}</option> --}}
                                 @endif
@@ -74,7 +74,7 @@
                         {{-- <div class="form-group col-md-4"></div> --}}
                         <div class="form-group col-md-12">
                             <label for="location">Location</label>
-                            <select name="location" id="" class="form-control">
+                            <select name="location_id" id="" class="form-control">
                                 <option value="" disabled selected hidden>Pilih Location...</option>
                                 @foreach ($location as $item)
                                     <option value="{{$item->id}}">{{$item->location_name}} - {{$item->area_name}}</option>
@@ -89,7 +89,13 @@
                         <div class="form-group col-md-12">
                             <label for="task">Task</label>
                             <div class=" row">
-                                <div class="col-sm-4">
+                                @foreach ($task as $item)
+                                    <div class="col-sm-4">
+                                        <input type="checkbox" name="task[]" value="{{$item->id}}">
+                                        <label for="dispatch"> {{$item->task_name}}</label>
+                                    </div>
+                                @endforeach
+                                {{-- <div class="col-sm-4">
                                     <input type="checkbox" name="task[]" value="1">
                                     <label for="dispatch"> Dispatch</label>
                                 </div>
@@ -100,7 +106,7 @@
                                 <div class="col-sm-4">
                                     <input type="checkbox" name="task[]" value="3">
                                     <label for="groundHandling">Ground Handling</label>
-                                </div>
+                                </div> --}}
                             </div>
                             {{-- <input type="password" class="form-control" name="password" id="password" placeholder="User Password..."> --}}
                         </div>
