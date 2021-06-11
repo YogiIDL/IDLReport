@@ -44,23 +44,25 @@ class HomeController extends Controller
                                 join users on user_activity.user_id = users.id
                                 join activity on user_activity.activity_id = activity.id
                                 where user_id = ?', [$user->id]);
-        dump($activity);
+        // dump($activity);
 
         foreach($activity as $item){
             $user->activitylist = array_merge($user->activitylist, [$item->activity_name]);
         }
 
-        dump($master);
+        // dump($master);
 
         $user->master = $master;
         foreach($master as $i => $item){
             $user->locationlist = array_unique(array_merge($user->locationlist, [$item->location_name]));
-            $user->tasklist = array_unique(array_merge($user->tasklist, [$item->task_name]));
+            // $user->tasklist = array_unique(array_merge($user->tasklist, [$item->task_name]));
         }
+
+        // $user->level =
 
         dump($user);
 
-        die();
+        // die();
     }
 
     /**

@@ -4,7 +4,7 @@
 <div>
     {{-- <select name="" id="" class="form-control bg-light border-0 small"> --}}
     <select name="" id="" class="">
-        @foreach (Auth::user()->locationname as $location)
+        @foreach (Auth::user()->locationlist as $location)
             <option value="">{{$location}}</option>
         @endforeach
     </select>

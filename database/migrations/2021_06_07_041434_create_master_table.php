@@ -16,8 +16,8 @@ class CreateMasterTable extends Migration
         Schema::create('master', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('level_id');
             $table->unsignedBigInteger('location_id');
+            $table->unsignedBigInteger('level_id');
             $table->unsignedBigInteger('task_id');
             // $table->unsignedBigInteger('activity_id');
             $table->timestamps();
