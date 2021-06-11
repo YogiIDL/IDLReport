@@ -13,16 +13,16 @@ class LevelSeeder extends Seeder
     {
         //
         DB::table('level')->insert([
-            'level_name' => 'admin',
+            'level_name' => 'Admin',
         ]);
         DB::table('level')->insert([
-            'level_name' => 'asmenup',
+            'level_name' => 'Asmenup',
         ]);
         DB::table('level')->insert([
-            'level_name' => 'supervisor',
+            'level_name' => 'Supervisor',
         ]);
         DB::table('level')->insert([
-            'level_name' => 'staff',
+            'level_name' => 'Staff',
         ]);
     }
 }

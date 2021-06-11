@@ -13,28 +13,28 @@ class LocationSeeder extends Seeder
     {
         //
         DB::table('location')->insert([
-            'area_id' => '1',
             'location_name' => 'Sunter',
-        ]);
-        DB::table('location')->insert([
             'area_id' => '1',
+        ]);
+        DB::table('location')->insert([
             'location_name' => 'Teluk Naga',
+            'area_id' => '1',
         ]);
         DB::table('location')->insert([
-            'area_id' => '2',
             'location_name' => 'Dago',
-        ]);
-        DB::table('location')->insert([
             'area_id' => '2',
+        ]);
+        DB::table('location')->insert([
             'location_name' => 'Sukagalih',
+            'area_id' => '2',
         ]);
         DB::table('location')->insert([
-            'area_id' => '3',
             'location_name' => 'Malioboro',
+            'area_id' => '3',
         ]);
         DB::table('location')->insert([
-            'area_id' => '3',
             'location_name' => 'Amplas',
+            'area_id' => '3',
         ]);
     }
 }
