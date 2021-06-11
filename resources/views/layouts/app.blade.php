@@ -299,11 +299,27 @@
                     {{-- Topbar Location --}}
                     {{-- <form action="" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                         <select name="" id="" class="form-control bg-light border-0 small">
-                            @foreach ({{Auth::user()->locationname}} as $location)
-                                <option value="">{{$location}}</option>
+                            @foreach (Auth::user()->locationlist as $location)
+                                <option value=""><a href="/home">{{$location}}</a></option>
                             @endforeach
                         </select>
                     </form> --}}
+
+                    <div class="dropdown ">
+                        <button class="btn btn-primary dropdown-toggle" type="button"
+                            id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
+                            {{-- Location --}}
+                            {{Auth::user()->locationnow}}
+                        </button>
+                        <div class="dropdown-menu animated--fade-in"
+                            aria-labelledby="dropdownMenuButton">
+                            @foreach (Auth::user()->locationlist as $location)
+                                {{-- <a class="dropdown-item" href="/home/{{$location}}">{{$location}}</a> --}}
+                                <a class="dropdown-item" href="/home/{{$location}}">{{$location}}</a>
+                            @endforeach
+                        </div>
+                    </div>
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">

@@ -29,6 +29,7 @@ class HomeController extends Controller
     public function userAuth(){
         $user = Auth::user();
         $user->locationlist = array();
+        $user->locationid = array();
         $user->tasklist = array();
         $user->activitylist = array();
 
@@ -55,14 +56,28 @@ class HomeController extends Controller
         $user->master = $master;
         foreach($master as $i => $item){
             $user->locationlist = array_unique(array_merge($user->locationlist, [$item->location_name]));
+            $user->locationid = array_unique(array_merge($user->locationid, [$item->location_id]));
             // $user->tasklist = array_unique(array_merge($user->tasklist, [$item->task_name]));
         }
+
+        // $userlocation = DB::select('select * from location where id = ?', [$])
+        // $userlocation = array();
+        // foreach($user->locaitonid => $item){
+        //     $userlocation = DB::select('select * from location where id = ?', [$])
+        // }
+
+        $user->test = array();
+        // $user->test = array_merge($user->test, [$master[0]]);
+
+        // $user->locationnow = 'sunter';
+        $user->locationnow = $user->locationlist[0];
 
         // $user->level =
 
         dump($user);
 
         // die();
+    
     }
 
     /**
@@ -74,7 +89,13 @@ class HomeController extends Controller
     {
         $this->userAuth();
 
+        dump(Auth::user()->locationlist);
+
         return view('home');
+    }
+
+    public function index2($location){
+        return ('home'.$location);
     }
 
     public function rest()
