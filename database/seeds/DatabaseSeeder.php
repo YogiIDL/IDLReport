@@ -16,15 +16,16 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             AreaSeeder::class,
             LocationSeeder::class,
+            TaskSeeder::class,
             // LevelAccessSeeder::class,
             // UserLocationSeeder::class,
             // UserLevelAccessSeeder::class,
-            TaskSeeder::class,
             // UserTaskSeeder::class,
             TypeSeeder::class,
             LocationTypeSeeder::class,
             LevelSeeder::class,
             ActivitySeeder::class,
+            UserActivitySeeder::class,
             MasterSeeder::class,
     ]);
     }

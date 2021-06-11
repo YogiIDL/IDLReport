@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class UserActivity extends Seeder
+class UserActivitySeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,7 +11,6 @@ class UserActivity extends Seeder
      */
     public function run()
     {
-        //
         DB::table('user_activity')->insert([
             'user_id' => '1',
             'activity_id' => '1',
@@ -28,6 +27,9 @@ class UserActivity extends Seeder
             'user_id' => '3',
             'activity_id' => '3',
         ]);
-
+        DB::table('user_activity')->insert([
+            'user_id' => '4',
+            'activity_id' => '4',
+        ]);
     }
 }
