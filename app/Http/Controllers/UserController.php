@@ -24,7 +24,7 @@ class UserController extends Controller
 
     function userAuth(){
         $userauth = Auth::user();
-        dump($userauth);
+        // dump($userauth);
     }
 
     public function addUser(){
@@ -36,7 +36,7 @@ class UserController extends Controller
                                 join area on location.area_id = area.id');
         $task = DB::select('select * from task ');
 
-        // dump($task);
+        // dump($level);
         
         return view('User.addUser')->with('level', $level)->with('location', $location)->with('task', $task);
     }

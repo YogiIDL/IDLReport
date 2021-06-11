@@ -44,18 +44,16 @@
                         <select name="level" id="" class="form-control">
                             <option value="" disabled selected hidden>Pilih Level...</option>
                             @foreach ($level as $item)
-                                @if (Auth::user()->level == "admin")
+                                @if (Auth::user()->level == "1")
                                     <option value="{{$item->id}}">{{$item->level_name}}</option>
-                                    {{-- <option value="">1</option> --}}
-                                @elseif (Auth::user()->level == "asmenup")
+                                @elseif (Auth::user()->level == "2")
                                     @if ($item->id != "1" && $item->id != "2") 
                                         <option value="{{$item->id}}">{{$item->level_name}}</option>
                                     @endif
-                                    {{-- <option value="">{{$item->id}}</option> --}}
                                 @endif
                             @endforeach
-                            {{-- @foreach ($user->usermaster as $i=>$item)
-                                <option value="{{$item->id}}">{{$item->name}}</option>
+                            {{-- @foreach ($level as $i=>$item)
+                                <option value="{{$item->id}}">{{$item->level_name}}</option>
                             @endforeach --}}
                         </select>
                     </div>
