@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateLevelAccessTable extends Migration
+class CreateUserActivityTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class CreateLevelAccessTable extends Migration
      */
     public function up()
     {
-        Schema::create('level_access', function (Blueprint $table) {
+        Schema::create('user_activity', function (Blueprint $table) {
             $table->id();
-            $table->string('level_access_name');
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('activity_id');
             $table->timestamps();
         });
     }
@@ -27,6 +28,6 @@ class CreateLevelAccessTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('level_access');
+        Schema::dropIfExists('user_activity');
     }
 }

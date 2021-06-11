@@ -19,14 +19,14 @@ class CreateMasterTable extends Migration
             $table->unsignedBigInteger('level_id');
             $table->unsignedBigInteger('location_id');
             $table->unsignedBigInteger('task_id');
-            $table->unsignedBigInteger('activity_id');
+            // $table->unsignedBigInteger('activity_id');
             $table->timestamps();
 
-            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreign('level_id')->references('id')->on('level')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreign('location_id')->references('id')->on('location')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreign('task_id')->references('id')->on('task')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreign('activity_id')->references('id')->on('activity')->onUpdate('cascade')->onDelete('cascade');
+            // $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
+            // $table->foreign('level_id')->references('id')->on('level')->onUpdate('cascade')->onDelete('cascade');
+            // $table->foreign('location_id')->references('id')->on('location')->onUpdate('cascade')->onDelete('cascade');
+            // $table->foreign('task_id')->references('id')->on('task')->onUpdate('cascade')->onDelete('cascade');
+            // $table->foreign('activity_id')->references('id')->on('activity')->onUpdate('cascade')->onDelete('cascade');
             // $table->foreign('level_access_id')->references('id')->on('level_access')->onUpdate('cascade')->onDelete('cascade');
         });
     }
