@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 use App\User;
 
 // TODO: Just add some comment and commit for push from personal computer
+// TODO: Back to here if something goes wrong
 // * Note : User attribute will be queried when user redirected from login controller to home(dashboard)
 // * at HomeController __construct function
 // * so all the user atribute is available when passing the middleware that applied to route
