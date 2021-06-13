@@ -28,57 +28,29 @@ class HomeController extends Controller
     }
 
     public function userAuth(){
-        $user = Auth::user();
-        $user->locationlist = array();
-        $user->locationid = array();
-        $user->tasklist = array();
-        $user->activitylist = array();
-
         $master = DB::select('select * from master 
                             join users on master.user_id = users.id
                             join level on master.level_id = level.id
                             join location on master.location_id = location.id 
                             join area on location.area_id = area.id 
                             join task on master.task_id = task.id 
-                            where user_id = ? ', [$user->id] );
+                            where user_id = ? ', [Auth::user()->id] );
+        Auth::user()->master = $master;
 
         $activity = DB::select('select * from user_activity 
                                 join users on user_activity.user_id = users.id
                                 join activity on user_activity.activity_id = activity.id
-                                where user_id = ?', [$user->id]);
-        // dump($activity);
+                                where user_id = ?', [Auth::user()->id]);
 
-        foreach($activity as $item){
-            $user->activitylist = array_merge($user->activitylist, [$item->activity_name]);
-        }
+        Auth::user()->activity = $activity;
 
-        // dump($master);
+        $location = DB::select('select DISTINCT user_id, location_id, location_name from master 
+                                join location on master.location_id = location.id
+                                where user_id = ?', [Auth::user()->id]);
+        Auth::user()->location = $location;
 
-        $user->master = $master;
-        foreach($master as $i => $item){
-            $user->locationlist = array_unique(array_merge($user->locationlist, [$item->location_name]));
-            $user->locationid = array_unique(array_merge($user->locationid, [$item->location_id]));
-            // $user->tasklist = array_unique(array_merge($user->tasklist, [$item->task_name]));
-        }
-
-        // $userlocation = DB::select('select * from location where id = ?', [$])
-        // $userlocation = array();
-        // foreach($user->locaitonid => $item){
-        //     $userlocation = DB::select('select * from location where id = ?', [$])
-        // }
-
-        $user->test = array();
-        // $user->test = array_merge($user->test, [$master[0]]);
-
-        // $user->locationnow = 'sunter';
-        $user->locationnow = $user->locationlist[0];
-
-        // $user->level =
-
-        dump($user);
-
+        dump(Auth::user());
         // die();
-    
     }
 
     /**
@@ -90,13 +62,17 @@ class HomeController extends Controller
     {
         $this->userAuth();
 
-        dump(Auth::user()->locationlist);
+        // dump(Auth::user()->locationlist);
 
         return view('home');
     }
 
-    public function index2($location){
-        return ('home'.$location);
+    public function home($location){
+        $this->userAuth();
+
+        dump($location);
+
+        return view('home');
     }
 
     public function rest()

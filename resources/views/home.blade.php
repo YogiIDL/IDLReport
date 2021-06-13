@@ -3,11 +3,11 @@
 @section('content')
 <div>
     {{-- <select name="" id="" class="form-control bg-light border-0 small"> --}}
-    <select name="" id="" class="">
-        @foreach (Auth::user()->locationlist as $location)
-            <option value="">{{$location}}</option>
+    {{-- <select name="" id="" class="">
+        @foreach (Auth::user()->location as $item)
+            <option value="">{{$item->location_name}}</option>
         @endforeach
-    </select>
+    </select> --}}
 </div>
 <div class="row justify-content-center">
     <div class="col-md-8">

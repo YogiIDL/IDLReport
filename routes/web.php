@@ -19,7 +19,7 @@ Route::get('/', function () {
 });
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/home/{location}', 'HomeController@index2');
+// Route::get('/home/{location}', 'HomeController@index2');
 // Route::get('/home/{id}', 'AreaController@editArea');
 Route::get('/rest', 'HomeController@rest');
 
@@ -30,6 +30,9 @@ Auth::routes();
 //         return view('test');
 //     });
 // });
+
+// Home Route with location id in url
+Route::get('/home/{location_id}', 'HomeController@home');
 
 Route::middleware(['auth', 'checkleveluser'])->group(function () {
     Route::get('/test', function () {
