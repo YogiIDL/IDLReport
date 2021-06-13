@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <a href="/addUser" class="btn btn-success btn-sm btn-icon-split">
+    <a href="/addUser/{{Auth::user()->locationnow}}" class="btn btn-success btn-sm btn-icon-split">
         <span class="icon text-white-50">
             <i class="fas fa-plus"></i>
         </span>
@@ -48,7 +48,7 @@
                         <th>#</th>
                         <th>Username</th>
                         <th>User email</th>
-                        <th>Level</th>
+                        {{-- <th>Level</th> --}}
                         {{-- <th>Location</th> --}}
                     </tr>
                 </thead>
@@ -62,7 +62,7 @@
                         <td>{{$user->id}}</td>
                         <td>{{$user->name}}</td>
                         <td>{{$user->email}}</td>
-                        <td>{{$user->level_name}}</td>
+                        {{-- <td>{{$user->level_name}}</td> --}}
                         {{-- <td>{{$user->location}}</td> --}}
                     </tr>        
                     @endforeach

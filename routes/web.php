@@ -34,15 +34,20 @@ Auth::routes();
 // Home Route with location id in url
 Route::get('/home/{location_id}', 'HomeController@home');
 
-Route::middleware(['auth', 'checkleveluser'])->group(function () {
+// Route::middleware(['auth', 'checkleveluser'])->group(function () {
     Route::get('/test', function () {
         return view('test');
     });
 
     // User Route
-    Route::get('/addUser', 'UserController@addUser');
-    Route::post('/addUser', 'UserController@saveUser');
-    Route::get('/listUser', 'UserController@listUser');
+    Route::get('/addUser/{location_id}', 'UserController@addUser');
+    Route::post('/addUser/{location_id}', 'UserController@saveUser');
+    Route::get('/listUser/{location_id}', 'UserController@listUser');
+
+    // Route::get('/addUser', 'UserController@addUser');
+    // Route::post('/addUser', 'UserController@saveUser');
+    // Route::get('/listUser', 'UserController@listUser');
+
     Route::get('/listManageUser', 'UserController@listManageUser');
     Route::get('/manageUser', 'UserController@manageUser');
     Route::post('/saveManageUser', 'UserController@saveManageUser');
@@ -64,7 +69,7 @@ Route::middleware(['auth', 'checkleveluser'])->group(function () {
     Route::get('/listLevelAccess', 'LevelAccessController@listLevelAccess');
     Route::get('/addLevelAccess', 'LevelAccessController@addLevelAccess');
     Route::post('/addLevelAccess', 'LevelAccessController@saveLevelAccess');
-});
+// });
 
 
 

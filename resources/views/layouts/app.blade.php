@@ -223,7 +223,7 @@
                         <div class="bg-white py-2 collapse-inner rounded">
                             <h6 class="collapse-header">User Master</h6>
                             {{-- <a class="collapse-item" href="/addUser">Add New User</a> --}}
-                            <a class="collapse-item" href="/listUser">
+                            <a class="collapse-item" href="/listUser/{{Auth::user()->locationnow}}">
                                 <h6>User</h6>
                             </a>
                             <div class="collapse-divider"></div>
