@@ -65,6 +65,7 @@ class HomeController extends Controller
         // dump(Auth::user()->locationlist);
 
         return view('home');
+        // return redirect('home/1');
     }
 
     public function home($location){
