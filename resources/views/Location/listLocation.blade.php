@@ -20,7 +20,7 @@
                     <tr>
                         <th>#</th>
                         <th>Location Name</th>
-                        {{-- <th>Area Id</th> --}}
+                        <th>Type</th>
                         <th>Area Name</th>
                     </tr>
                 </thead>
@@ -29,7 +29,7 @@
                     <tr>
                         <td>{{$location->id}}</td>
                         <td>{{$location->location_name}}</td>
-                        {{-- <td>{{$location->area_id}}</td> --}}
+                        <td>{{$location->type_name}}</td>
                         <td>{{$location->area_name}}</td>
                     </tr>        
                     @endforeach
