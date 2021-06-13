@@ -85,11 +85,11 @@ class UserController extends Controller
         $asd=1;
         foreach($request->task as $item){
             // dump($user[0]->id);
-            DB::insert('insert into master (user_id, level_id, location_id, task_id, activity_id) values(?, ?, ?, ?,?)', [
-                $user_id, $request->level, $request->location_id,  $item, $asd
+            DB::insert('insert into master (user_id, level_id, location_id, task_id) values(?, ?, ?, ?)', [
+                $user_id, $request->level, $request->location_id,  $item
             ]);
         }
-        return redirect('/listUser');
+        return redirect('/listUser/'.Auth::user()->locationnow);
     }
 
 
