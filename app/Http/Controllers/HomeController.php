@@ -49,6 +49,7 @@ class HomeController extends Controller
                                 where user_id = ?', [Auth::user()->id]);
         Auth::user()->location = $location;
 
+
         Auth::user()->locationnow = $location[0]->location_id;
 
         Auth::user()->level = $master[0]->level_id;
@@ -69,7 +70,7 @@ class HomeController extends Controller
         // dump(Auth::user()->locationlist);
 
         // return view('home');
-        return redirect('home/1');
+        return redirect('home/'.Auth::user()->locationnow);
     }
 
     public function home($locationnow){
