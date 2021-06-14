@@ -38,8 +38,11 @@ class LocationController extends Controller
         // die();
     }
 
-    public function listLocation(){
+    public function listLocation($locationnow){
         $this->userAuth();
+        Auth::user()->locationnow = $locationnow;
+        $location_name = DB::select('select * from location where id = ?', [$locationnow]);
+        $location_name = $location_name[0];
         // $locations = DB::select('select * from location
         //                         join area on location.area_id = area.id
         //                         join location_type on location.id = location_type.location_id 
@@ -53,20 +56,24 @@ class LocationController extends Controller
         dump($locations);
         // die();
         
-        return view('Location.listLocation')->with('locations', $locations);
+        return view('Location.listLocation')->with('locations', $locations)->with('location_name', $location_name);
     }
 
-    public function addLocation(){
+    public function addLocation($locationnow){
         $this->userAuth();
+        Auth::user()->locationnow = $locationnow;
+        dump(Auth::user());
+        $location_name = DB::select('select * from location where id = ?', [$locationnow]);
+        $location_name = $location_name[0];
         $type = DB::select('select * from type');
         $area = DB::select('select * from area ');
 
         // dump($area);
 
-        return view('Location.addLocation')->with('area', $area)->with('type', $type);
+        return view('Location.addLocation')->with('area', $area)->with('type', $type)->with('location_name', $location_name);
     }
 
-    public function saveLocation(Request $request){
+    public function saveLocation($locationnow, Request $request){
         DB::insert('insert into location (location_name, area_id) values(?, ?)', [$request->location_name, $request->area_id]);
         // dump($request);
         $newlocation = DB::select('select * from location where location_name = ? ', [$request->location_name]);
@@ -75,7 +82,7 @@ class LocationController extends Controller
         DB::insert('insert into location_type (location_id, type_id ) values(?, ?)', [$newlocation[0]->id, $request->type_id]);
 
         // die();
-        return redirect('/listLocation');
+        return redirect('/listLocation/'.$locationnow);
         // return view('Location.listLocation');
     }
 }

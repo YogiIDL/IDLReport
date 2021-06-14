@@ -52,8 +52,11 @@ class UserController extends Controller
         // die();
     }
 
-    public function addUser(){
+    public function addUser($locationnow){
         $this->userAuth();
+        Auth::user()->locationnow = $locationnow;
+        $location_name = DB::select('select * from location where id = ?', [$locationnow]);
+        $location_name = $location_name[0];
 
         $level = DB::select('select * from level');
         dump($level);
@@ -63,10 +66,10 @@ class UserController extends Controller
 
         // dump($level);
         
-        return view('User.addUser')->with('level', $level)->with('location', $location)->with('task', $task);
+        return view('User.addUser')->with('level', $level)->with('location', $location)->with('task', $task)->with('location_name', $location_name);
     }
 
-    public function saveUser(Request $request){
+    public function saveUser($locationnow,Request $request){
         $this->userAuth();
 
         // return view('User.addUser');
@@ -93,18 +96,23 @@ class UserController extends Controller
     }
 
 
-    public function listUser(){
+    public function listUser($locationnow){
         $this->userAuth();
+        Auth::user()->locationnow = $locationnow;
+        $location_name = DB::select('select * from location where id = ?', [$locationnow]);
+        $location_name = $location_name[0];
 
         $users = DB::select('select * from users');
 
         // die();
 
-        return view('User.listUser')->with('users', $users);
+        return view('User.listUser')->with('users', $users)->with('location_name', $location_name);
     }
 
-    public function listManageUser(){
+    public function listManageUser($locationnow){
         $this->userAuth();
+        $location_name = DB::select('select * from location where id = ?', [$locationnow]);
+        $location_name = $location_name[0];
 
         // $manageUsers = DB::select('select * from master
         //                             join users on master.user_id = users.id
@@ -120,11 +128,13 @@ class UserController extends Controller
 
         // dump($manageUsers);
 
-        return view('User.listManageUser')->with('manageUsers', $manageUsers);
+        return view('User.listManageUser')->with('manageUsers', $manageUsers)->with('location_name', $location_name);
     }
 
-    public function manageUser(){
+    public function manageUser($locationnow){
         $this->userAuth();
+        $location_name = DB::select('select * from location where id = ?', [$locationnow]);
+        $location_name = $location_name[0];
 
         $user = Auth::user();
 
@@ -193,7 +203,7 @@ class UserController extends Controller
 
         // dump($user);
 
-        return view('User.manageUser')->with('user', $user);
+        return view('User.manageUser')->with('user', $user)->with('location_name', $location_name);
     }
 
     public function saveManageUser(Request $request){

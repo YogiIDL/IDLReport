@@ -48,22 +48,22 @@ Route::get('/home/{location_id}', 'HomeController@home');
     // Route::post('/addUser', 'UserController@saveUser');
     // Route::get('/listUser', 'UserController@listUser');
 
-    Route::get('/listManageUser', 'UserController@listManageUser');
-    Route::get('/manageUser', 'UserController@manageUser');
-    Route::post('/saveManageUser', 'UserController@saveManageUser');
+    Route::get('/listManageUser/{location_id}', 'UserController@listManageUser');
+    Route::get('/manageUser/{location_id}', 'UserController@manageUser');
+    Route::post('/saveManageUser/{location_id}', 'UserController@saveManageUser');
 
     // Location Route
-    Route::get('/listLocation', 'LocationController@listLocation');
-    Route::get('/addLocation', 'LocationController@addLocation');
-    Route::post('/addLocation', 'LocationController@saveLocation');
+    Route::get('/listLocation/{location_id}', 'LocationController@listLocation');
+    Route::get('/addLocation/{location_id}', 'LocationController@addLocation');
+    Route::post('/addLocation/{location_id}', 'LocationController@saveLocation');
 
     // Area Route
-    Route::get('/listArea', 'AreaController@listArea');
-    Route::get('/addArea', 'AreaController@addArea');
-    Route::post('/addArea', 'AreaController@saveArea');
-    Route::get('/editArea/{id}', 'AreaController@editArea');
+    Route::get('/listArea/{location_id}', 'AreaController@listArea');
+    Route::get('/addArea/{location_id}', 'AreaController@addArea');
+    Route::post('/addArea/{location_id}', 'AreaController@saveArea');
+    Route::get('/editArea/{location_id}/{id}', 'AreaController@editArea');
     // Route::post('/editArea/{id}', 'AreaController@saveEditArea');
-    Route::post('/editArea', 'AreaController@saveEditArea');
+    Route::post('/editArea/{location_id}', 'AreaController@saveEditArea');
 
     // Level Access Route
     Route::get('/listLevelAccess', 'LevelAccessController@listLevelAccess');
@@ -71,9 +71,9 @@ Route::get('/home/{location_id}', 'HomeController@home');
     Route::post('/addLevelAccess', 'LevelAccessController@saveLevelAccess');
 
     // Activity Controller
-    Route::get('/listActivity', 'ActivityController@listActivity');
-    Route::get('/addActivity', 'ActivityController@addActivity');
-    Route::post('/addActivity', 'ActivityController@saveActivity');
+    Route::get('/listActivity/{location_id}', 'ActivityController@listActivity');
+    Route::get('/addActivity/{location_id}', 'ActivityController@addActivity');
+    Route::post('/addActivity/{location_id}', 'ActivityController@saveActivity');
 // });
 
 

@@ -182,7 +182,7 @@
                         data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
                             <h6 class="collapse-header">Location Master</h6>
-                            <a class="collapse-item" href="/listLocation">
+                            <a class="collapse-item" href="/listLocation/{{Auth::user()->locationnow}}">
                                 <h6>Location</h6>
                             </a>
                             <div class="collapse-divider"></div>
@@ -312,7 +312,8 @@
                             id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
                             aria-expanded="false">
                             {{-- {{Auth::user()->location->}} --}}
-                            Location Now
+                            {{-- Location Now --}}
+                            {{$location_name->location_name}}
                         </button>
                         <div class="dropdown-menu animated--fade-in"
                             aria-labelledby="dropdownMenuButton">

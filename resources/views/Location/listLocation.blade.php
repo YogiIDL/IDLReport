@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <a href="/addLocation" class="btn btn-success btn-sm btn-icon-split">
+    <a href="/addLocation/{{Auth::user()->locationnow}}" class="btn btn-success btn-sm btn-icon-split">
         <span class="icon text-white-50">
             <i class="fas fa-plus"></i>
         </span>

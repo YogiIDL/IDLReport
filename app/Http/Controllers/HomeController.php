@@ -27,7 +27,7 @@ class HomeController extends Controller
         $this->middleware('auth');
     }
 
-    public function userAuth(){
+    function userAuth(){
         $master = DB::select('select * from master 
                             join users on master.user_id = users.id
                             join level on master.level_id = level.id
@@ -51,7 +51,9 @@ class HomeController extends Controller
 
         Auth::user()->locationnow = $location[0]->location_id;
 
-        dump(Auth::user());
+        Auth::user()->level = $master[0]->level_id;
+
+        // dump(Auth::user());
         // die();
     }
 
@@ -70,13 +72,13 @@ class HomeController extends Controller
         return redirect('home/1');
     }
 
-    public function home($location){
+    public function home($locationnow){
         $this->userAuth();
-        // Auth::user()->locationnow = (int)$location;
-
-        // dump($location);
-
-        return view('home');
+        Auth::user()->locationnow = $locationnow;
+        $location_name = DB::select('select * from location where id = ?', [$locationnow]);
+        $location_name = $location_name[0];
+        // dump($location_name);
+        return view('home')->with('location_name', $location_name);
     }
 
     public function rest()
