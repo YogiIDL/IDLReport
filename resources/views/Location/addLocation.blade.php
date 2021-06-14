@@ -23,6 +23,21 @@
                     <div class="form row">
                         <div class="form-group col-md-2"></div>
                         <div class="form-group col-md-8">
+                            <label for="area_id">Type</label>
+                            {{-- <input type="text" class="form-control" name="area_id" id="area_id" placeholder="Area Id..."> --}}
+                            <select name="type_id" id="" class="form-control" >
+                                <option value="" disabled selected hidden>Pilih Type</option>
+                                @foreach ($type as $i=>$item)
+                                    <option value="{{$item->id}}">{{$item->type_name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group col-md-2"></div>
+                    </div>
+
+                    <div class="form row">
+                        <div class="form-group col-md-2"></div>
+                        <div class="form-group col-md-8">
                             <label for="area_id">Area Id</label>
                             {{-- <input type="text" class="form-control" name="area_id" id="area_id" placeholder="Area Id..."> --}}
                             <select name="area_id" id="" class="form-control" >

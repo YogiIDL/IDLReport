@@ -40,26 +40,41 @@ class LocationController extends Controller
 
     public function listLocation(){
         $this->userAuth();
-        $locations = DB::select('select * from location
-                                join area on location.area_id = area.id
-                                join location_type on location.id = location_type.location_id 
-                                join type on location_type.type_id = type.id');
+        // $locations = DB::select('select * from location
+        //                         join area on location.area_id = area.id
+        //                         join location_type on location.id = location_type.location_id 
+        //                         join type on location_type.type_id = type.id');
+        $locations = DB::select('select * from location 
+                                 join area on location.area_id = area.id
+                                 join location_type on location.id = location_type.location_id 
+                                 join type on location_type.type_id = type.id
+                                 Order by location_id
+        ');
         dump($locations);
+        // die();
         
         return view('Location.listLocation')->with('locations', $locations);
     }
 
     public function addLocation(){
+        $this->userAuth();
+        $type = DB::select('select * from type');
         $area = DB::select('select * from area ');
 
         // dump($area);
 
-        return view('Location.addLocation')->with('area', $area);
+        return view('Location.addLocation')->with('area', $area)->with('type', $type);
     }
 
     public function saveLocation(Request $request){
         DB::insert('insert into location (location_name, area_id) values(?, ?)', [$request->location_name, $request->area_id]);
+        // dump($request);
+        $newlocation = DB::select('select * from location where location_name = ? ', [$request->location_name]);
+        // dump($newlocation[0]->id);
+        // die();
+        DB::insert('insert into location_type (location_id, type_id ) values(?, ?)', [$newlocation[0]->id, $request->type_id]);
 
+        // die();
         return redirect('/listLocation');
         // return view('Location.listLocation');
     }
