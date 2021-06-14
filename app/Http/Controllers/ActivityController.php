@@ -38,23 +38,29 @@ class ActivityController extends Controller
         // die();
     }
     
-    public function listActivity(){
+    public function listActivity($locationnow){
         $this->userAuth();
+        Auth::user()->locationnow = $locationnow;
+        $location_name = DB::select('select * from location where id = ?', [$locationnow]);
+        $location_name = $location_name[0];
         $activity = DB::select('select * from activity');
         // dump($locations->name);
 
-        return view('Activity.listActivity')->with('activity', $activity);
+        return view('Activity.listActivity')->with('activity', $activity)->with('location_name', $location_name);
     }
 
-    public function addActivity(){
+    public function addActivity($locationnow){
         $this->userAuth();
-        return view('Activity.addActivity');
+        Auth::user()->locationnow = $locationnow;
+        $location_name = DB::select('select * from location where id = ?', [$locationnow]);
+        $location_name = $location_name[0];
+        return view('Activity.addActivity')->with('location_name', $location_name);
     }
 
-    public function saveActivity(Request $request){
+    public function saveActivity($locationnow, Request $request){
         // DB::insert('insert into location (location_name, area_id) values(?, ?)', [$request->location_name, $request->area_id]);
         DB::insert('insert into activity (activity_name) values(?)', [$request->name]);
 
-        return redirect('/listActivity');
+        return redirect('/listActivity/'.$locationnow);
     }
 }

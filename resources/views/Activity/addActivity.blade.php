@@ -9,7 +9,7 @@
                 <h5 class="m-0 font-weight-bold text-primary">Add Activity</h5>
             </div>
             <div class="card-body">
-                <form action="{{url('addActivity')}}" method="POST">
+                <form action="{{url('addActivity')}}/{{Auth::user()->locationnow}}" method="POST">
                     {{csrf_field()}}
                     <div class="form row">
                         <div class="form-group col-md-2"></div>

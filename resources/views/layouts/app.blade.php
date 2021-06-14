@@ -187,12 +187,12 @@
                             </a>
                             <div class="collapse-divider"></div>
                             <h6 class="collapse-header">Area Master</h6>
-                            <a class="collapse-item" href="/listArea">
+                            <a class="collapse-item" href="/listArea/{{Auth::user()->locationnow}}">
                                 <h6>Area</h6>
                             </a>
                             <div class="collapse-divider"></div>
                             <h6 class="collapse-header">Activity</h6>
-                            <a class="collapse-item" href="/listActivity">
+                            <a class="collapse-item" href="/listActivity/{{Auth::user()->locationnow}}">
                                 <h6>Activity</h6>
                             </a>
                             <div class="collapse-divider"></div>
