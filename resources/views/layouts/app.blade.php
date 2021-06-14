@@ -162,7 +162,7 @@
 
 
 
-            {{-- @if (Auth::user()->level == "1" || Auth::user()->level == "2") --}}
+            @if (Auth::user()->levelinlocation == "1" || Auth::user()->levelinlocation == "2")
                 <!-- Divider -->
                 <hr class="sidebar-divider">
 
@@ -239,7 +239,7 @@
                         </div>
                     </div>
                 </li>
-            {{-- @endif --}}
+            @endif
 
             <!-- Heading -->
 

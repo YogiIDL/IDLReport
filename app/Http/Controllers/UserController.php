@@ -46,7 +46,7 @@ class UserController extends Controller
 
         Auth::user()->locationnow = $location[0]->location_id;
 
-        Auth::user()->level = $master[0]->level_id;
+        // Auth::user()->level = $master[0]->level_id;
 
         // dump(Auth::user());
         // die();
@@ -64,12 +64,12 @@ class UserController extends Controller
         Auth::user()->levelinlocation = $levelinlocation[0]->level_id;
 
         $level = DB::select('select * from level');
-        // dump($level);
+
         $location = DB::select('select * from location 
                                 join area on location.area_id = area.id');
         $task = DB::select('select * from task ');
 
-        // dump($level);
+        dump(Auth::user());
         
         return view('User.addUser')->with('level', $level)->with('location', $location)->with('task', $task)->with('location_name', $location_name);
     }
