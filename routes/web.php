@@ -69,6 +69,11 @@ Route::get('/home/{location_id}', 'HomeController@home');
     Route::get('/listLevelAccess', 'LevelAccessController@listLevelAccess');
     Route::get('/addLevelAccess', 'LevelAccessController@addLevelAccess');
     Route::post('/addLevelAccess', 'LevelAccessController@saveLevelAccess');
+
+    // Activity Controller
+    Route::get('/listActivity', 'ActivityController@listActivity');
+    Route::get('/addActivity', 'ActivityController@addActivity');
+    Route::post('/addActivity', 'ActivityController@saveActivity');
 // });
 
 

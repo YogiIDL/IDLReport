@@ -191,9 +191,9 @@
                                 <h6>Area</h6>
                             </a>
                             <div class="collapse-divider"></div>
-                            <h6 class="collapse-header">Level Access Master</h6>
-                            <a class="collapse-item" href="/listLevelAccess">
-                                <h6>Level Access</h6>
+                            <h6 class="collapse-header">Activity</h6>
+                            <a class="collapse-item" href="/listActivity">
+                                <h6>Activity</h6>
                             </a>
                             <div class="collapse-divider"></div>
                         </div>

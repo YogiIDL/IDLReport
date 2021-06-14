@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
-class AreaController extends Controller
+class ActivityController extends Controller
 {
     function userAuth(){
         $master = DB::select('select * from master 
@@ -37,45 +37,24 @@ class AreaController extends Controller
         // dump(Auth::user());
         // die();
     }
-
-    public function listArea(){
+    
+    public function listActivity(){
         $this->userAuth();
-        $areas = DB::select('select * from area');
-        // dump($areas);
+        $activity = DB::select('select * from activity');
+        // dump($locations->name);
 
-        return view('Area.listArea')->with('areas', $areas);
+        return view('Activity.listActivity')->with('activity', $activity);
     }
 
-    public function addArea(){
+    public function addActivity(){
         $this->userAuth();
-        return view('Area.addArea');
+        return view('Activity.addActivity');
     }
 
-    public function saveArea(Request $request){
-        DB::insert('insert into area (area_name) values(?)', [$request->area]);
+    public function saveActivity(Request $request){
+        // DB::insert('insert into location (location_name, area_id) values(?, ?)', [$request->location_name, $request->area_id]);
+        DB::insert('insert into activity (activity_name) values(?)', [$request->name]);
 
-        return redirect('/listArea');
-    }
-
-    public function editArea($id){
-        $this->userAuth();
-        // $area = DB::select('select * from area where id= {{$request->id}}'$request->id);
-        $area = DB::select('select * from area where id='.$id);
-        // $area = DB::table('area')->where('id', $id)->get();
-
-        dump($area);
-
-        // return view('Area.editArea')->with('area', $area[0]);
-        return view('Area.editArea')->with('area', $area);
-        // return view('Area.editArea');
-    }
-
-    public function saveEditArea(Request $request){
-        // dump($request->area_name);
-        DB::table('area')->where('id', $request->id)->update([
-            'area_name' => $request->area_name,
-        ]);
-
-        return redirect('/listArea');
+        return redirect('/listActivity');
     }
 }
