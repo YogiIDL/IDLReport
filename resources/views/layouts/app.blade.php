@@ -228,7 +228,7 @@
                             </a>
                             <div class="collapse-divider"></div>
                             <h6 class="collapse-header">Manage Master</h6>
-                            <a class="collapse-item" href="/listManageUser">
+                            <a class="collapse-item" href="/listManageUser/{{Auth::user()->locationnow}}">
                                 <h6>Manage User</h6>
                             </a>
                             {{-- <a class="collapse-item" href="/manageUser">Manage User</a> --}}

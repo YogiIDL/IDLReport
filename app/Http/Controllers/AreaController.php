@@ -41,7 +41,7 @@ class AreaController extends Controller
     public function listArea($locationnow){
         $this->userAuth();
         Auth::user()->locationnow = $locationnow;
-        dump(Auth::user());
+        // dump(Auth::user());
         $location_name = DB::select('select * from location where id = ?', [$locationnow]);
         $location_name = $location_name[0];
         $areas = DB::select('select * from area');

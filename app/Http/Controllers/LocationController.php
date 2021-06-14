@@ -53,7 +53,7 @@ class LocationController extends Controller
                                  join type on location_type.type_id = type.id
                                  Order by location_id
         ');
-        dump($locations);
+        // dump($locations);
         // die();
         
         return view('Location.listLocation')->with('locations', $locations)->with('location_name', $location_name);
@@ -62,7 +62,7 @@ class LocationController extends Controller
     public function addLocation($locationnow){
         $this->userAuth();
         Auth::user()->locationnow = $locationnow;
-        dump(Auth::user());
+        // dump(Auth::user());
         $location_name = DB::select('select * from location where id = ?', [$locationnow]);
         $location_name = $location_name[0];
         $type = DB::select('select * from type');
