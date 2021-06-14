@@ -84,7 +84,7 @@ class HomeController extends Controller
                                         [Auth::user()->id, $locationnow]);
 
         Auth::user()->levelinlocation = $levelinlocation[0]->level_id;
-        dump(Auth::user());
+        // dump(Auth::user());
         // dump($levelinlocation);
 
         // dump($location_name);

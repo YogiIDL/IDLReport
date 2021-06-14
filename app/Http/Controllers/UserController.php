@@ -69,7 +69,7 @@ class UserController extends Controller
                                 join area on location.area_id = area.id');
         $task = DB::select('select * from task ');
 
-        dump(Auth::user());
+        // dump(Auth::user());
         
         return view('User.addUser')->with('level', $level)->with('location', $location)->with('task', $task)->with('location_name', $location_name);
     }
