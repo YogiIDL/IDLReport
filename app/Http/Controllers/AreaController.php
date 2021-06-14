@@ -44,6 +44,11 @@ class AreaController extends Controller
         // dump(Auth::user());
         $location_name = DB::select('select * from location where id = ?', [$locationnow]);
         $location_name = $location_name[0];
+        $levelinlocation = DB::select('select * from master where user_id = ?
+                                        && location_id = ? ', 
+                                        [Auth::user()->id, $locationnow]);
+        Auth::user()->levelinlocation = $levelinlocation[0]->level_id;
+
         $areas = DB::select('select * from area');
         // dump($areas);
 
@@ -55,6 +60,11 @@ class AreaController extends Controller
         Auth::user()->locationnow = $locationnow;
         $location_name = DB::select('select * from location where id = ?', [$locationnow]);
         $location_name = $location_name[0];
+        $levelinlocation = DB::select('select * from master where user_id = ?
+                                        && location_id = ? ', 
+                                        [Auth::user()->id, $locationnow]);
+        Auth::user()->levelinlocation = $levelinlocation[0]->level_id;
+
         return view('Area.addArea')->with('location_name', $location_name);
     }
 
@@ -69,6 +79,11 @@ class AreaController extends Controller
         Auth::user()->locationnow = $locationnow;
         $location_name = DB::select('select * from location where id = ?', [$locationnow]);
         $location_name = $location_name[0];
+        $levelinlocation = DB::select('select * from master where user_id = ?
+                                        && location_id = ? ', 
+                                        [Auth::user()->id, $locationnow]);
+        Auth::user()->levelinlocation = $levelinlocation[0]->level_id;
+
         // $area = DB::select('select * from area where id= {{$request->id}}'$request->id);
         $area = DB::select('select * from area where id='.$id);
         // $area = DB::table('area')->where('id', $id)->get();

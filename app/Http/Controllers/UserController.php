@@ -57,6 +57,11 @@ class UserController extends Controller
         Auth::user()->locationnow = $locationnow;
         $location_name = DB::select('select * from location where id = ?', [$locationnow]);
         $location_name = $location_name[0];
+        $levelinlocation = DB::select('select * from master where user_id = ?
+                                        && location_id = ? ', 
+                                        [Auth::user()->id, $locationnow]);
+
+        Auth::user()->levelinlocation = $levelinlocation[0]->level_id;
 
         $level = DB::select('select * from level');
         // dump($level);
@@ -101,6 +106,11 @@ class UserController extends Controller
         Auth::user()->locationnow = $locationnow;
         $location_name = DB::select('select * from location where id = ?', [$locationnow]);
         $location_name = $location_name[0];
+        $levelinlocation = DB::select('select * from master where user_id = ?
+                                        && location_id = ? ', 
+                                        [Auth::user()->id, $locationnow]);
+
+        Auth::user()->levelinlocation = $levelinlocation[0]->level_id;
 
         $users = DB::select('select * from users');
 
@@ -114,6 +124,11 @@ class UserController extends Controller
         Auth::user()->locationnow = $locationnow;
         $location_name = DB::select('select * from location where id = ?', [$locationnow]);
         $location_name = $location_name[0];
+        $levelinlocation = DB::select('select * from master where user_id = ?
+                                        && location_id = ? ', 
+                                        [Auth::user()->id, $locationnow]);
+
+        Auth::user()->levelinlocation = $levelinlocation[0]->level_id;
 
         // $manageUsers = DB::select('select * from master
         //                             join users on master.user_id = users.id
@@ -137,6 +152,11 @@ class UserController extends Controller
         Auth::user()->locationnow = $locationnow;
         $location_name = DB::select('select * from location where id = ?', [$locationnow]);
         $location_name = $location_name[0];
+        $levelinlocation = DB::select('select * from master where user_id = ?
+                                        && location_id = ? ', 
+                                        [Auth::user()->id, $locationnow]);
+
+        Auth::user()->levelinlocation = $levelinlocation[0]->level_id;
 
         $user = Auth::user();
 

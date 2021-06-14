@@ -43,6 +43,11 @@ class LocationController extends Controller
         Auth::user()->locationnow = $locationnow;
         $location_name = DB::select('select * from location where id = ?', [$locationnow]);
         $location_name = $location_name[0];
+        $levelinlocation = DB::select('select * from master where user_id = ?
+                                        && location_id = ? ', 
+                                        [Auth::user()->id, $locationnow]);
+
+        Auth::user()->levelinlocation = $levelinlocation[0]->level_id;
         // $locations = DB::select('select * from location
         //                         join area on location.area_id = area.id
         //                         join location_type on location.id = location_type.location_id 
@@ -65,9 +70,13 @@ class LocationController extends Controller
         // dump(Auth::user());
         $location_name = DB::select('select * from location where id = ?', [$locationnow]);
         $location_name = $location_name[0];
+        $levelinlocation = DB::select('select * from master where user_id = ?
+                                        && location_id = ? ', 
+                                        [Auth::user()->id, $locationnow]);
+        Auth::user()->levelinlocation = $levelinlocation[0]->level_id;
+
         $type = DB::select('select * from type');
         $area = DB::select('select * from area ');
-
         // dump($area);
 
         return view('Location.addLocation')->with('area', $area)->with('type', $type)->with('location_name', $location_name);

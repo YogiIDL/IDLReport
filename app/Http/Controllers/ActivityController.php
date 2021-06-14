@@ -44,6 +44,11 @@ class ActivityController extends Controller
         $location_name = DB::select('select * from location where id = ?', [$locationnow]);
         $location_name = $location_name[0];
         $activity = DB::select('select * from activity');
+        $levelinlocation = DB::select('select * from master where user_id = ?
+                                        && location_id = ? ', 
+                                        [Auth::user()->id, $locationnow]);
+        Auth::user()->levelinlocation = $levelinlocation[0]->level_id;
+
         // dump($locations->name);
 
         return view('Activity.listActivity')->with('activity', $activity)->with('location_name', $location_name);
@@ -54,6 +59,11 @@ class ActivityController extends Controller
         Auth::user()->locationnow = $locationnow;
         $location_name = DB::select('select * from location where id = ?', [$locationnow]);
         $location_name = $location_name[0];
+        $levelinlocation = DB::select('select * from master where user_id = ?
+                                        && location_id = ? ', 
+                                        [Auth::user()->id, $locationnow]);
+        Auth::user()->levelinlocation = $levelinlocation[0]->level_id;
+        
         return view('Activity.addActivity')->with('location_name', $location_name);
     }
 

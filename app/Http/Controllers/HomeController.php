@@ -78,8 +78,17 @@ class HomeController extends Controller
         Auth::user()->locationnow = $locationnow;
         $location_name = DB::select('select * from location where id = ?', [$locationnow]);
         $location_name = $location_name[0];
+
+        $levelinlocation = DB::select('select * from master where user_id = ?
+                                        && location_id = ? ', 
+                                        [Auth::user()->id, $locationnow]);
+
+        Auth::user()->levelinlocation = $levelinlocation[0]->level_id;
+        dump(Auth::user());
+        // dump($levelinlocation);
+
         // dump($location_name);
-        return view('home')->with('location_name', $location_name);
+        return view('home')->with('location_name', $location_name)->with($levelinlocation, 'levelinlocation');
     }
 
     public function rest()
