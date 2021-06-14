@@ -106,11 +106,16 @@ class UserController extends Controller
     public function listManageUser(){
         $this->userAuth();
 
+        // $manageUsers = DB::select('select * from master
+        //                             join users on master.user_id = users.id
+        //                             join location on master.location_id = location.id
+        //                             join task on master.task_id = task.id
+        //                             join activity on master.activity_id = activity.id
+        //                             ORDER BY master.user_id');
         $manageUsers = DB::select('select * from master
                                     join users on master.user_id = users.id
                                     join location on master.location_id = location.id
                                     join task on master.task_id = task.id
-                                    join activity on master.activity_id = activity.id
                                     ORDER BY master.user_id');
 
         // dump($manageUsers);

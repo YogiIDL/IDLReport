@@ -27,7 +27,7 @@
                         {{-- <th>Task Id</th> --}}
                         <th>Task Name</th>
                         {{-- <th>Activity Id</th> --}}
-                        <th>Activity Name</th>
+                        {{-- <th>Activity Name</th> --}}
                     </tr>
                 </thead>
                 <tbody>
@@ -45,7 +45,7 @@
                         {{-- <td>{{$manageUser->task_id}}</td> --}}
                         <td>{{$manageUser->task_name}}</td>
                         {{-- <td>{{$manageUser->activity_id}}</td> --}}
-                        <td>{{$manageUser->activity_name}}</td>
+                        {{-- <td>{{$manageUser->activity_name}}</td> --}}
                     </tr>        
                     @endforeach
                 </tbody>
