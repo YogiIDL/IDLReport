@@ -15,10 +15,10 @@ class TestController extends Controller
         // dump($location_id);
         // die();
         // $this->middleware('checklocationuser');
-        $location_id = $request->route()->parameter('location_id');
-        dump($location_id);
+        // $location_id = $request->route()->parameter('location_id');
+        // dump($location_id);
         // dump(Auth::user());
-        die();
+        // die();
     }
     public function index($locationnow)
     {

@@ -14,22 +14,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    // return view('welcome');
     return view('auth.login');
 });
 
 Route::get('/home', 'HomeController@index')->name('home');
-// Route::get('/home/{location}', 'HomeController@index2');
-// Route::get('/home/{id}', 'AreaController@editArea');
 Route::get('/rest', 'HomeController@rest');
 
 Auth::routes();
-
-// Route::middleware(['checkleveluser'])->group(function () {
-//     Route::get('/test', function () {
-//         return view('test');
-//     });
-// });
 
 // Home Route with location id in url
 Route::get('/home/{location_id}', 'HomeController@home');
@@ -74,17 +65,31 @@ Route::get('/home/{location_id}', 'HomeController@home');
     Route::get('/listActivity/{location_id}', 'ActivityController@listActivity');
     Route::get('/addActivity/{location_id}', 'ActivityController@addActivity');
     Route::post('/addActivity/{location_id}', 'ActivityController@saveActivity');
+    
+    // Task Route
+    Route::get('/listDispatch/{location_id}', 'DispatchController@listDispatch');
+    Route::get('/listTraffic/{location_id}', 'TrafficController@listTraffic');
+    Route::get('/listGroundHandling/{location_id}', 'GroundHandlingController@listGroundHandling');
 // });
 
+// Testing Check Location user with middleware
 Route::middleware(['checklocationuser'])->group(function () {
     Route::get('testlocation/{location_id}', function ($location_id) {
         return $location_id;
     });
 });
 
-
+// Testing Location user with __construc method
 Route::get('/test/{location_id}', 'TestController@index');
 
+// Testing Check level user
+// Route::middleware(['checkleveluser'])->group(function () {
+//     Route::get('/test', function () {
+//         return view('test');
+//     });
+// });
+
+// Testing Check location user
 // Route::get('testlocation/{location_id}', function($location_id){
 //     return $location_id;
 // })->middleware(['checklocationuser']);
@@ -94,19 +99,6 @@ Route::get('/test/{location_id}', 'TestController@index');
 
 // Location Type Route
 
-// Task Route
-Route::get('/listDispatch/{location_id}', 'DispatchController@listDispatch');
-Route::get('/listTraffic/{location_id}', 'TrafficController@listTraffic');
-Route::get('/listGroundHandling/{location_id}', 'GroundHandlingController@listGroundHandling');
-Route::get('/Dispatch', function () {
-    return view('Task.Dispatch');
-});
-Route::get('/Traffic', function () {
-    return view('Task.Traffic');
-});
-Route::get('/GroundHandling', function () {
-    return view('Task.GroundHandling');
-});
 
 
 // User Level Access Route
@@ -114,7 +106,6 @@ Route::get('/GroundHandling', function () {
 // User Location Route
 
 // User Task Route
-
 
 // With Middleware Group Routte
 
