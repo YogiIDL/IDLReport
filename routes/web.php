@@ -96,6 +96,8 @@ Route::get('/test/{location_id}', 'TestController@index');
 
 // Task Route
 Route::get('/listDispatch/{location_id}', 'DispatchController@listDispatch');
+Route::get('/listTraffic/{location_id}', 'TrafficController@listTraffic');
+Route::get('/listGroundHandling/{location_id}', 'GroundHandlingController@listGroundHandling');
 Route::get('/Dispatch', function () {
     return view('Task.Dispatch');
 });

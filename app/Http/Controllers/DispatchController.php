@@ -49,6 +49,7 @@ class DispatchController extends Controller
 
         Auth::user()->levelinlocation = $levelinlocation[0]->level_id;
 
-        return view('Task.Dispatch')->with('location_name', $location_name);
+        // return view('Task.Dispatch')->with('location_name', $location_name);
+        return view('Dispatch.listDispatch')->with('location_name', $location_name);
     }
 }

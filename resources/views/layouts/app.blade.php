@@ -154,8 +154,8 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">List Task</h6>
                         <a class="collapse-item" href="/listDispatch/{{Auth::user()->locationnow}}">Dispatch</a>
-                        <a class="collapse-item" href="/Traffic">Traffic</a>
-                        <a class="collapse-item" href="/GroundHandling">Ground Handling</a>
+                        <a class="collapse-item" href="/listTraffic/{{Auth::user()->locationnow}}">Traffic</a>
+                        <a class="collapse-item" href="/listGroundHandling/{{Auth::user()->locationnow}}">Ground Handling</a>
                     </div>
                 </div>
             </li>
