@@ -76,14 +76,26 @@ Route::get('/home/{location_id}', 'HomeController@home');
     Route::post('/addActivity/{location_id}', 'ActivityController@saveActivity');
 // });
 
+Route::middleware(['checklocationuser'])->group(function () {
+    Route::get('testlocation/{location_id}', function ($location_id) {
+        return $location_id;
+    });
+});
 
 
+Route::get('/test/{location_id}', 'TestController@index');
+
+// Route::get('testlocation/{location_id}', function($location_id){
+//     return $location_id;
+// })->middleware(['checklocationuser']);
+// Route::get('testlocatoin/{location_id}', ['middleware' => ''])
 
 // Type Route
 
 // Location Type Route
 
 // Task Route
+Route::get('/listDispatch/{location_id}', 'DispatchController@listDispatch');
 Route::get('/Dispatch', function () {
     return view('Task.Dispatch');
 });

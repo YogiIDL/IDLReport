@@ -1,21 +1,14 @@
 <?php
 
-namespace App\Http\Middleware;
+namespace App\Http\Controllers;
 
-use Closure;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
-class CheckLocationUser
+class DispatchController extends Controller
 {
-    /**
-     * Handle an incoming request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
-     * @return mixed
-     */
-    public function userAuth(){
+    function userAuth(){
         $master = DB::select('select * from master 
                             join users on master.user_id = users.id
                             join level on master.level_id = level.id
@@ -38,29 +31,24 @@ class CheckLocationUser
         Auth::user()->location = $location;
 
         Auth::user()->locationnow = $location[0]->location_id;
+
+        // Auth::user()->level = $master[0]->level_id;
+
+        // dump(Auth::user());
+        // die();
     }
 
-    public function handle($request, Closure $next)
-    {
+    public function listDispatch($locationnow){
         $this->userAuth();
-        var_dump($request->route('location_id'));
-        var_dump(Auth::user()->locationnow);
-        // Auth::user()->locationnow = $request->route('location_id');
-        // dump(Auth::user());
-        if(Auth::user()->locationnow != $request->route('location_id')){
-            // dump('not same return to home');
-            return redirect('/home');
-        }
-        else{
-            // dump('Same next request');
-            return $next($request);
-        }
+        Auth::user()->locationnow = $locationnow;
+        $location_name = DB::select('select * from location where id = ?', [$locationnow]);
+        $location_name = $location_name[0];
+        $levelinlocation = DB::select('select * from master where user_id = ?
+                                        && location_id = ? ', 
+                                        [Auth::user()->id, $locationnow]);
 
-        // if(Auth::user()->locationnow != $request->route('location_id')){
-        //     dump('not same return to home');
-        //     return redirect('/home');
-        // }
-        return $next($request);
+        Auth::user()->levelinlocation = $levelinlocation[0]->level_id;
 
+        return view('Task.Dispatch')->with('location_name', $location_name);
     }
 }
