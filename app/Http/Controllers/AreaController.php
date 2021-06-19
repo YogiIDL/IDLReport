@@ -95,7 +95,7 @@ class AreaController extends Controller
         // return view('Area.editArea');
     }
 
-    public function saveEditArea($locaitonnow, Request $request){
+    public function saveEditArea($locationnow, Request $request){
         // dump("SaveEditArea");
         // dump($request);
         // die();
@@ -104,6 +104,13 @@ class AreaController extends Controller
             'area_name' => $request->area_name,
         ]);
 
-        return redirect('/listArea/'.$locaitonnow);
+        return redirect('/listArea/'.$locationnow);
+    }
+
+    public function deleteArea($locationnow, $id){
+        // dump("deleteArea");
+        // die();
+        DB::table('area')->where('id', $id)->delete();
+        return redirect('/listArea/'.$locationnow);
     }
 }

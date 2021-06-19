@@ -55,6 +55,7 @@ Route::get('/home/{location_id}', 'HomeController@home');
     Route::get('/editArea/{location_id}/{id}', 'AreaController@editArea');
     // Route::post('/editArea/{id}', 'AreaController@saveEditArea');
     Route::post('/editArea/{location_id}/{id}', 'AreaController@saveEditArea');
+    Route::post('/deleteArea/{location_id}/{id}', 'AreaController@deleteArea');
 
     // Level Access Route
     Route::get('/listLevelAccess', 'LevelAccessController@listLevelAccess');

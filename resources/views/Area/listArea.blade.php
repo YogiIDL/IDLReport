@@ -32,6 +32,15 @@
                             <a href="/editArea/{{Auth::user()->locationnow}}/{{$area->id}}" class="btn btn-primary">
                                 <span class="text">Edit</span>
                             </a>
+                            <form method="POST" action="/deleteArea/{{Auth::user()->locationnow}}/{{$area->id}}">
+                                {{csrf_field()}}
+                                <input type="hidden" name="id" value={{$area->id}}>
+                                {{-- <input type="hidden" name="_method" value="DELETE"> --}}
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </form>
+                            {{-- <a href="/deleteArea/{{Auth::user()->locationnow}}/{{$area->id}}" class="btn btn-danger">
+                                <span class="text">Delete</span>
+                            </a> --}}
                         </td>
                     </tr>        
                     @endforeach
