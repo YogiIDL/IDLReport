@@ -29,7 +29,7 @@
                         <td>{{$area->id}}</td>
                         <td>{{$area->area_name}}</td>
                         <td>
-                            <a href="/editArea/{{$area->id}}" class="btn btn-primary">
+                            <a href="/editArea/{{Auth::user()->locationnow}}/{{$area->id}}" class="btn btn-primary">
                                 <span class="text">Edit</span>
                             </a>
                         </td>

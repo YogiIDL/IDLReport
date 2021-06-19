@@ -96,6 +96,9 @@ class AreaController extends Controller
     }
 
     public function saveEditArea($locaitonnow, Request $request){
+        // dump("SaveEditArea");
+        // dump($request);
+        // die();
         // dump($request->area_name);
         DB::table('area')->where('id', $request->id)->update([
             'area_name' => $request->area_name,
