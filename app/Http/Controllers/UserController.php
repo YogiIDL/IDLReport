@@ -136,13 +136,25 @@ class UserController extends Controller
         //                             join task on master.task_id = task.id
         //                             join activity on master.activity_id = activity.id
         //                             ORDER BY master.user_id');
-        $manageUsers = DB::select('select * from master
-                                    join users on master.user_id = users.id
-                                    join location on master.location_id = location.id
-                                    join task on master.task_id = task.id
-                                    ORDER BY master.user_id');
-
-        // dump($manageUsers);
+        // $manageUsers = DB::select('select * from master
+        //                             join users on master.user_id = users.id
+        //                             join location on master.location_id = location.id
+        //                             join task on master.task_id = task.id
+        //                             ORDER BY master.user_id');
+        // $manageUsers = DB::select('select m.*, u.name, l.location_name, t.task_name from master m
+        //                             join users u on m.user_id = u.id
+        //                             join location l on m.location_id = l.id
+        //                             join task t on m.task_id = t.id
+        //                             ');
+                                    // ORDER BY m.user_id');
+        $manageUsers = DB::select('select m.*, u.name, l.location_name, t.task_name
+                                    from master m
+                                    join users u on m.user_id = u.id
+                                    join location l on m.location_id = l.id
+                                    LEFT join task t on m.task_id = t.id
+        ');
+        dump($manageUsers);
+        die();
 
         return view('User.listManageUser')->with('manageUsers', $manageUsers)->with('location_name', $location_name);
     }
