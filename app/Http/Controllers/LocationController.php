@@ -121,6 +121,31 @@ class LocationController extends Controller
         where l.id = ?', [$id]);
         dump($location);
 
-        return view('Location.editLocation')->with('location', $location)->with('location_name', $location_name);
+        $type = DB::select('select * from type');
+        $area = DB::select('select * from area');
+        dump($type);
+        dump($area);
+
+        return view('Location.editLocation')->with('location', $location)->with('location_name', $location_name)->with('type', $type)->with('area', $area);
+    }
+
+    public function saveEditLocation($locationnow, Request $request){
+        // dump($request);
+        $type_id = (int)$request->type_id;
+        $area_id = (int)$request->area_id;
+        // var_dump($type_id);
+        // var_dump($area_id);
+
+        // die();
+        
+        DB::table('location')->where('id', $request->id)->update([
+            'location_name' => $request->location_name,
+            'type_id' => $type_id,
+            'area_id' => $area_id
+            // 'type_id' => 1,
+            // 'area_id' => 1
+        ]);
+        return redirect('/listLocation/'.$locationnow);
+
     }
 }

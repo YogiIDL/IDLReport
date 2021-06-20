@@ -25,7 +25,7 @@
                 <div class="form-group col-md-4"></div>
                 <div class="form-group col-md-4">
                     <label for="area">Area</label>
-                    <input type="text" class="form-control" name="area_name" id="area_name" placeholder="Area Name..." value={{$area[0]->area_name}}>
+                    <input type="text" class="form-control" name="area_name" id="area_name" placeholder="Area Name..." value="{{$area[0]->area_name}}">
                 </div>
                 <div class="form-group col-md-4"></div>
             </div>
