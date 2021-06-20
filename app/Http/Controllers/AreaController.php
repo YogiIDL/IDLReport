@@ -88,7 +88,7 @@ class AreaController extends Controller
         $area = DB::select('select * from area where id='.$id);
         // $area = DB::table('area')->where('id', $id)->get();
 
-        dump($area);
+        // dump($area);
 
         // return view('Area.editArea')->with('area', $area[0]);
         return view('Area.editArea')->with('area', $area)->with('location_name', $location_name);

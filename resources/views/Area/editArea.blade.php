@@ -1,49 +1,44 @@
-{{-- @foreach ($area as $item)
-    {{$item->id}}
-@endforeach --}}
-
-{{$area[0]->id}}
-{{$area[0]->area_name}}
-
 @extends('layouts.app')
 
 @section('content')
-    <div class="jumbotron text-center">
-        <h1>Edit Area</h1>
-    </div>
+<div class="row">
+    <div class="col-lg-3"></div>
+    <div class="col-lg-6">
+        <div class="card shadow mb-12">
+            <div class="card-header py-3">
+                <h5 class="m-0 font-weight-bold text-primary">Edit Area</h5>
+            </div>
+            <div class="card-body">
+                <form action="/editArea/{{Auth::user()->locationnow}}/{{$area[0]->id}}" method="POST">
+                    {{ csrf_field() }}
+                    <input type="hidden" name="id" value={{$area[0]->id}}>
+                    <div class="form row">
+                        <div class="form-group col-md-2"></div>
+                        <div class="form-group col-md-8">
+                            <label for="area">Area</label>
+                            <input type="text" class="form-control" name="area_name" id="area_name" placeholder="Area Name..." value="{{$area[0]->area_name}}">
+                        </div>
+                        <div class="form-group col-md-2"></div>
+                    </div>
 
-    <div>
-        {{-- <form action="{{url('')}}" method="POST"> --}}
-        {{-- <form action="{{url('editArea/{{$area->id}}')}}" method="POST"> --}}
-        {{-- <form action="editArea/{{$area->id}}" method="POST"> --}}
-        {{-- <form action="{{url('')}}" method="POST"> --}}
-        {{-- <form action="{{url('')}}" method="POST"> --}}
-        <form action="/editArea/{{Auth::user()->locationnow}}/{{$area[0]->id}}" method="POST">
-            {{csrf_field()}}
-            <input type="hidden" name="id" value={{$area[0]->id}}>
-            <div class="form row">
-                <div class="form-group col-md-4"></div>
-                <div class="form-group col-md-4">
-                    <label for="area">Area</label>
-                    <input type="text" class="form-control" name="area_name" id="area_name" placeholder="Area Name..." value="{{$area[0]->area_name}}">
-                </div>
-                <div class="form-group col-md-4"></div>
-            </div>
-            
-            <div class="form row">
-                <div class="form-group col-md-2"></div>
-                <div class="form-group col-md-4">
-                    <div class="col-sm-6">
-                        <button class="btn btn-lg btn-primary">Simpan</button>
+                    <div class="form row">
+                        <div class="form-group col-md-2"></div>
+                        <div class="form-group col-md-4">
+                            <div class="col-sm-6">
+                                <button class="btn btn-lg btn-primary">Simpan</button>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <div class="col-sm-6">
+                                <button class="btn btn-lg btn-secondary">Cancel</button>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-2"></div>
                     </div>
-                </div>
-                <div class="form-group col-md-4">
-                    <div class="col-sm-6">
-                        <button class="btn btn-lg btn-secondary">Cancel</button>
-                    </div>
-                </div>
-                <div class="form-group col-md-2"></div>
+                </form>
             </div>
-        </form>
+        </div>
     </div>
+    <div class="col-lg-3"></div>
+</div>
 @endsection

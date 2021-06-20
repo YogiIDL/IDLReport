@@ -119,12 +119,12 @@ class LocationController extends Controller
         join type t on (l.type_id = t.id)
         join area a on (l.area_id = a.id)
         where l.id = ?', [$id]);
-        dump($location);
+        // dump($location);
 
         $type = DB::select('select * from type');
         $area = DB::select('select * from area');
-        dump($type);
-        dump($area);
+        // dump($type);
+        // dump($area);
 
         return view('Location.editLocation')->with('location', $location)->with('location_name', $location_name)->with('type', $type)->with('area', $area);
     }
