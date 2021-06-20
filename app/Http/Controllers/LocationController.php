@@ -52,10 +52,14 @@ class LocationController extends Controller
         //                         join area on location.area_id = area.id
         //                         join location_type on location.id = location_type.location_id 
         //                         join type on location_type.type_id = type.id');
-        $locations = DB::select('select * from location 
-                                 join type on location.type_id = type.id
-                                 join area on location.area_id = area.id
-                                 Order by location.id
+        // $locations = DB::select('select * from location 
+        //                          join type on location.type_id = type.id
+        //                          join area on location.area_id = area.id
+        //                          Order by location.id
+        // ');
+        $locations = DB::select('select l.*, t.type_name, a.area_name from location l
+        join type t on (l.type_id = t.id)
+        join area a on (l.area_id = a.id)
         ');
         // dump($locations);
         // die();
@@ -94,5 +98,29 @@ class LocationController extends Controller
         // die();
         return redirect('/listLocation/'.$locationnow);
         // return view('Location.listLocation');
+    }
+
+    public function editLocation($locationnow, $id){
+        // dump("editLocation");
+        // die();
+
+        $this->userAuth();
+        Auth::user()->locationnow = $locationnow;
+        // dump(Auth::user());
+        $location_name = DB::select('select * from location where id = ?', [$locationnow]);
+        $location_name = $location_name[0];
+        $levelinlocation = DB::select('select * from master where user_id = ?
+                                        && location_id = ? ', 
+                                        [Auth::user()->id, $locationnow]);
+        Auth::user()->levelinlocation = $levelinlocation[0]->level_id;
+
+        // $location = DB::select('select * from location join type on location.type_id = type.id where location.id = ?', [$id]);
+        $location = DB::select('select l.*, t.type_name, a.area_name from location l
+        join type t on (l.type_id = t.id)
+        join area a on (l.area_id = a.id)
+        where l.id = ?', [$id]);
+        dump($location);
+
+        return view('Location.editLocation')->with('location', $location)->with('location_name', $location_name);
     }
 }

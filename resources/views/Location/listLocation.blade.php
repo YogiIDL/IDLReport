@@ -25,16 +25,31 @@
                         <th>Location Name</th>
                         <th>Type</th>
                         <th>Area Name</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($locations as $location )
                     <tr>
                         {{-- <td>{{$location->id}}</td> --}}
-                        <td>{{$i++}}</td>
+                        <td>{{$location->id}}</td>
                         <td>{{$location->location_name}}</td>
                         <td>{{$location->type_name}}</td>
                         <td>{{$location->area_name}}</td>
+                        <td>
+                            <a href="/editLocation/{{Auth::user()->locationnow}}/{{$location->id}}" class="btn btn-primary">
+                                <span class="text">Edit</span>
+                            </a>
+                            <form method="POST" action="/deleteLocation/{{Auth::user()->locationnow}}/{{$location->id}}">
+                                {{csrf_field()}}
+                                <input type="hidden" name="id" value={{$location->id}}>
+                                {{-- <input type="hidden" name="_method" value="DELETE"> --}}
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </form>
+                            {{-- <a href="/deleteArea/{{Auth::user()->locationnow}}/{{$area->id}}" class="btn btn-danger">
+                                <span class="text">Delete</span>
+                            </a> --}}
+                        </td>
                     </tr>        
                     @endforeach
                 </tbody>
