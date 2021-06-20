@@ -49,6 +49,7 @@ Route::get('/home/{location_id}', 'HomeController@home');
     Route::post('/addLocation/{location_id}', 'LocationController@saveLocation');
     Route::get('/editLocation/{location_id}/{id}', 'LocationController@editLocation');
     Route::post('/editLocation/{location_id}/{id}', 'LocationController@saveEditLocation');
+    Route::post('/deleteLocation/{location_id}/{id}', 'LocationController@deleteLocation');
 
     // Area Route
     Route::get('/listArea/{location_id}', 'AreaController@listArea');

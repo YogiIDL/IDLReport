@@ -148,4 +148,11 @@ class LocationController extends Controller
         return redirect('/listLocation/'.$locationnow);
 
     }
+
+    public function deleteLocation($locationnow, $id){
+        // dump("delete location");
+        DB::table('location')->where('id', $id)->delete();
+        return redirect('/listLocation/'.$locationnow);
+    }
+
 }
