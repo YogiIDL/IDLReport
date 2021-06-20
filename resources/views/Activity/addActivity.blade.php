@@ -14,8 +14,8 @@
                     <div class="form row">
                         <div class="form-group col-md-2"></div>
                         <div class="form-group col-md-8">
-                            <label for="level_access">Activity Name</label>
-                            <input type="text" class="form-control" name="name" id="level_access_name" placeholder="Level Access Name...">
+                            <label for="level_access">Activity</label>
+                            <input type="text" class="form-control" name="name" id="level_access_name" placeholder="Activity Name...">
                         </div>
                         <div class="form-group col-md-2"></div>
                     </div>

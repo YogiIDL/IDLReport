@@ -28,19 +28,22 @@
                     <tr>
                         <td>{{$area->id}}</td>
                         <td>{{$area->area_name}}</td>
+                        {{-- <td class="text-right"> --}}
                         <td>
-                            <a href="/editArea/{{Auth::user()->locationnow}}/{{$area->id}}" class="btn btn-primary">
-                                <span class="text">Edit</span>
-                            </a>
-                            <form method="POST" action="/deleteArea/{{Auth::user()->locationnow}}/{{$area->id}}">
-                                {{csrf_field()}}
-                                <input type="hidden" name="id" value={{$area->id}}>
-                                {{-- <input type="hidden" name="_method" value="DELETE"> --}}
-                                <button type="submit" class="btn btn-danger">Delete</button>
-                            </form>
-                            {{-- <a href="/deleteArea/{{Auth::user()->locationnow}}/{{$area->id}}" class="btn btn-danger">
-                                <span class="text">Delete</span>
-                            </a> --}}
+                            <div class="form row">
+                                <div class="col-sm-2">
+                                    <a href="/editArea/{{Auth::user()->locationnow}}/{{$area->id}}" class="btn btn-primary">
+                                        <span class="text">Edit</span>
+                                    </a>
+                                </div>
+                                <div class="col-sm-2">
+                                    <form method="POST" action="/deleteArea/{{Auth::user()->locationnow}}/{{$area->id}}">
+                                        {{csrf_field()}}
+                                        <input type="hidden" name="id" value={{$area->id}}>
+                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                    </form>
+                                </div>
+                            </div>
                         </td>
                     </tr>        
                     @endforeach

@@ -37,18 +37,22 @@
                         <td>{{$location->type_name}}</td>
                         <td>{{$location->area_name}}</td>
                         <td>
-                            <a href="/editLocation/{{Auth::user()->locationnow}}/{{$location->id}}" class="btn btn-primary">
-                                <span class="text">Edit</span>
-                            </a>
-                            <form method="POST" action="/deleteLocation/{{Auth::user()->locationnow}}/{{$location->id}}">
-                                {{csrf_field()}}
-                                <input type="hidden" name="id" value={{$location->id}}>
-                                {{-- <input type="hidden" name="_method" value="DELETE"> --}}
-                                <button type="submit" class="btn btn-danger">Delete</button>
-                            </form>
-                            {{-- <a href="/deleteArea/{{Auth::user()->locationnow}}/{{$area->id}}" class="btn btn-danger">
-                                <span class="text">Delete</span>
-                            </a> --}}
+                            <div class="form row">
+                                {{-- <div class="form-group col-sm-6"> --}}
+                                <div class="col-sm-4">
+                                    <a href="/editLocation/{{Auth::user()->locationnow}}/{{$location->id}}" class="btn btn-primary">
+                                        <span class="text">Edit</span>
+                                    </a>
+                                </div>
+                                {{-- <div class="form-group col-sm-6"> --}}
+                                <div class="col-sm-4">
+                                    <form method="POST" action="/deleteLocation/{{Auth::user()->locationnow}}/{{$location->id}}">
+                                        {{csrf_field()}}
+                                        <input type="hidden" name="id" value={{$location->id}}>
+                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                    </form>
+                                </div>
+                            </div>
                         </td>
                     </tr>        
                     @endforeach
