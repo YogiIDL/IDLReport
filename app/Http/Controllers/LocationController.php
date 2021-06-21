@@ -86,6 +86,9 @@ class LocationController extends Controller
     }
 
     public function saveLocation($locationnow, Request $request){
+        $request->validate([
+            'location_name' => 'required|regex:/^[a-zA-Z]+$/u|max:255'
+        ]);
         // dump($request);
         // die();
         DB::insert('insert into location (location_name, type_id, area_id) values(?, ?, ?)', [$request->location_name, $request->type_id, $request->area_id]);
@@ -130,6 +133,9 @@ class LocationController extends Controller
     }
 
     public function saveEditLocation($locationnow, Request $request){
+        $request->validate([
+            'location_name' => 'required|regex:/^[a-zA-Z]+$/u|max:255'
+        ]);
         // dump($request);
         $type_id = (int)$request->type_id;
         $area_id = (int)$request->area_id;

@@ -69,6 +69,10 @@ class AreaController extends Controller
     }
 
     public function saveArea($locationnow, Request $request){
+        $request->validate([
+            'area_name' => 'required|regex:/^[a-zA-Z]+$/u|max:255'
+        ]);
+
         DB::insert('insert into area (area_name) values(?)', [$request->area]);
 
         return redirect('/listArea/'.$locationnow);
@@ -100,6 +104,10 @@ class AreaController extends Controller
         // dump($request);
         // die();
         // dump($request->area_name);
+        $request->validate([
+            'area_name' => 'required|regex:/^[a-zA-Z]+$/u|max:255'
+        ]);
+
         DB::table('area')->where('id', $request->id)->update([
             'area_name' => $request->area_name,
         ]);
