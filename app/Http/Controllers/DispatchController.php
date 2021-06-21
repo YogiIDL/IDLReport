@@ -92,20 +92,39 @@ class DispatchController extends Controller
     }
 
     public function searchDispatch($locationnow, Request $request){
+        dump($request);
+        dump($request->dispatch_id);
+        dump("oke");
+
+
+        // $response = Http::withHeaders([
+        //     'x-auth-key' => 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjJkODVmMDNhNmM0ODVhNDI1MTlkYzYzODJmOTIxNDQ1NmI5MmZiZWQ0ODM5NGI3Y2RiM2ZiNWMyYzA2MjQ5MTVmYjc5YjU4MGM2MDkyYjY4In0.eyJhdWQiOiI2MDZjM2EyN2Q0MzBjMTUxOWUzZWY2OTIiLCJqdGkiOiIyZDg1ZjAzYTZjNDg1YTQyNTE5ZGM2MzgyZjkyMTQ0NTZiOTJmYmVkNDgzOTRiN2NkYjNmYjVjMmMwNjI0OTE1ZmI3OWI1ODBjNjA5MmI2OCIsImlhdCI6MTYyNDI0NzgzMywibmJmIjoxNjI0MjQ3ODMzLCJleHAiOjE2NTU3ODM4MzMsInN1YiI6IjYwNzU1MDZjMzVmMWNlMzAzZjc5MzUzYiIsInNjb3BlcyI6W119.llVMRCADNHTnLD1gZYzbn7cXQkSfvqtTnCIeJQ2ofgrjzi9BoMNzbSPqNPkm7-wCohANit0BHVGuVZQOjotHK3XjEDDSU4tOjQY1AKhjeWCTqHqmE4oydP0_rDS9NHLo26692f47KPGAOrVPMmbU7reLk8N0hG_GQy-eyXcA52tVLDyWhOqSSGCn0sECHhOlIIs5u1eibfvNOIAmUQhPvf1_vapxDTe56nBEY-EgFir3qBDCmrfWIcoB-6R7JIJBbHkMbGUZBrF75KXa6TiEEESsXGnr1R-aDsQ8rZMM5785h1qJpbb8aH-RUX3yTZN1OHrl3iM1Wc1HsYJ49QWdLm30U9MIfBVyGpnPn2v_G55eKw3kA2kTVyfUsOQ_ZMlkMrpHYBvGaPHlES9sMNim5pXgyS-UgVJgWfyj1_qb22uEvqMBqKJz-CJN3vnGF-beH9CIuaBFKgSap1ZY_vS8c-bNpHanyjaRE7slTo6CjMao_pl4i_mlck-7XeL9jdmkq1_7acR5IdH5EZDMkL6f1I6c5MUbsOegVNTnXWiY6tyEJcEs8CAGIxB-KPxvTHbp7E9ekae20TwYB0AbuNg1qgMhF5Ig14TkcrCS-oUXJFpGr73asWjcRFBxxOU-rDBPu8xqeY7BFWkPvkeddSA21BePCYvE21ovA97E10CIuDY'
+        // ])->get('https://api.mile.app/v2/task/'.$request->dispatch_Id)->json();
+        // $response = Http::get('https://jsonplaceholder.typicode.com/posts')->json();
+
+        // dump(Http::get('https://jsonplaceholder.typicode.com/posts'));
+
+        $response = Http::withHeaders([
+            'x-auth-key' => ''
+        ])->get('https://api.mile.app/v2/task/'.$request->dispatch_id)->json();
+
+        dump($response);
+
+        die();
         // dump("xauthkey");
         // dump(env("X-AUTH-KEY"));
         // die();
 
         // $result = Http::get('https://api.mile.app/v2/task/'.$request->dispatch_Id);
-        $result = Http::withHeaders([
-            'x-auth-key' => ''
-        ])->get('https://api.mile.app/v2/task/'.$request->dispatch_Id);
+        // $response = Http::withHeaders([
+        //     'x-auth-key' => 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjJkODVmMDNhNmM0ODVhNDI1MTlkYzYzODJmOTIxNDQ1NmI5MmZiZWQ0ODM5NGI3Y2RiM2ZiNWMyYzA2MjQ5MTVmYjc5YjU4MGM2MDkyYjY4In0.eyJhdWQiOiI2MDZjM2EyN2Q0MzBjMTUxOWUzZWY2OTIiLCJqdGkiOiIyZDg1ZjAzYTZjNDg1YTQyNTE5ZGM2MzgyZjkyMTQ0NTZiOTJmYmVkNDgzOTRiN2NkYjNmYjVjMmMwNjI0OTE1ZmI3OWI1ODBjNjA5MmI2OCIsImlhdCI6MTYyNDI0NzgzMywibmJmIjoxNjI0MjQ3ODMzLCJleHAiOjE2NTU3ODM4MzMsInN1YiI6IjYwNzU1MDZjMzVmMWNlMzAzZjc5MzUzYiIsInNjb3BlcyI6W119.llVMRCADNHTnLD1gZYzbn7cXQkSfvqtTnCIeJQ2ofgrjzi9BoMNzbSPqNPkm7-wCohANit0BHVGuVZQOjotHK3XjEDDSU4tOjQY1AKhjeWCTqHqmE4oydP0_rDS9NHLo26692f47KPGAOrVPMmbU7reLk8N0hG_GQy-eyXcA52tVLDyWhOqSSGCn0sECHhOlIIs5u1eibfvNOIAmUQhPvf1_vapxDTe56nBEY-EgFir3qBDCmrfWIcoB-6R7JIJBbHkMbGUZBrF75KXa6TiEEESsXGnr1R-aDsQ8rZMM5785h1qJpbb8aH-RUX3yTZN1OHrl3iM1Wc1HsYJ49QWdLm30U9MIfBVyGpnPn2v_G55eKw3kA2kTVyfUsOQ_ZMlkMrpHYBvGaPHlES9sMNim5pXgyS-UgVJgWfyj1_qb22uEvqMBqKJz-CJN3vnGF-beH9CIuaBFKgSap1ZY_vS8c-bNpHanyjaRE7slTo6CjMao_pl4i_mlck-7XeL9jdmkq1_7acR5IdH5EZDMkL6f1I6c5MUbsOegVNTnXWiY6tyEJcEs8CAGIxB-KPxvTHbp7E9ekae20TwYB0AbuNg1qgMhF5Ig14TkcrCS-oUXJFpGr73asWjcRFBxxOU-rDBPu8xqeY7BFWkPvkeddSA21BePCYvE21ovA97E10CIuDY'
+        // ])->get('https://api.mile.app/v2/task/'.$request->dispatch_Id);
+        // $response = Http::get('https://jsonplaceholder.typicode.com/posts');
 
-        dump($result);
+        dump($response);
         // dump("searchDispatch");
         // dump($request);
 
-        die();
     }
 
     public function rest()
