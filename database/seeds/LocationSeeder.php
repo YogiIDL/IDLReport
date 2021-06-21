@@ -42,5 +42,35 @@ class LocationSeeder extends Seeder
             'type_id' => '3',
             'area_id' => '3',
         ]);
+        DB::table('location')->insert([
+            'location_name' => 'Bekasi',
+            'type_id' => '2',
+            'area_id' => '1',
+        ]);
+        DB::table('location')->insert([
+            'location_name' => 'Tanggerang',
+            'type_id' => '3',
+            'area_id' => '1',
+        ]);
+        DB::table('location')->insert([
+            'location_name' => 'Chiamplas',
+            'type_id' => '3',
+            'area_id' => '2',
+        ]);
+        DB::table('location')->insert([
+            'location_name' => 'Telkom',
+            'type_id' => '2',
+            'area_id' => '2',
+        ]);
+        DB::table('location')->insert([
+            'location_name' => 'Bukit Batu',
+            'type_id' => '2',
+            'area_id' => '3',
+        ]);
+        DB::table('location')->insert([
+            'location_name' => 'Parang Tritis',
+            'type_id' => '3',
+            'area_id' => '3',
+        ]);
     }
 }

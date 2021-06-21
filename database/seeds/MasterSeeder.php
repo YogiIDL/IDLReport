@@ -68,9 +68,79 @@ class MasterSeeder extends Seeder
             // 'activity_id' => '1',
         ]);
         DB::table('master')->insert([
+            'user_id' => '4',
+            'level_id' => '1',
+            'location_id' => '2',
+            'task_id' => '1',
+            // 'activity_id' => '1',
+        ]);
+        DB::table('master')->insert([
+            'user_id' => '4',
+            'level_id' => '1',
+            'location_id' => '3',
+            'task_id' => '1',
+            // 'activity_id' => '1',
+        ]);
+        DB::table('master')->insert([
+            'user_id' => '4',
+            'level_id' => '1',
+            'location_id' => '7',
+            'task_id' => '1',
+            // 'activity_id' => '1',
+        ]);
+        DB::table('master')->insert([
+            'user_id' => '4',
+            'level_id' => '1',
+            'location_id' => '9',
+            'task_id' => '1',
+            // 'activity_id' => '1',
+        ]);
+        DB::table('master')->insert([
+            'user_id' => '4',
+            'level_id' => '1',
+            'location_id' => '12',
+            'task_id' => '1',
+            // 'activity_id' => '1',
+        ]);
+        DB::table('master')->insert([
             'user_id' => '5',
             'level_id' => '1',
             'location_id' => '1',
+            'task_id' => '1',
+            // 'activity_id' => '1',
+        ]);
+        DB::table('master')->insert([
+            'user_id' => '5',
+            'level_id' => '1',
+            'location_id' => '2',
+            'task_id' => '1',
+            // 'activity_id' => '1',
+        ]);
+        DB::table('master')->insert([
+            'user_id' => '5',
+            'level_id' => '1',
+            'location_id' => '3',
+            'task_id' => '1',
+            // 'activity_id' => '1',
+        ]);
+        DB::table('master')->insert([
+            'user_id' => '5',
+            'level_id' => '1',
+            'location_id' => '9',
+            'task_id' => '1',
+            // 'activity_id' => '1',
+        ]);
+        DB::table('master')->insert([
+            'user_id' => '5',
+            'level_id' => '1',
+            'location_id' => '13',
+            'task_id' => '1',
+            // 'activity_id' => '1',
+        ]);
+        DB::table('master')->insert([
+            'user_id' => '5',
+            'level_id' => '1',
+            'location_id' => '11',
             'task_id' => '1',
             // 'activity_id' => '1',
         ]);
