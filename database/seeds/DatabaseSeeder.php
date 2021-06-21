@@ -27,6 +27,7 @@ class DatabaseSeeder extends Seeder
             ActivitySeeder::class,
             UserActivitySeeder::class,
             MasterSeeder::class,
+            DispatchSeeder::class,
     ]);
     }
 }
