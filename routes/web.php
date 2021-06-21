@@ -71,8 +71,14 @@ Route::get('/home/{location_id}', 'HomeController@home');
     Route::post('/addActivity/{location_id}', 'ActivityController@saveActivity');
     
     // Task Route
+    // Dispatch
     Route::get('/listDispatch/{location_id}', 'DispatchController@listDispatch');
+    Route::get('/addDispatch/{location_id}', 'DispatchController@addDispatch');
+
+    // Traffic
     Route::get('/listTraffic/{location_id}', 'TrafficController@listTraffic');
+
+    // GroundHanling
     Route::get('/listGroundHandling/{location_id}', 'GroundHandlingController@listGroundHandling');
 // });
 
