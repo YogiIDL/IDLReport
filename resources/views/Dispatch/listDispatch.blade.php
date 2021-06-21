@@ -1,13 +1,39 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <a href="/addDispatch/{{Auth::user()->locationnow}}" class="btn btn-success btn-sm btn-icon-split">
-        <span class="icon text-white-50">
-            <i class="fas fa-plus"></i>
-        </span>
-        <span class="text">Add Dispatch Report</span>
-    </a>
+<div class="d-flex flex-row">
+    {{-- <div class="d-flex flex-row">
+        <div class="p-2">Add</div>
+        <div class="p-2">Search</div>
+        <div class="ml-auto p-2">Edit</div>
+    </div> --}}
+
+    <div class="p-2">
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <a href="/addDispatch/{{Auth::user()->locationnow}}" class="btn btn-success btn-sm btn-icon-split">
+                <span class="icon text-white-50">
+                    <i class="fas fa-plus"></i>
+                </span>
+                <span class="text">Add Dispatch Report</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="ml-auto p-2">
+        {{-- <form action="{{url('addUser')}}/{{Auth::user()->locationnow}}" method="POST"> --}}
+        <form action="/searchDispatch/{{Auth::user()->locationnow}}" method="POST" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+            {{csrf_field()}}
+            <div class="input-group">
+                <input type="text" name="dispatch_Id" class="form-control border-10 small" placeholder="Search for..." aria-label="Search"aria-describedby="basic-addon2">
+                <div class="input-group-append">
+                    <button class="btn btn-primary" type="submit">
+                        <i class="fas fa-search fa-sm"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+    
 </div>
 
 <div class="card shadow mb-4">

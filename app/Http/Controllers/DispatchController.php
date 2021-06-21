@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Http;
 
 class DispatchController extends Controller
 {
@@ -74,8 +75,50 @@ class DispatchController extends Controller
         return view('Dispatch.listDispatch')->with('location_name', $location_name)->with('dispatch', $dispatch);
     }
 
-    public function addDispatch($locationnow){
-        dump("add Dispatch");
+    public function addDispatch($locationnow, Request $request){
+        $this->userAuth();
+        Auth::user()->locationnow = $locationnow;
+        $location_name = DB::select('select * from location where id = ?', [$locationnow]);
+        $location_name = $location_name[0];
+        $levelinlocation = DB::select('select * from master where user_id = ?
+                                        && location_id = ? ', 
+                                        [Auth::user()->id, $locationnow]);
+
+        Auth::user()->levelinlocation = $levelinlocation[0]->level_id;
+
+        // dump("add Dispatch");
+        // die();
+        return view('Dispatch.addDispatch')->with('location_name', $location_name);
+    }
+
+    public function searchDispatch($locationnow, Request $request){
+        // dump("xauthkey");
+        // dump(env("X-AUTH-KEY"));
+        // die();
+
+        // $result = Http::get('https://api.mile.app/v2/task/'.$request->dispatch_Id);
+        $result = Http::withHeaders([
+            'x-auth-key' => ''
+        ])->get('https://api.mile.app/v2/task/'.$request->dispatch_Id);
+
+        dump($result);
+        // dump("searchDispatch");
+        // dump($request);
+
         die();
+    }
+
+    public function rest()
+    {
+        // $rest = Http::withHeaders([
+        //     'x-auth-key' => 'oke'
+        // ])->get('https://jsonplaceholder.typicode.com/posts');
+
+        $rest = Http::get('https://jsonplaceholder.typicode.com/posts');
+
+        dump($rest);
+        die();
+
+        return $rest;
     }
 }

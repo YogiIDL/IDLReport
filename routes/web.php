@@ -74,6 +74,7 @@ Route::get('/home/{location_id}', 'HomeController@home');
     // Dispatch
     Route::get('/listDispatch/{location_id}', 'DispatchController@listDispatch');
     Route::get('/addDispatch/{location_id}', 'DispatchController@addDispatch');
+    Route::post('/searchDispatch/{location_id}', 'DispatchController@searchDispatch');
 
     // Traffic
     Route::get('/listTraffic/{location_id}', 'TrafficController@listTraffic');
