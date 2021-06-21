@@ -1,6 +1,55 @@
 @extends('layouts.app')
 
 @section('content')
+@if(count($errors) > 0)
+<div class="row">
+    <div class="col-lg-3"></div>
+    <div class="col-lg-6">
+        <div class="card shadow mb-12">
+            <div class="card-body">
+                @foreach($errors->all() as $error)
+                    <div class="alert alert-danger">
+                        {{$error}}
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3"></div>
+</div>
+@endif
+
+@if(session('success'))
+<div class="row">
+    <div class="col-lg-3"></div>
+    <div class="col-lg-6">
+        <div class="card shadow mb-12">
+            <div class="card-body">
+                <div class="alert alert-success">
+                    {{session('success')}}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3"></div>
+</div>
+@endif
+
+@if(session('error'))
+<div class="row">
+    <div class="col-lg-3"></div>
+    <div class="col-lg-6">
+        <div class="card shadow mb-12">
+            <div class="card-body">
+                <div class="alert alert-danger">
+                    {{session('error')}}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3"></div>
+</div>
+@endif
 <div class="row">
     <div class="col-lg-3"></div>
     <div class="col-lg-6">
@@ -76,7 +125,7 @@
                             <select name="location_id" id="" class="form-control">
                                 <option value="" disabled selected hidden>Pilih Location...</option>
                                 @foreach ($location as $item)
-                                    <option value="{{$item->id}}">{{$item->location_name}} - {{$item->area_name}}</option>
+                                    <option value="{{$item->id}}">{{$item->location_name}} - {{$item->type_name}} - {{$item->area_name}}</option>
                                 @endforeach
                             </select>
                         </div>

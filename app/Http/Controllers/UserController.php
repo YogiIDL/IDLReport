@@ -65,16 +65,28 @@ class UserController extends Controller
 
         $level = DB::select('select * from level');
 
-        $location = DB::select('select * from location 
-                                join area on location.area_id = area.id');
+        // $location = DB::select('select * from location 
+        //                         join area on location.area_id = area.id');
+
+        $location = DB::select('select l.*, t.type_name, a.area_name from location l
+        join type t on (l.type_id = t.id)
+        join area a on (l.area_id = a.id)
+        ');
         $task = DB::select('select * from task ');
 
         // dump(Auth::user());
+        // dump($location);
+        // die();
         
         return view('User.addUser')->with('level', $level)->with('location', $location)->with('task', $task)->with('location_name', $location_name);
     }
 
     public function saveUser($locationnow,Request $request){
+        $request->validate([
+            'username' => 'required|regex:/^[a-zA-Z]+$/u|max:255',
+            'email' => 'required|email'
+        ]);
+
         $this->userAuth();
 
         // return view('User.addUser');
