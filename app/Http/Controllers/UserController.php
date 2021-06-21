@@ -165,8 +165,8 @@ class UserController extends Controller
                                     join location l on m.location_id = l.id
                                     LEFT join task t on m.task_id = t.id
         ');
-        dump($manageUsers);
-        die();
+        // dump($manageUsers);
+        // die();
 
         return view('User.listManageUser')->with('manageUsers', $manageUsers)->with('location_name', $location_name);
     }
