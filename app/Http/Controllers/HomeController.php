@@ -44,8 +44,9 @@ class HomeController extends Controller
 
         Auth::user()->activity = $activity;
 
-        $location = DB::select('select DISTINCT user_id, location_id, location_name from master 
+        $location = DB::select('select DISTINCT user_id, location_id, location_name, area_id, area_name from master 
                                 join location on master.location_id = location.id
+                                LEFT JOIN area on location.area_id = area.id
                                 where user_id = ?', [Auth::user()->id]);
         Auth::user()->location = $location;
 

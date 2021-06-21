@@ -307,7 +307,7 @@
                     </form> --}}
 
                     {{-- Location --}}
-                    <div class="dropdown ">
+                    <div class="dropdown mb-4">
                         <button class="btn btn-primary dropdown-toggle" type="button"
                             id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
                             aria-expanded="false">
@@ -319,6 +319,7 @@
                             aria-labelledby="dropdownMenuButton">
                             @foreach (Auth::user()->location as $item)
                                 {{-- <a class="dropdown-item" href="/home/{{$location}}">{{$location}}</a> --}}
+                                {{-- <a class="dropdown-item" href="/home/{{$item->location_id}}">{{$item->location_name}} - {{$item->area_name}}</a> --}}
                                 <a class="dropdown-item" href="/home/{{$item->location_id}}">{{$item->location_name}}</a>
                             @endforeach
                         </div>
