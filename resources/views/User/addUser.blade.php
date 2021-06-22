@@ -102,6 +102,7 @@
                                     @endif
                                 @endif
                             @endforeach
+                            {{-- <option value="100">100</option> --}}
                             {{-- @foreach ($level as $i=>$item)
                                 <option value="{{$item->id}}">{{$item->level_name}}</option>
                             @endforeach --}}
@@ -112,7 +113,7 @@
                         {{-- <div class="form-group col-md-4"></div> --}}
                         <div class="form-group col-md-12">
                             <label for="password">Password</label>
-                            <input type="password" class="form-control" name="location" id="password" placeholder="User Password...">
+                            <input type="password" class="form-control" name="password" id="password" placeholder="User Password...">
                             {{-- <input type="password" class="form-control" name="password" id="password" placeholder="User Password..."> --}}
                         </div>
                         {{-- <div class="form-group col-md-4"></div> --}}
@@ -127,6 +128,7 @@
                                 @foreach ($location as $item)
                                     <option value="{{$item->id}}">{{$item->location_name}} - {{$item->type_name}} - {{$item->area_name}}</option>
                                 @endforeach
+                                {{-- <option value="100">100</option> --}}
                             </select>
                         </div>
                         {{-- <div class="form-group col-md-4"></div> --}}

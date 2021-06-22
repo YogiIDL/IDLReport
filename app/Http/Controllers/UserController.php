@@ -82,9 +82,15 @@ class UserController extends Controller
     }
 
     public function saveUser($locationnow,Request $request){
+        // dump($request->task);
+        // die();
         $request->validate([
             'username' => 'required|regex:/^[a-zA-Z]+$/u|max:255',
-            'email' => 'required|email'
+            'email' => 'required|email',
+            'level' => 'required|exists:level,id',
+            'password' => 'required|min:8',
+            'location_id' => 'required|exists:location,id',
+            'task' => 'required|array|exists:task,id'
         ]);
 
         $this->userAuth();

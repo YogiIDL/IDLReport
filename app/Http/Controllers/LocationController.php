@@ -87,7 +87,9 @@ class LocationController extends Controller
 
     public function saveLocation($locationnow, Request $request){
         $request->validate([
-            'location_name' => 'required|regex:/^[a-zA-Z]+$/u|max:255'
+            'location_name' => 'required|regex:/^[a-zA-Z]+$/u|max:255',
+            'type_id' => 'required|exists:type,id',
+            'area_id' => 'required|exists:area,id'
         ]);
         // dump($request);
         // die();
@@ -134,7 +136,9 @@ class LocationController extends Controller
 
     public function saveEditLocation($locationnow, Request $request){
         $request->validate([
-            'location_name' => 'required|regex:/^[a-zA-Z]+$/u|max:255'
+            'location_name' => 'required|regex:/^[a-zA-Z]+$/u|max:255',
+            'type_id' => 'required|exists:type,id',
+            'area_id' => 'required|exists:area,id'
         ]);
         // dump($request);
         $type_id = (int)$request->type_id;
