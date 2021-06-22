@@ -110,7 +110,9 @@
                         </div>
                         <div class="form-group col-md-4">
                             <div class="col-sm-6">
-                                <button class="btn btn-lg btn-secondary">Cancel</button>
+                                {{-- <button class="btn btn-lg btn-secondary">Cancel</button> --}}
+                                {{-- <a href="/listLocation/{{Auth::user()->locationnow}}" class="btn btn-lg btn-secondary">Cancel</a> --}}
+                                <input type="reset" value="Cancel" class="btn btn-lg btn-secondary">
                             </div>
                         </div>
                         <div class="form-group col-md-2"></div>

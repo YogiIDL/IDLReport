@@ -78,7 +78,8 @@
                         </div>
                         <div class="form-group col-md-4">
                             <div class="col-sm-6">
-                                <button class="btn btn-lg btn-secondary">Cancel</button>
+                                <input type="reset" value="Cancel" class="btn btn-lg btn-secondary">
+                                {{-- <button class="btn btn-lg btn-secondary">Cancel</button> --}}
                             </div>
                         </div>
                         <div class="form-group col-md-2"></div>
