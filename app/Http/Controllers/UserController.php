@@ -211,7 +211,11 @@ class UserController extends Controller
                                 ');
         $users = DB::select('select * from users');
         $level = DB::select('select* from level');
-        $location = DB::select('select * from location');
+        // $location = DB::select('select * from location');
+        $location = DB::select('select l.*, t.type_name, a.area_name from location l
+        join type t on (l.type_id = t.id)
+        join area a on (l.area_id = a.id)
+        ');
         $task = DB::select('select * from task');
         $activity = DB::select('select * from activity');
 
@@ -255,20 +259,22 @@ class UserController extends Controller
 
         // dump($user);
 
-        return view('User.manageUser')->with('user', $user)->with('location_name', $location_name)->with('location_name', $location_name);
+        return view('User.manageUser')->with('user', $user)->with('location_name', $location_name)->with('location_name', $location_name)->with('level', $level);
     }
 
-    public function saveManageUser(Request $request){
+    public function saveManageUser($locationnow, Request $request){
+        $request->validate([
+            'user_id' => 'required|exists:users,id',
+            'location_id' => 'required|exists:location,id',
+            'level_id'=> 'required|exists:level,id',
+            'task_id' => 'required|exists:task,id',
+        ]);
+        
         $this->userAuth();
-
-        // return view('User.manageUser');
-        // return 'save manage user';
-        // $asd=1;
-        // dump($request->user_id);
-        DB::insert('insert into master (user_id, level_id, location_id, task_id, activity_id) values(?, ?, ?, ?,?)', [
-            $request->user_id,$asd, $request->location_id,  $request->task_id, $request->level_access_id
+        DB::insert('insert into master (user_id, level_id, location_id, task_id) values(?, ?, ?, ?)', [
+            $request->user_id,$request->location_id, $request->location_id,  $request->task_id
         ]);
 
-        return redirect('/listUser');
+        return redirect('/listManageUser/'.$locationnow);
     }
 }
