@@ -68,8 +68,12 @@ class ActivityController extends Controller
     }
 
     public function saveActivity($locationnow, Request $request){
+        $request->validate([
+            'activity_name' => 'required|unique:activity,activity_name',
+        ]);
+
         // DB::insert('insert into location (location_name, area_id) values(?, ?)', [$request->location_name, $request->area_id]);
-        DB::insert('insert into activity (activity_name) values(?)', [$request->name]);
+        DB::insert('insert into activity (activity_name) values(?)', [$request->activity_name]);
 
         return redirect('/listActivity/'.$locationnow);
     }
