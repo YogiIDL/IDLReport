@@ -39,6 +39,7 @@ Route::get('/home/{location_id}', 'HomeController@home');
     // Route::post('/addUser', 'UserController@saveUser');
     // Route::get('/listUser', 'UserController@listUser');
 
+    // Manaage Route
     Route::get('/listManageUser/{location_id}', 'UserController@listManageUser');
     Route::get('/manageUser/{location_id}', 'UserController@manageUser');
     Route::post('/saveManageUser/{location_id}', 'UserController@saveManageUser');

@@ -271,10 +271,23 @@ class UserController extends Controller
         ]);
         
         $this->userAuth();
-        DB::insert('insert into master (user_id, level_id, location_id, task_id) values(?, ?, ?, ?)', [
-            $request->user_id,$request->location_id, $request->location_id,  $request->task_id
-        ]);
 
-        return redirect('/listManageUser/'.$locationnow);
+        $check = DB::table('master')
+            ->where('user_id', '=', $request->user_id)
+            ->where('location_id', '=', $request->location_id)
+            ->where('level_id', '=', $request->level_id)
+            ->where('task_id', '=', $request->task_id)
+            ->exists();
+
+        // dump($check);
+        // die();
+        if($check){
+            return redirect('/manageUser/'.$locationnow)->with('error', 'Master record already exists');
+        }else{
+            DB::insert('insert into master (user_id, level_id, location_id, task_id) values(?, ?, ?, ?)', [
+                $request->user_id,$request->location_id, $request->location_id,  $request->task_id
+            ]);
+            return redirect('/listManageUser/'.$locationnow);
+        }
     }
 }
