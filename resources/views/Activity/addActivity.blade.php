@@ -51,7 +51,8 @@
 </div>
 @endif
 
-<div class="row">
+{{-- <div class="row"> --}}
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
     <a href="/listActivity/{{Auth::user()->locationnow}}" class="btn btn-info btn-icon-split">
         <span class="icon text-white-50">
             <i class="fas fa-arrow-left"></i>

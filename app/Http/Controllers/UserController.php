@@ -85,7 +85,7 @@ class UserController extends Controller
         // dump($request->task);
         // die();
         $request->validate([
-            'username' => 'required|regex:/^[a-zA-Z]+$/u|max:255',
+            'username' => 'required|regex:/^[a-zA-Z_ ]+$/u|max:255',
             'email' => 'required|email',
             'level' => 'required|exists:level,id',
             'password' => 'required|min:8',

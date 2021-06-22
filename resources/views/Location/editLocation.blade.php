@@ -1,6 +1,17 @@
 @extends('layouts.app')
 
 @section('content')
+
+<div class="row">
+{{-- <div class="d-sm-flex align-items-center justify-content-between mb-4"> --}}
+    <a href="/listLocation/{{Auth::user()->locationnow}}" class="btn btn-info btn-icon-split">
+        <span class="icon text-white-50">
+            <i class="fas fa-arrow-left"></i>
+        </span>
+        <span class="text">Back to List</span>
+    </a>
+</div>
+
 @if(count($errors) > 0)
 <div class="row">
     <div class="col-lg-3"></div>
