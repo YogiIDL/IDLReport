@@ -83,7 +83,6 @@ class DispatchController extends Controller
         $levelinlocation = DB::select('select * from master where user_id = ?
                                         && location_id = ? ', 
                                         [Auth::user()->id, $locationnow]);
-
         Auth::user()->levelinlocation = $levelinlocation[0]->level_id;
 
         // dump("add Dispatch");
@@ -92,6 +91,14 @@ class DispatchController extends Controller
     }
 
     public function searchDispatch($locationnow, Request $request){
+        $this->userAuth();
+        Auth::user()->locationnow = $locationnow;
+        $location_name = DB::select('select * from location where id = ?', [$locationnow]);
+        $location_name = $location_name[0];
+        $levelinlocation = DB::select('select * from master where user_id = ?
+                                        && location_id = ? ', 
+                                        [Auth::user()->id, $locationnow]);
+        Auth::user()->levelinlocation = $levelinlocation[0]->level_id;
 
         // dump(env('PAKET_ID'));
 
@@ -100,10 +107,16 @@ class DispatchController extends Controller
             'x-auth-key' => env('PAKET_ID')
         ])->get('https://api.mile.app/v2/task/'.$request->dispatch_id)->json();
 
-        // dump($response);
+        dump($response);
+        dump($response["_id"]);
+        $response = (object)$response;
+        dump($response);
+        dump($response->_id);
+        // var_dump($response);
 
-        die();
+        // die();
 
+        return view('Dispatch.addDispatch')->with('response',$response)->with('location_name', $location_name);
     }
 
     public function rest()
