@@ -69,7 +69,7 @@ class DispatchController extends Controller
             $item->biaya_perkilo = number_format($item->biaya_perkilo, 2, ',', '');
         }
 
-        dump($dispatch);
+        // dump($dispatch);
 
         // return view('Task.Dispatch')->with('location_name', $location_name);
         return view('Dispatch.listDispatch')->with('location_name', $location_name)->with('dispatch', $dispatch);
@@ -100,7 +100,7 @@ class DispatchController extends Controller
             'x-auth-key' => env('PAKET_ID')
         ])->get('https://api.mile.app/v2/task/'.$request->dispatch_id)->json();
 
-        dump($response);
+        // dump($response);
 
         die();
 
