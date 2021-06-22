@@ -74,7 +74,8 @@
                     <div class="form row">
                         {{-- <div class="form-group col-md-4"></div> --}}
                         <div class="form-group col-md-12">
-                            <label for="username">Username</label>
+                            <label for="username">Name</label>
+                            <small class="text-danger">* string only no symbols</small>
                             <input type="text" class="form-control" name="username" id="usernmae" placeholder="Username...">
                         </div>
                         {{-- <div class="form-group col-md-4"></div> --}}
