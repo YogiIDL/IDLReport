@@ -159,10 +159,19 @@ class LocationController extends Controller
 
     }
 
-    public function deleteLocation($locationnow, $id){
-        // dump("delete location");
-        DB::table('location')->where('id', $id)->delete();
-        return redirect('/listLocation/'.$locationnow);
+    public function deleteLocation($locationnow, $id, Request $request){
+
+        $check = DB::table('master')
+            ->where('user_id', '=', Auth::user()->id)
+            ->where('location_id', '=', $request->id)
+            ->exists();
+
+        if($check){
+            return redirect('/listLocation/'.$locationnow)->with('error', 'This user have record in this location');
+        }else{
+            DB::table('location')->where('id', $id)->delete();
+            return redirect('/listLocation/'.$locationnow);
+        }
     }
 
 }

@@ -9,11 +9,23 @@
         <span class="text">Add New Location</span>
     </a>
 </div>
+
+
 <div class="card shadow mb-4">
     <div class="card-header py-3">
         <h5 class="m-0 font-weigth-bold text-primary">List Location</h5>
     </div>
     <div class="card-body">
+    @if(session('success'))
+        <div class="alert alert-success">
+            {{'success'}}
+        </div>
+    @endif
+    @if(session('error'))
+        <div class="alert alert-danger">
+            {{session('error')}}
+        </div>
+    @endif
         <div class="table-responsive">
             <table class="table table-bordered table-hover" width="100%" cellspacing="0">
                 <thead>
