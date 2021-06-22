@@ -115,10 +115,35 @@ class AreaController extends Controller
         return redirect('/listArea/'.$locationnow);
     }
 
-    public function deleteArea($locationnow, $id){
+    public function deleteArea($locationnow, $id, Request $request){
+        // $check = DB::table('master')
+        //     ->where('user_id', '=', Auth::user()->id)
+        //     ->where('location_id', '=', $request->id)
+        //     ->exists();
+
+        // if($check){
+        //     return redirect('/listLocation/'.$locationnow)->with('error', 'This user have record in this location');
+        // }else{
+        //     DB::table('location')->where('id', $id)->delete();
+        //     return redirect('/listLocation/'.$locationnow);
+        // }
         // dump("deleteArea");
         // die();
-        DB::table('area')->where('id', $id)->delete();
-        return redirect('/listArea/'.$locationnow);
+        $check = DB::table('master')
+            ->leftjoin('location', 'master.location_id', '=', 'location.id')
+            ->where('user_id', '=', Auth::user()->id)
+            ->where('area_id', '=', $request->id)
+            // ->get();
+            // ->where('area_id', '=', $request->id)
+            // ->pluck('location_id');
+            ->exists();
+        if($check){
+            return redirect('/listArea/'.$locationnow)->with('error', 'This user have record in this area');
+        }else{
+            DB::table('area')->where('id', $id)->delete();
+            return redirect('/listArea/'.$locationnow);
+        }
+        // dump($check);
+        // die();
     }
 }

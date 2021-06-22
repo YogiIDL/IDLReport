@@ -14,6 +14,16 @@
         <h5 class="m-0 font-weigth-bold text-primary">List Area</h5>
     </div>
     <div class="card-body">
+        @if(session('success'))
+            <div class="alert alert-success">
+                {{'success'}}
+            </div>
+        @endif
+        @if(session('error'))
+            <div class="alert alert-danger">
+                {{session('error')}}
+            </div>
+        @endif
         <div class="table-responsive">
             <table class="table table-bordered table-hover" width="100%" cellspacing="0">
                 <thead>
