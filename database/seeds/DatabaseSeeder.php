@@ -28,6 +28,7 @@ class DatabaseSeeder extends Seeder
             UserActivitySeeder::class,
             MasterSeeder::class,
             DispatchSeeder::class,
+            TipeMobilSeeder::class,
     ]);
     }
 }
