@@ -41,7 +41,17 @@
                             <label for="kurir">Nama Kurir</label>
                             <input type="text" class="form-control" name="nama_kurir" value="{{$response->taskAssignedTo}}" placeholder="Nama Kurir">
                         </div>
-                        <div class="form-group col-lg-6 d-flex flex-row">
+                        
+                        <div class="form-group col-lg-6">
+                            <label for="tipe_mobil">Tipe Mobil</label>
+                            <select name="tipe_mobil_id" id="" class="form-control">
+                                <option value="" disabled selected hidden>Pilih Type</option>
+                                @foreach ($tipe_mobil as $item)
+                                    <option value="{{$item->id}}"> {{$item->tipe_mobil}} - {{$item->nopol}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        {{-- <div class="form-group col-lg-6 d-flex flex-row">
                             <div class="col-sm-6">
                                 <label for="kurir">No Polisi</label>
                                 <input type="text" class="form-control" name="nopol" placeholder="Nomor Polisi">
@@ -50,12 +60,12 @@
                                 <label for="kurir">Tipe Mobil</label>
                                 <input type="text" class="form-control" name="tipe_mobile" placeholder="Tipe Mobil">
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                     <div class="form row">
                         <div class="form-group col-md-6">
-                            <label for="tgl">Tanggal</label>
-                            <input type="text" class="form-control" name="tgl" id="tgl" value="{{$response->taskCreatedTime}}" placeholder="Tanggal">
+                            <label for="tanggal">Tanggal</label>
+                            <input type="text" class="form-control" name="tanggal" id="tanggal" value="{{$response->taskCreatedTime}}" placeholder="Tanggal">
                         </div>
                         <div class="form-group col-md-6">
                             <div class="col-md-12">
@@ -72,13 +82,13 @@
                         <div class="form-group col-md-6">
                             {{-- <div class="col-md-12"> --}}
                                 <label for="taskId">Task ID</label>
-                                <input type="text" class="form-control" name="taskId" id="taskId" value="{{$response->taskId}}" placeholder="Task ID">
+                                <input type="text" class="form-control" name="task_id" id="task_id" value="{{$response->taskId}}" placeholder="Task ID">
                             {{-- </div> --}}
                         </div>
                         <div class="form-group col-md-6">
                             <div class="col-md-12">
                                 <label for="flow">Task Name</label>
-                                <input type="text" class="form-control" name="task_name" id="taskName" value="{{$response->flow}}" placeholder="Task ID">
+                                <input type="text" class="form-control" name="task_name" id="task_name" value="{{$response->flow}}" placeholder="Task ID">
                             </div>
                         </div>
                     </div>

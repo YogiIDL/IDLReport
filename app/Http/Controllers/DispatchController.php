@@ -108,13 +108,101 @@ class DispatchController extends Controller
         $date = strtotime($response->taskCreatedTime);
         dump(date('d-m-Y h:i:s', $date));
 
-        return view('Dispatch.addDispatch')->with('response',$response)->with('location_name', $location_name);
+        $tipe_mobil = DB::select('select * from nopol LEFT join tipe_mobil on nopol.tipe_mobil_id = tipe_mobil.id');
+        dump($tipe_mobil);
+
+        // Attemp to know which week the date is
+        // $date1 = '2021-06-02';
+        // $day = '5';
+        // $dayofweek = date('w', strtotime($date1));
+        // $result    = date('Y-m-d', strtotime(($day - $dayofweek).' day', strtotime($date1)));
+        // dump("minggu ke -");
+        // dump($dayofweek);
+        // dump($result);
+
+        return view('Dispatch.addDispatch')->with('response',$response)->with('location_name', $location_name)->with('tipe_mobil', $tipe_mobil);
     }
 
     public function saveDispatch($locationnow, Request $request){
+        // dump($request);
+        // dump("save Dispatch");
+        // die();
+
+        // $noAwb = "decode json";
+        $noAwb = json_encode($request->noAwb);
+        // var_dump($noAwb);
+        // $beratAwb = "decode json";
+        $beratAwb = json_encode($request->beratAwb);
+        // var_dump($beratAwb);
+        // die();
+
+        // DB::insert('insert into dispatchs 
+        //     values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [
+        //     Auth::user()->id,
+        //     $locationnow,
+        //     $request->taskId,
+        //     $request->tgl,
+        //     $request->minggu,
+        //     $request->task_name,
+        //     $noAwb,
+        //     $beratAwb,
+        //     $request->bensin,
+        //     $request->tol,
+        //     $request->parkir,
+        //     $request->lainlain,
+        //     $request->kmAwal,
+        //     $request->kmIsi,
+        //     $request->kmAkhir
+        // ]);
         dump($request);
-        dump("save Dispatch");
-        die();
+        // die();
+        foreach($request->noAwb as $i=>$item){
+            // dump("1");
+            DB::table('dispatchs')->insert([
+                'user_id' => Auth::user()->id,
+                'location_id' => $locationnow,
+                'task_id' => $request->task_id,
+                'tanggal' => $request->tanggal,
+                'nama_kurir' => $request->nama_kurir,
+                'tipe_mobil_id' => $request->tipe_mobil_id,
+                'minggu' => $request->minggu,
+                'flow' => $request->task_name,
+                // 'no_awb' => $noAwb,
+                // 'berat_awb' => $beratAwb,
+                'no_awb' => $request->noAwb[$i],
+                'berat_awb' => $request->beratAwb[$i],
+                'bensin' => $request->bensin,
+                'tol' => $request->tol,
+                'parkir' => $request->parkir,
+                'lainlain' => $request->lainlain,
+                'km_awal' => $request->kmAwal,
+                'km_isi' => $request->kmIsi,
+                'km_akhir' => $request->kmAkhir
+            ]);
+        }
+        // die();
+
+        // DB::table('dispatchs')->insert([
+        //     'user_id' => Auth::user()->id,
+        //     'location_id' => $locationnow,
+        //     'task_id' => $request->task_id,
+        //     'tanggal' => $request->tanggal,
+        //     'nama_kurir' => $request->nama_kurir,
+        //     'tipe_mobil_id' => $request->tipe_mobil_id,
+        //     'minggu' => $request->minggu,
+        //     'flow' => $request->task_name,
+        //     'no_awb' => $noAwb,
+        //     'berat_awb' => $beratAwb,
+        //     'bensin' => $request->bensin,
+        //     'tol' => $request->tol,
+        //     'parkir' => $request->parkir,
+        //     'lainlain' => $request->lainlain,
+        //     'km_awal' => $request->kmAwal,
+        //     'km_isi' => $request->kmIsi,
+        //     'km_akhir' => $request->kmAkhir
+        // ]);
+
+        return redirect('/listDispatch/'.$locationnow);
     }
 
     public function rest()
