@@ -25,7 +25,7 @@
             </div>
         @endif
         <div class="table-responsive">
-            <table class="table table-bordered table-hover" width="100%" cellspacing="0">
+            <table class="table table-bordered table-hover text-gray-900" width="100%" cellspacing="0">
                 <thead>
                     <tr>
                         <th>#</th>
