@@ -100,26 +100,21 @@ class DispatchController extends Controller
                                         [Auth::user()->id, $locationnow]);
         Auth::user()->levelinlocation = $levelinlocation[0]->level_id;
 
-        // dump(env('PAKET_ID'));
-
-        // $response = Http::get('https://jsonplaceholder.typicode.com/posts')->json();
-        $response = Http::withHeaders([
-            'x-auth-key' => env('PAKET_ID')
-        ])->get('https://api.mile.app/v2/task/'.$request->dispatch_id)->json();
-
-        // dump($response);
-        // dump($response["_id"]);
+        $response = Http::withHeaders(['x-auth-key' => env('PAKET_ID')])
+            ->get('https://api.mile.app/v2/task/'.$request->dispatch_id)->json();
         $response = (object)$response;
+
         dump($response);
         $date = strtotime($response->taskCreatedTime);
         dump(date('d-m-Y h:i:s', $date));
 
-        // dump($date);
-        // var_dump($response);
-
-        // die();
-
         return view('Dispatch.addDispatch')->with('response',$response)->with('location_name', $location_name);
+    }
+
+    public function saveDispatch($locationnow, Request $request){
+        dump($request);
+        dump("save Dispatch");
+        die();
     }
 
     public function rest()

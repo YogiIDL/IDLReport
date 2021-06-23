@@ -34,7 +34,7 @@
                     </form>
                 </div>
 
-                <form action="#" method="POST">
+                <form action="/saveDispatch/{{Auth::user()->locationnow}}" method="POST" class="text-gray-900 font-weight-bold">
                     {{ csrf_field() }}
                     <div class="form row">
                         <div class="form-group col-lg-6">
@@ -55,7 +55,7 @@
                     <div class="form row">
                         <div class="form-group col-md-6">
                             <label for="tgl">Tanggal</label>
-                            <input type="date" class="form-control" name="tgl" id="tgl" value="{{$response->taskCreatedTime}}" placeholder="Tanggal">
+                            <input type="text" class="form-control" name="tgl" id="tgl" value="{{$response->taskCreatedTime}}" placeholder="Tanggal">
                         </div>
                         <div class="form-group col-md-6">
                             <div class="col-md-12">
@@ -65,23 +65,29 @@
                         </div>
                     </div>
                     <div class="form row">
-                        <div class="form-group col-md-6">
+                        {{-- <div class="form-group col-md-6">
                             <label for="noPickUp">No Pick Up</label>
                             <input type="text" class="form-control" name="noPickUp" id="noPickUp" placeholder="No Pick Up">
-                        </div>                    
+                        </div>                     --}}
                         <div class="form-group col-md-6">
-                            <div class="col-md-12">
+                            {{-- <div class="col-md-12"> --}}
                                 <label for="taskId">Task ID</label>
                                 <input type="text" class="form-control" name="taskId" id="taskId" value="{{$response->taskId}}" placeholder="Task ID">
+                            {{-- </div> --}}
+                        </div>
+                        <div class="form-group col-md-6">
+                            <div class="col-md-12">
+                                <label for="flow">Task Name</label>
+                                <input type="text" class="form-control" name="task_name" id="taskName" value="{{$response->flow}}" placeholder="Task ID">
                             </div>
                         </div>
                     </div>
-                    <div class="form row">
+                    {{-- <div class="form row">
                         <div class="form-group col-md-6">
                             <label for="flow">Task Name</label>
                             <input type="text" class="form-control" name="task_name" id="taskName" value="{{$response->flow}}" placeholder="Task ID">
                         </div>
-                    </div>
+                    </div> --}}
                     @foreach ($response->UserVar["packageList"] as $item)
                         <div class="form row">
                             <div class="form-group col-md-6">
