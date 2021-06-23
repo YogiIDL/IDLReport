@@ -107,11 +107,14 @@ class DispatchController extends Controller
             'x-auth-key' => env('PAKET_ID')
         ])->get('https://api.mile.app/v2/task/'.$request->dispatch_id)->json();
 
-        dump($response);
-        dump($response["_id"]);
+        // dump($response);
+        // dump($response["_id"]);
         $response = (object)$response;
         dump($response);
-        dump($response->_id);
+        $date = strtotime($response->taskCreatedTime);
+        dump(date('d-m-Y h:i:s', $date));
+
+        // dump($date);
         // var_dump($response);
 
         // die();

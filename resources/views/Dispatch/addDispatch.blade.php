@@ -55,7 +55,7 @@
                     <div class="form row">
                         <div class="form-group col-md-6">
                             <label for="tgl">Tanggal</label>
-                            <input type="date" class="form-control" name="tgl" id="tgl" placeholder="Tanggal">
+                            <input type="date" class="form-control" name="tgl" id="tgl" value="{{$response->taskCreatedTime}}" placeholder="Tanggal">
                         </div>
                         <div class="form-group col-md-6">
                             <div class="col-md-12">
@@ -72,7 +72,7 @@
                         <div class="form-group col-md-6">
                             <div class="col-md-12">
                                 <label for="taskId">Task ID</label>
-                                <input type="text" class="form-control" name="taskId" id="taskId" placeholder="Task ID">
+                                <input type="text" class="form-control" name="taskId" id="taskId" value="{{$response->taskId}}" placeholder="Task ID">
                             </div>
                         </div>
                     </div>
