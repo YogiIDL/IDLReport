@@ -126,29 +126,29 @@ class DispatchController extends Controller
     }
 
     public function saveDispatch($locationnow, Request $request){
-        $request->validate([
-            'task_id' => 'required|unique:dispatchs'
-        ]);
-        dump("need to validate request");
-        dump($request);
-        die();
         // $request->validate([
-        //     'task_id' => 'required|unique:dispatchs,task_id',
-        //     'nama_kurir' => 'required|regex:/^[a-zA-Z_ ]+$/u|max:255',
-        //     'tipe_mobil_id' => 'required|exists:nopol,id',
-        //     'tanggal' => 'required',
-        //     'minggu' => 'required',
-        //     'task_name' => 'required|regex:/^[a-zA-Z_ ]+$/u|max:255',
-        //     'noAwb' => 'required|array',
-        //     'beratAwb' => 'required|array',
-        //     'bensin' => 'nullable:integer',
-        //     'tol' => 'nullable:integer',
-        //     'parkir' => 'nullable:integer',
-        //     'lainlain' => 'nullable:integer',
-        //     'kmAwal' => 'integer',
-        //     'kmIsi' => 'integer',
-        //     'kmAkhir' => 'integer',
+        //     'task_id' => 'required|unique:dispatchs,task_id'
         // ]);
+        // dump("need to validate request");
+        // dump($request);
+        // die();
+        $request->validate([
+            'task_id' => 'required|unique:dispatchs,task_id',
+            'nama_kurir' => 'required|regex:/^[a-zA-Z_ ]([\w -]*[a-zA-Z])+$/u|max:255',
+            'tipe_mobil_id' => 'required|exists:nopol,id',
+            'tanggal' => 'required',
+            'minggu' => 'required',
+            'task_name' => 'required|regex:/^[a-zA-Z_ ]+$/u|max:255',
+            'noAwb' => 'required|array',
+            'beratAwb' => 'required|array',
+            'bensin' => 'nullable:integer',
+            'tol' => 'nullable:integer',
+            'parkir' => 'nullable:integer',
+            'lainlain' => 'nullable:integer',
+            'kmAwal' => 'required|integer',
+            'kmIsi' => 'required|integer',
+            'kmAkhir' => 'required|integer',
+        ]);
         // $request->validate([
         //     'task_id' => 'required|unique:dispatchs,task_id',
         // ]);
