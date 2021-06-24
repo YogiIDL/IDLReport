@@ -30,6 +30,7 @@ class DatabaseSeeder extends Seeder
             DispatchSeeder::class,
             TipeMobilSeeder::class,
             NopolSeeder::class,
+            DispatchsSeeder::class,
     ]);
     }
 }
