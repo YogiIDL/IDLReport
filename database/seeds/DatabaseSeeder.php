@@ -31,6 +31,7 @@ class DatabaseSeeder extends Seeder
             TipeMobilSeeder::class,
             NopolSeeder::class,
             DispatchsSeeder::class,
+            AwbSeeder::class,
     ]);
     }
 }
