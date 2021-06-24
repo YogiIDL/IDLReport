@@ -23,8 +23,8 @@ class CreateDispatchsTable extends Migration
             $table->date('tanggal')->nullable();
             $table->string('minggu')->nullable();
             $table->string('flow');
-            $table->string('no_awb');
-            $table->string('berat_awb');
+            // $table->string('no_awb');
+            // $table->string('berat_awb');
             $table->bigInteger('bensin')->nullable();
             $table->bigInteger('tol')->nullable();
             $table->bigInteger('parkir')->nullable();
