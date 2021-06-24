@@ -128,14 +128,6 @@ class DispatchController extends Controller
         // dump("save Dispatch");
         // die();
 
-        // $noAwb = "decode json";
-        $noAwb = json_encode($request->noAwb);
-        // var_dump($noAwb);
-        // $beratAwb = "decode json";
-        $beratAwb = json_encode($request->beratAwb);
-        // var_dump($beratAwb);
-        // die();
-
         // DB::insert('insert into dispatchs 
         //     values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [
         //     Auth::user()->id,
@@ -154,32 +146,35 @@ class DispatchController extends Controller
         //     $request->kmIsi,
         //     $request->kmAkhir
         // ]);
-        dump($request);
-        // die();
+        DB::table('dispatchs')->insert([
+            'user_id' => Auth::user()->id,
+            'location_id' => $locationnow,
+            'task_id' => $request->task_id,
+            'tanggal' => $request->tanggal,
+            'nama_kurir' => $request->nama_kurir,
+            'tipe_mobil_id' => $request->tipe_mobil_id,
+            'minggu' => $request->minggu,
+            'flow' => $request->task_name,
+            // 'no_awb' => $noAwb,
+            // 'berat_awb' => $beratAwb,
+            'no_awb' => $request->noAwb[0],
+            'berat_awb' => $request->beratAwb[0],
+            'bensin' => $request->bensin,
+            'tol' => $request->tol,
+            'parkir' => $request->parkir,
+            'lainlain' => $request->lainlain,
+            'km_awal' => $request->kmAwal,
+            'km_isi' => $request->kmIsi,
+            'km_akhir' => $request->kmAkhir
+        ]);
         foreach($request->noAwb as $i=>$item){
-            // dump("1");
-            DB::table('dispatchs')->insert([
-                'user_id' => Auth::user()->id,
-                'location_id' => $locationnow,
+            DB::table('awb')->insert([
                 'task_id' => $request->task_id,
-                'tanggal' => $request->tanggal,
-                'nama_kurir' => $request->nama_kurir,
-                'tipe_mobil_id' => $request->tipe_mobil_id,
-                'minggu' => $request->minggu,
-                'flow' => $request->task_name,
-                // 'no_awb' => $noAwb,
-                // 'berat_awb' => $beratAwb,
                 'no_awb' => $request->noAwb[$i],
-                'berat_awb' => $request->beratAwb[$i],
-                'bensin' => $request->bensin,
-                'tol' => $request->tol,
-                'parkir' => $request->parkir,
-                'lainlain' => $request->lainlain,
-                'km_awal' => $request->kmAwal,
-                'km_isi' => $request->kmIsi,
-                'km_akhir' => $request->kmAkhir
+                'berat_awb' => $request->beratAwb[$i]
             ]);
         }
+
         // die();
 
         // DB::table('dispatchs')->insert([
