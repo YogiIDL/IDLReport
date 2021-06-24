@@ -19,6 +19,23 @@
                 <h5 class="m-0 font-weigth-bold text-primary">Add Dispatch</h5>
             </div>
             <div class="card-body">
+                @if(count($errors) > 0)
+                    @foreach ($errors->all() as $error)
+                        <div class="alert alert-danger">
+                            {{$error}}
+                        </div>
+                    @endforeach
+                @endif
+                @if(session('success'))
+                    <div class="alert alert-success">
+                        {{'success'}}
+                    </div>
+                @endif
+                @if(session('error'))
+                    <div class="alert alert-danger">
+                        {{session('error')}}
+                    </div>
+                @endif
                 {{-- Search Report with API --}}
                 <div class="row">
                     <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">

@@ -106,12 +106,12 @@ class DispatchController extends Controller
             ->get('https://api.mile.app/v2/task/'.$request->dispatch_id)->json();
         $response = (object)$response;
 
-        dump($response);
+        // dump($response);
         $date = strtotime($response->taskCreatedTime);
-        dump(date('d-m-Y h:i:s', $date));
+        // dump(date('d-m-Y h:i:s', $date));
 
         $tipe_mobil = DB::select('select * from nopol LEFT join tipe_mobil on nopol.tipe_mobil_id = tipe_mobil.id');
-        dump($tipe_mobil);
+        // dump($tipe_mobil);
 
         // Attemp to know which week the date is
         // $date1 = '2021-06-02';
@@ -126,6 +126,32 @@ class DispatchController extends Controller
     }
 
     public function saveDispatch($locationnow, Request $request){
+        $request->validate([
+            'task_id' => 'required|unique:dispatchs'
+        ]);
+        dump("need to validate request");
+        dump($request);
+        die();
+        // $request->validate([
+        //     'task_id' => 'required|unique:dispatchs,task_id',
+        //     'nama_kurir' => 'required|regex:/^[a-zA-Z_ ]+$/u|max:255',
+        //     'tipe_mobil_id' => 'required|exists:nopol,id',
+        //     'tanggal' => 'required',
+        //     'minggu' => 'required',
+        //     'task_name' => 'required|regex:/^[a-zA-Z_ ]+$/u|max:255',
+        //     'noAwb' => 'required|array',
+        //     'beratAwb' => 'required|array',
+        //     'bensin' => 'nullable:integer',
+        //     'tol' => 'nullable:integer',
+        //     'parkir' => 'nullable:integer',
+        //     'lainlain' => 'nullable:integer',
+        //     'kmAwal' => 'integer',
+        //     'kmIsi' => 'integer',
+        //     'kmAkhir' => 'integer',
+        // ]);
+        // $request->validate([
+        //     'task_id' => 'required|unique:dispatchs,task_id',
+        // ]);
         // dump($request);
         // dump("save Dispatch");
         // die();

@@ -21,7 +21,7 @@
 
     <div class="ml-auto p-2">
         {{-- <form action="{{url('addUser')}}/{{Auth::user()->locationnow}}" method="POST"> --}}
-        <form action="/searchDispatch/{{Auth::user()->locationnow}}" method="POST" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+        <form action="/searchDispatch/{{Auth::user()->locationnow}}" method="GET" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
             {{csrf_field()}}
             <div class="input-group">
                 <input type="text" name="dispatch_id" class="form-control border-10 small" placeholder="Search for..." aria-label="Search"aria-describedby="basic-addon2">
@@ -48,7 +48,7 @@
                         <th>#</th>
                         <th>Task Id</th>
                         <th>Nama Kurir</th>
-                        <th>Flwow</th>
+                        <th>Flow task</th>
                         <th>Tipe Mobil</th>
                         <th>Minggu Ke-</th>
                         <th>Total Biaya</th>

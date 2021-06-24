@@ -76,6 +76,7 @@ Route::get('/home/{location_id}', 'HomeController@home');
     Route::get('/listDispatch/{location_id}', 'DispatchController@listDispatch');
     Route::get('/addDispatch/{location_id}', 'DispatchController@addDispatch');
     Route::post('/searchDispatch/{location_id}', 'DispatchController@searchDispatch');
+    Route::get('/searchDispatch/{location_id}', 'DispatchController@searchDispatch');
     Route::post('/saveDispatch/{location_id}', 'DispatchController@saveDispatch');
     // Route::get('/searchDispatch/{location_id}', 'DispatchController@searchDispatch');
     Route::get('/detailDispatch/{location_id}/{dispatch_id}', 'DispatchController@detailDispatch');
@@ -96,6 +97,8 @@ Route::middleware(['checklocationuser'])->group(function () {
 
 // Testing Location user with __construc method
 Route::get('/test/{location_id}', 'TestController@index');
+
+Route::get('/api/user', 'TestController@index');
 
 // Testing Check level user
 // Route::middleware(['checkleveluser'])->group(function () {
