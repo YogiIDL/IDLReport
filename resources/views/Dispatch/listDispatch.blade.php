@@ -59,7 +59,11 @@
                     @foreach ($dispatch as $item)
                         <tr>
                             <td>{{$item->id}}</td>
-                            <td>{{$item->task_id}}</td>
+                            <td>
+                                <a href="/detailDispatch/{{Auth::user()->locationnow}}/{{$item->task_id}}">
+                                    {{$item->task_id}}
+                                </a>
+                            </td>
                             <td>{{$item->nama_kurir}}</td>
                             <td>{{$item->flow}}</td>
                             <td>{{$item->tipe_mobil}} - {{$item->nopol}}</td>

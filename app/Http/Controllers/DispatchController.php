@@ -69,6 +69,7 @@ class DispatchController extends Controller
             $item->jarak = $item->km_akhir - $item->km_awal;
         }
 
+        dump(Auth::user());
         dump($dispatch);
         // die();
 
