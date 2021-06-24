@@ -46,12 +46,11 @@
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>No Pick Up</th>
                         <th>Task Id</th>
-                        <th>Kurir</th>
-                        <th>Tipe Mobile</th>
+                        <th>Nama Kurir</th>
+                        <th>Flwow</th>
+                        <th>Tipe Mobil</th>
                         <th>Minggu Ke-</th>
-                        <th>Total Berat</th>
                         <th>Total Biaya</th>
                         <th>Jarak</th>
                     </tr>
@@ -60,12 +59,11 @@
                     @foreach ($dispatch as $item)
                         <tr>
                             <td>{{$item->id}}</td>
-                            <td>{{$item->nopickup}}</td>
-                            <td>{{$item->taskid}}</td>
-                            <td>{{$item->kurir}}</td>
-                            <td>{{$item->tipe_mobil}}</td>
+                            <td>{{$item->task_id}}</td>
+                            <td>{{$item->nama_kurir}}</td>
+                            <td>{{$item->flow}}</td>
+                            <td>{{$item->tipe_mobil}} - {{$item->nopol}}</td>
                             <td>{{$item->minggu}}</td>
-                            <td>{{$item->total_berat}} kg</td>
                             <td>{{$item->total_biaya}}</td>
                             <td>{{$item->jarak}} km</td>
                         </tr>

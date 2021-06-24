@@ -47,29 +47,30 @@ class DispatchController extends Controller
         $levelinlocation = DB::select('select * from master where user_id = ?
                                         && location_id = ? ', 
                                         [Auth::user()->id, $locationnow]);
-
         Auth::user()->levelinlocation = $levelinlocation[0]->level_id;
 
-        $dispatch = DB::select('select * from dispatch');
-
-        // die();
+        $dispatch = DB::select('select * from dispatchs
+            left join nopol on dispatchs.tipe_mobil_id = nopol.id
+            left join tipe_mobil on nopol.tipe_mobil_id = tipe_mobil.id');
+        // foreach($dispatch as $item){
+        //     // Hitung total berat semua AWB
+        //     $item->total_berat = $item->berat_awb_first_pickup + $item->berat_awb_handover_outbound + $item->berat_awb_handover_inbound + $item->berat_awb_delivery;
+        //     // Hitung total Biaya
+        //     $item->total_biaya = $item->bensin + $item->tol +$item->parkir+$item->lainlain;
+        //     // Hitung jarak
+        //     $item->jarak = $item->km_akhir - $item->km_awal;
+        //     // Biaya perkilo
+        //     $item->biaya_perkilo = $item->total_biaya/$item->total_berat;
+        //     $item->biaya_perkilo = number_format($item->biaya_perkilo, 2, ',', '');
+        // }
 
         foreach($dispatch as $item){
-            // Hitung total berat semua AWB
-            $item->total_berat = $item->berat_awb_first_pickup + $item->berat_awb_handover_outbound + $item->berat_awb_handover_inbound + $item->berat_awb_delivery;
-
-            // Hitung total Biaya
-            $item->total_biaya = $item->bensin + $item->tol +$item->parkir+$item->lainlain;
-
-            // Hitung jarak
+            $item->total_biaya = $item->bensin + $item->tol + $item->parkir + $item->lainlain;
             $item->jarak = $item->km_akhir - $item->km_awal;
-            
-            // Biaya perkilo
-            $item->biaya_perkilo = $item->total_biaya/$item->total_berat;
-            $item->biaya_perkilo = number_format($item->biaya_perkilo, 2, ',', '');
         }
 
-        // dump($dispatch);
+        dump($dispatch);
+        // die();
 
         // return view('Task.Dispatch')->with('location_name', $location_name);
         return view('Dispatch.listDispatch')->with('location_name', $location_name)->with('dispatch', $dispatch);
@@ -198,6 +199,11 @@ class DispatchController extends Controller
         // ]);
 
         return redirect('/listDispatch/'.$locationnow);
+    }
+
+    public function detailDispatch(){
+        dump("detail dispatch");
+        die();
     }
 
     public function rest()
