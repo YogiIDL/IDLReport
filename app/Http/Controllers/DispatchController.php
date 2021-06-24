@@ -102,7 +102,7 @@ class DispatchController extends Controller
             ->get('https://api.mile.app/v2/task/'.$request->dispatch_id)->json();
         $response = (object)$response;
 
-        // dump($response);
+        dump($response);
         $date = strtotime($response->taskCreatedTime);
         // dump(date('d-m-Y h:i:s', $date));
 

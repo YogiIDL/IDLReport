@@ -76,7 +76,7 @@
                         <div class="form-group col-md-2"></div>
                         <div class="form-group col-md-8">
                             <label for="location">Location</label>
-                            <input type="text" class="form-control" name="location_name" id="location_name" placeholder="Location...">
+                            <input type="text" class="form-control" name="location_name" id="location_name" value="{{old('location_name')}}" placeholder="Location...">
                         </div>
                         <div class="form-group col-md-2"></div>
                     </div>

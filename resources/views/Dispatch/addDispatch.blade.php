@@ -56,7 +56,8 @@
                     <div class="form row">
                         <div class="form-group col-lg-6">
                             <label for="kurir">Nama Kurir</label>
-                            <input type="text" class="form-control" name="nama_kurir" value="{{$response->taskAssignedTo}}" placeholder="Nama Kurir">
+                            {{-- <input type="text" class="form-control" name="nama_kurir" value="{{$response->taskAssignedTo}}" placeholder="Nama Kurir"> --}}
+                            <input type="text" class="form-control" name="nama_kurir" value="{{$response->assignedTo["full_name"]}}" placeholder="Nama Kurir">
                         </div>
                         
                         <div class="form-group col-lg-6">
@@ -119,15 +120,6 @@
                         <div class="form row">
                             <div class="form-group col-md-6">
                                 <label for="awb">No AWB</label>
-                                {{-- @php
-                                    if(isset($item["connote_code"]))
-                                        dump("a");
-                                    else 
-                                        dump("n");
-                                    
-                                    dump($item);
-                                    die();
-                                @endphp --}}
                                 @if (isset($item["connote_code"]))k
                                     <input type="text" class="form-control" name="noAwb[]" id="noAwb" value="{{$item["connote_code"]}}" placeholder="Task ID">
                                 @else
@@ -142,8 +134,10 @@
                                 @endphp
                                 @if (isset($item["koli_wight"]))
                                     <input type="text" class="form-control" name="beratAwb[]" id="beratAwb" value="{{$item["koli_weight"]}}" placeholder="Task ID">
-                                @else
+                                @elseif (isset($item["chargeableWeight"]))
                                     <input type="text" class="form-control" name="beratAwb[]" id="beratAwb" value="{{$item["chargeableWeight"]}}" placeholder="Task ID">
+                                @else
+                                    <input type="text" class="form-control" name="beratAwb[]" id="beratAwb" value="0" placeholder="Task ID">
                                 @endif
                             </div>
                         </div>
@@ -152,22 +146,22 @@
                     <div class="form row">
                         <div class="form-group col-md-3">
                             <label for="bensin">Bensin</label>
-                            <input type="text" class="form-control" name="bensin" id="bensin" placeholder="Bensin...">
+                            <input type="text" class="form-control" name="bensin" id="bensin"  value="{{old('bensin')}}" placeholder="Bensin...">
                         </div>                    
                         <div class="form-group col-md-3">
                             <div class="col-md-12">
                                 <label for="tol">Tol</label>
-                                <input type="text" class="form-control" name="tol" id="tol" placeholder="Tol">
+                                <input type="text" class="form-control" name="tol" id="tol" value="{{old('tol')}}" placeholder="Tol">
                             </div>
                         </div>
                         <div class="form-group col-md-3">
                             <label for="parkir">Parkir</label>
-                            <input type="text" class="form-control" name="parkir" id="parkir" placeholder="Parkir">
+                            <input type="text" class="form-control" name="parkir" id="parkir" value="{{old('parkir')}}" placeholder="Parkir">
                         </div>                    
                         <div class="form-group col-md-3">
                             <div class="col-md-12">
                                 <label for="lainlain">Biaya Lain-lain</label>
-                                <input type="text" class="form-control" name="lainlain" id="lainlain" placeholder="Biaya Lain-lain...">
+                                <input type="text" class="form-control" name="lainlain" id="lainlain" value="{{old('lainlain')}}" placeholder="Biaya Lain-lain...">
                             </div>
                         </div>
                     </div>
@@ -175,15 +169,15 @@
                     <div class="form row">
                         <div class="form-group col-md-4">
                             <label for="kmAwal">Km. Awal</label>
-                            <input type="text" class="form-control" name="kmAwal" id="kmAwal" placeholder="Km. Awal">
+                            <input type="text" class="form-control" name="kmAwal" id="kmAwal" value="{{old('kmAwal')}}" placeholder="Km. Awal">
                         </div>
                         <div class="form-group col-md-4">
                             <label for="kmIsi">Km. Isi</label>
-                            <input type="text" class="form-control" name="kmIsi" id="kmIsi" placeholder="Km. Isi">
+                            <input type="text" class="form-control" name="kmIsi" id="kmIsi" value="{{old('kmIsi')}}" placeholder="Km. Isi">
                         </div>
                         <div class="form-group col-md-4">
                             <label for="kmAkhir">Km. Akhir</label>
-                            <input type="text" class="form-control" name="kmAkhir" id="kmAkhir" placeholder="Km. Akhir">
+                            <input type="text" class="form-control" name="kmAkhir" id="kmAkhir" value="{{old('kmAkhir')}}" placeholder="Km. Akhir">
                         </div>
                     </div>
                     <div class="row">
