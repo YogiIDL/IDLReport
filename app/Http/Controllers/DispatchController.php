@@ -69,10 +69,6 @@ class DispatchController extends Controller
             $item->jarak = $item->km_akhir - $item->km_awal;
         }
 
-        dump(Auth::user());
-        dump($dispatch);
-        // die();
-
         // return view('Task.Dispatch')->with('location_name', $location_name);
         return view('Dispatch.listDispatch')->with('location_name', $location_name)->with('dispatch', $dispatch);
     }
@@ -126,12 +122,6 @@ class DispatchController extends Controller
     }
 
     public function saveDispatch($locationnow, Request $request){
-        // $request->validate([
-        //     'task_id' => 'required|unique:dispatchs,task_id'
-        // ]);
-        // dump("need to validate request");
-        // dump($request);
-        // die();
         $request->validate([
             'task_id' => 'required|unique:dispatchs,task_id',
             'nama_kurir' => 'required|regex:/^[a-zA-Z_ ]([\w -]*[a-zA-Z])+$/u|max:255',
@@ -149,31 +139,7 @@ class DispatchController extends Controller
             'kmIsi' => 'required|integer',
             'kmAkhir' => 'required|integer',
         ]);
-        // $request->validate([
-        //     'task_id' => 'required|unique:dispatchs,task_id',
-        // ]);
-        // dump($request);
-        // dump("save Dispatch");
-        // die();
 
-        // DB::insert('insert into dispatchs 
-        //     values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [
-        //     Auth::user()->id,
-        //     $locationnow,
-        //     $request->taskId,
-        //     $request->tgl,
-        //     $request->minggu,
-        //     $request->task_name,
-        //     $noAwb,
-        //     $beratAwb,
-        //     $request->bensin,
-        //     $request->tol,
-        //     $request->parkir,
-        //     $request->lainlain,
-        //     $request->kmAwal,
-        //     $request->kmIsi,
-        //     $request->kmAkhir
-        // ]);
         DB::table('dispatchs')->insert([
             'user_id' => Auth::user()->id,
             'location_id' => $locationnow,
@@ -195,6 +161,7 @@ class DispatchController extends Controller
             'km_isi' => $request->kmIsi,
             'km_akhir' => $request->kmAkhir
         ]);
+
         foreach($request->noAwb as $i=>$item){
             DB::table('awb')->insert([
                 'task_id' => $request->task_id,
@@ -202,28 +169,6 @@ class DispatchController extends Controller
                 'berat_awb' => $request->beratAwb[$i]
             ]);
         }
-
-        // die();
-
-        // DB::table('dispatchs')->insert([
-        //     'user_id' => Auth::user()->id,
-        //     'location_id' => $locationnow,
-        //     'task_id' => $request->task_id,
-        //     'tanggal' => $request->tanggal,
-        //     'nama_kurir' => $request->nama_kurir,
-        //     'tipe_mobil_id' => $request->tipe_mobil_id,
-        //     'minggu' => $request->minggu,
-        //     'flow' => $request->task_name,
-        //     'no_awb' => $noAwb,
-        //     'berat_awb' => $beratAwb,
-        //     'bensin' => $request->bensin,
-        //     'tol' => $request->tol,
-        //     'parkir' => $request->parkir,
-        //     'lainlain' => $request->lainlain,
-        //     'km_awal' => $request->kmAwal,
-        //     'km_isi' => $request->kmIsi,
-        //     'km_akhir' => $request->kmAkhir
-        // ]);
 
         return redirect('/listDispatch/'.$locationnow);
     }

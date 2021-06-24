@@ -119,11 +119,32 @@
                         <div class="form row">
                             <div class="form-group col-md-6">
                                 <label for="awb">No AWB</label>
-                                <input type="text" class="form-control" name="noAwb[]" id="noAwb" value="{{$item["connote_code"]}}" placeholder="Task ID">
+                                {{-- @php
+                                    if(isset($item["connote_code"]))
+                                        dump("a");
+                                    else 
+                                        dump("n");
+                                    
+                                    dump($item);
+                                    die();
+                                @endphp --}}
+                                @if (isset($item["connote_code"]))k
+                                    <input type="text" class="form-control" name="noAwb[]" id="noAwb" value="{{$item["connote_code"]}}" placeholder="Task ID">
+                                @else
+                                    <input type="text" class="form-control" name="noAwb[]" id="noAwb" value="{{$item["id"]}}" placeholder="Task ID">
+                                @endif
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="awb">Berat AWB</label>
-                                <input type="text" class="form-control" name="beratAwb[]" id="beratAwb" value="{{$item["koli_weight"]}}" placeholder="Task ID">
+                                @php
+                                    // dump($item);
+                                    // die();
+                                @endphp
+                                @if (isset($item["koli_wight"]))
+                                    <input type="text" class="form-control" name="beratAwb[]" id="beratAwb" value="{{$item["koli_weight"]}}" placeholder="Task ID">
+                                @else
+                                    <input type="text" class="form-control" name="beratAwb[]" id="beratAwb" value="{{$item["chargeableWeight"]}}" placeholder="Task ID">
+                                @endif
                             </div>
                         </div>
                     @endforeach
