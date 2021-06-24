@@ -25,10 +25,10 @@ class CreateDispatchsTable extends Migration
             $table->string('flow');
             // $table->string('no_awb');
             // $table->string('berat_awb');
-            $table->bigInteger('bensin')->nullable();
-            $table->bigInteger('tol')->nullable();
-            $table->bigInteger('parkir')->nullable();
-            $table->bigInteger('lainlain')->nullable();
+            $table->bigInteger('bensin')->default('0');
+            $table->bigInteger('tol')->default('0');
+            $table->bigInteger('parkir')->default('0');
+            $table->bigInteger('lainlain')->default('0');
             $table->bigInteger('km_awal')->nullable();
             $table->bigInteger('km_isi')->nullable();
             $table->bigInteger('km_akhir')->nullable();
