@@ -173,9 +173,28 @@ class DispatchController extends Controller
         return redirect('/listDispatch/'.$locationnow);
     }
 
-    public function detailDispatch(){
-        dump("detail dispatch");
-        die();
+    public function detailDispatch($locationnow, $taskId){
+        $this->userAuth();
+        Auth::user()->locationnow = $locationnow;
+        $location_name = DB::select('select * from location where id = ?', [$locationnow]);
+        $location_name = $location_name[0];
+        $levelinlocation = DB::select('select * from master where user_id = ?
+                                        && location_id = ? ', 
+                                        [Auth::user()->id, $locationnow]);
+        Auth::user()->levelinlocation = $levelinlocation[0]->level_id;
+
+        $dispatch = DB::select('select * from dispatchs d
+            left join nopol n on d.tipe_mobil_id = n.id
+            where task_id = ?', [$taskId]);
+        $dispatch = $dispatch[0];
+        // $dispatch = DB::table('dispatchs')->where('task_id', $taskId)->first();
+        $awb = DB::select('select * from awb where task_id = ?', [$taskId]);
+        // $awb = DB::table('awb')->where('task_id', $taskId)->get();
+        $dispatch->packageList = $awb;
+
+        dump($dispatch);
+
+        return view('Dispatch.detailDispatch')->with('location_name', $location_name)->with('dispatch', $dispatch);
     }
 
     public function rest()

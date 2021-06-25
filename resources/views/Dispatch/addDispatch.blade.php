@@ -132,7 +132,7 @@
                                     // dump($item);
                                     // die();
                                 @endphp
-                                @if (isset($item["koli_wight"]))
+                                @if (isset($item["koli_weight"]))
                                     <input type="text" class="form-control" name="beratAwb[]" id="beratAwb" value="{{$item["koli_weight"]}}" placeholder="Task ID">
                                 @elseif (isset($item["chargeableWeight"]))
                                     <input type="text" class="form-control" name="beratAwb[]" id="beratAwb" value="{{$item["chargeableWeight"]}}" placeholder="Task ID">
