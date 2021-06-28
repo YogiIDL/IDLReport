@@ -120,7 +120,7 @@
                         <div class="form row">
                             <div class="form-group col-md-6">
                                 <label for="awb">No AWB</label>
-                                @if (isset($item["connote_code"]))k
+                                @if (isset($item["connote_code"]))
                                     <input type="text" class="form-control" name="noAwb[]" id="noAwb" value="{{$item["connote_code"]}}" placeholder="Task ID">
                                 @else
                                     <input type="text" class="form-control" name="noAwb[]" id="noAwb" value="{{$item["id"]}}" placeholder="Task ID">

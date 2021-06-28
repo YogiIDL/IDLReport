@@ -17,6 +17,20 @@
             {{session('error')}}
         </div>
     @endif
+
+    <div class="form row">
+        <div class="form-group col-md-6">
+                <label for="nama_kurir">Nama Kurir</label>
+                <input type="text" class="form-control" name="task_id" id="task_id" value="{{$dispatch->nama_kurir}}" placeholder="Task ID">
+        </div>
+        <div class="form-group col-md-6">
+            <div class="col-md-12">
+                <label for="tanggal">Tanggal</label>
+                <input type="text" class="form-control" name="task_name" id="task_name" value="{{$dispatch->tanggal}}" placeholder="Task ID">
+            </div>
+        </div>
+    </div>
+    <div class="form row">
         <div class="table-responsive">
             <table class="table table-bordered table-hover text-gray-900" width="100%" cellspacing="0">
                 <thead>
@@ -36,6 +50,8 @@
 
             </table>
         </div>
+    </div>
+
     </div>
 </div>
 
