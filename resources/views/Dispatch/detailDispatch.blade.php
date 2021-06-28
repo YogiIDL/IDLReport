@@ -2,6 +2,27 @@
 
 @section('content')
 
+<div class="d-flex flex-row">
+    <div class="p-2">
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <a href="/listDispatch/{{Auth::user()->locationnow}}" class="btn btn-info btn-icon-split">
+                <span class="icon text-white-50">
+                    <i class="fas fa-arrow-left"></i>
+                </span>
+                <span class="text">Back to List</span>
+            </a>
+        </div>
+    </div>
+    <div class="ml-auto p-2">
+        <a href="/downloadDispatch/{{Auth::user()->locationnow}}/{{$dispatch->id}}" class="btn btn-info btn-icon-split">
+            <span class="icon text-white-50">
+                <i class="fas fa-download"></i>
+            </span>
+            <span class="text">Download Report</span>
+        </a> 
+    </div>
+</div>
+
 <div class="card shadow mb-4 text-gray-900">
     <div class="card-header py-3">
         <h5 class="m-0 font-weigth-bold text-primary">Detail Dispatch</h5>
@@ -17,6 +38,9 @@
                 {{session('error')}}
             </div>
         @endif
+
+        <div class="form row">
+        </div>
 
         <div class="form row">
             <div class="form-group col-md-6">
@@ -129,6 +153,26 @@
             </div>
         </div>
 
+        <div class="form row">
+            <div class="form-group col-md-4">
+                <dv class="col-sm-12">
+                    <label for="km_awal">Km Awal</label>
+                    <input type="text" class="form-control" name="km_awal" id="km_awal" value="{{$dispatch->km_awal}}" placeholder="Task ID">
+                </dv>
+            </div>
+            <div class="form-group col-md-4">
+                <div class="col-sm-12">
+                    <label for="km_isi">Km Isi</label>
+                    <input type="text" class="form-control" name="km_isi" id="km_isi" value="{{$dispatch->km_isi}}" placeholder="Task ID">
+                </div>
+            </div>
+            <div class="form-group col-md-4">
+                <div class="col-sm-12">
+                    <label for="km_akhir">Km Akhir</label>
+                    <input type="text" class="form-control" name="km_akhir" id="km_akhir" value="{{$dispatch->km_akhir}}" placeholder="Task ID">
+                </div>
+            </div>
+        </div>
 
     </div>
 </div>

@@ -19,7 +19,7 @@ class CreateDispatchsTable extends Migration
             $table->unsignedBigInteger('location_id');
             $table->string('task_id');
             $table->string('nama_kurir');
-            $table->string('tipe_mobil_id');
+            $table->unsignedBigInteger('tipe_mobil_id');
             $table->date('tanggal')->nullable();
             $table->string('minggu')->nullable();
             $table->string('flow');

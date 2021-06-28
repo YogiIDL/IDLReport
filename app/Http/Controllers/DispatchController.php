@@ -183,11 +183,18 @@ class DispatchController extends Controller
                                         [Auth::user()->id, $locationnow]);
         Auth::user()->levelinlocation = $levelinlocation[0]->level_id;
 
-        $dispatch = DB::select('select * from dispatchs d
+        // $dispatch = DB::select('select * from dispatchs d
+        //     left join nopol n on d.tipe_mobil_id = n.id
+        //     left join tipe_mobil t on n.tipe_mobil_id = t.id
+        //     where task_id = ?', [$taskId]);
+        // left join nopol n on n.id = d.tipe_mobil_id
+        $dispatch = DB::select('select d.*, n.nopol, n.tipe_mobil_id, t.tipe_mobil from dispatchs d
             left join nopol n on d.tipe_mobil_id = n.id
             left join tipe_mobil t on n.tipe_mobil_id = t.id
-            where task_id = ?', [$taskId]);
+            where task_id = ?', [$taskId]); 
         $dispatch = $dispatch[0];
+        // dump($dispatch);
+        // die();
         // $dispatch = DB::table('dispatchs')->where('task_id', $taskId)->first();
         $awb = DB::select('select * from awb where task_id = ?', [$taskId]);
         // $awb = DB::table('awb')->where('task_id', $taskId)->get();
@@ -208,6 +215,16 @@ class DispatchController extends Controller
         dump($dispatch);
 
         return view('Dispatch.detailDispatch')->with('location_name', $location_name)->with('dispatch', $dispatch);
+    }
+
+    public function downloadDispatch($locationnow, $dispatch_id){
+        Excel::create('dispatch', function($excel){
+
+        })->download('xls');
+        dump("download Dispatch");
+        dump($locationnow);
+        dump($dispatch_id);
+        die();
     }
 
     public function rest()

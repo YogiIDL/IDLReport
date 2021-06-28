@@ -80,6 +80,7 @@ Route::get('/home/{location_id}', 'HomeController@home');
     Route::post('/saveDispatch/{location_id}', 'DispatchController@saveDispatch');
     // Route::get('/searchDispatch/{location_id}', 'DispatchController@searchDispatch');
     Route::get('/detailDispatch/{location_id}/{dispatch_id}', 'DispatchController@detailDispatch');
+    Route::get('/downloadDispatch/{location_id}/{dispatch_id}', 'DispatchController@downloadDispatch');
 
     // Traffic
     Route::get('/listTraffic/{location_id}', 'TrafficController@listTraffic');
