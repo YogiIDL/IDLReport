@@ -226,7 +226,14 @@ class DispatchController extends Controller
 
     public function downloadDispatch($locationnow, $dispatch_id){
 
-        return Excel::download(new DispatchsExport, 'dispatch.xlsx');
+        // return Excel::download(new DispatchsExport, 'dispatch.xlsx');
+        // $response = DB::select('select * from dispatchs');
+        // $response = collect($response);
+        // return Excel::download(new $response, 'dispatch.xlsx');
+        $dispatch = new DispatchsExport($dispatch_id);
+        return Excel::download($dispatch, 'dispatch.xlsx');
+        // dump( Excel::download( $dispatch_id, 'dispatch.xlsx'));
+        // die();
     }
 
     public function rest()

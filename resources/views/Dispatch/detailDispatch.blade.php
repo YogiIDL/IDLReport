@@ -14,7 +14,7 @@
         </div>
     </div>
     <div class="ml-auto p-2">
-        <a href="/downloadDispatch/{{Auth::user()->locationnow}}/{{$dispatch->id}}" class="btn btn-info btn-icon-split">
+        <a href="/downloadDispatch/{{Auth::user()->locationnow}}/{{$dispatch->task_id}}" class="btn btn-info btn-icon-split">
             <span class="icon text-white-50">
                 <i class="fas fa-download"></i>
             </span>
