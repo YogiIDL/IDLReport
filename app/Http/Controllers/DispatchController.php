@@ -2,10 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
+// use Maatwebsite\Excel\Concerns\FromCollection;
+use App\Exports\UsersExport;
+use App\Exports\DispatchsExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 // TODO: Make excel download
 
@@ -104,7 +109,7 @@ class DispatchController extends Controller
             ->get('https://api.mile.app/v2/task/'.$request->dispatch_id)->json();
         $response = (object)$response;
 
-        dump($response);
+        // dump($response);
         $date = strtotime($response->taskCreatedTime);
         // dump(date('d-m-Y h:i:s', $date));
 
@@ -214,19 +219,14 @@ class DispatchController extends Controller
 
         $dispatch->packageList = $awb;
 
-        dump($dispatch);
+        // dump($dispatch);
 
         return view('Dispatch.detailDispatch')->with('location_name', $location_name)->with('dispatch', $dispatch);
     }
 
     public function downloadDispatch($locationnow, $dispatch_id){
-        Excel::create('dispatch', function($excel){
 
-        })->download('xls');
-        dump("download Dispatch");
-        dump($locationnow);
-        dump($dispatch_id);
-        die();
+        return Excel::download(new DispatchsExport, 'dispatch.xlsx');
     }
 
     public function rest()
