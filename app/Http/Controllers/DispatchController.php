@@ -185,11 +185,24 @@ class DispatchController extends Controller
 
         $dispatch = DB::select('select * from dispatchs d
             left join nopol n on d.tipe_mobil_id = n.id
+            left join tipe_mobil t on n.tipe_mobil_id = t.id
             where task_id = ?', [$taskId]);
         $dispatch = $dispatch[0];
         // $dispatch = DB::table('dispatchs')->where('task_id', $taskId)->first();
         $awb = DB::select('select * from awb where task_id = ?', [$taskId]);
         // $awb = DB::table('awb')->where('task_id', $taskId)->get();
+        $dispatch->total_biaya = $dispatch->bensin + $dispatch->parkir + $dispatch->tol + $dispatch->lainlain;
+        $dispatch->total_berat = 0;
+        foreach($awb as $item){
+            $dispatch->total_berat = $dispatch->total_berat + $item->berat_awb;
+        }
+        $dispatch->biayaperkilo = $dispatch->total_biaya/$dispatch->total_berat;
+        $dispatch->biayaperkilo = number_format((float)$dispatch->biayaperkilo, 2, '.','');
+        foreach($awb as $item){
+            $item->cost = $item->berat_awb * $dispatch->biayaperkilo;
+            $item->cost = number_format((float)$item->cost, 2, ',', '');
+        }
+
         $dispatch->packageList = $awb;
 
         dump($dispatch);
