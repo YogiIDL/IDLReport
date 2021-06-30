@@ -1,7 +1,7 @@
 // Toglle side bar when Page Load
-window.onload = function(){
-    document.getElementById("sidebarToggle").click();
-}
+// window.onload = function(){
+//     document.getElementById("sidebarToggle").click();
+// }
 
 
 // Testing external js
